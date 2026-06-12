@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
 import Divider from "@/components/Divider";
 import Button from "@/components/Button";
-import Grunge from "@/components/Grunge";
 import Arch from "@/components/ornaments/Arch";
 import Placeholder from "@/components/Placeholder";
 
@@ -113,7 +112,6 @@ export default function AboutPage() {
 
       {/* CTA */}
       <section className="relative overflow-hidden border-y border-ash-dim/40 bg-void">
-        <Grunge id="about-cta" variant="streak" opacity={0.16} seed={11} />
         <div className="relative mx-auto flex max-w-[1600px] flex-col items-start gap-8 px-6 py-28 md:px-12 md:py-40">
           <Reveal as="h2" className="font-heading text-[clamp(2rem,6vw,4.25rem)] uppercase leading-[1.08] tracking-heading text-bone">
             Bring me your <span className="text-oxblood-bright">dread.</span>

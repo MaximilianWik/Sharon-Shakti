@@ -2,13 +2,11 @@ import Link from "next/link";
 import RoseWindow from "@/components/ornaments/RoseWindow";
 import CathedralFacade from "@/components/ornaments/CathedralFacade";
 import RibbedColumn from "@/components/ornaments/RibbedColumn";
-import Grunge from "@/components/Grunge";
 
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer className="relative overflow-hidden border-t border-ash-dim/40 bg-ink">
-      <Grunge id="footer" variant="streak" opacity={0.13} seed={19} />
       {/* Cathedral facade silhouette crowning the footer */}
       <CathedralFacade className="absolute inset-x-0 top-0 h-14 w-full text-ash-dim/60 md:h-20" />
       {/* Faint rose window bleeding off the right edge */}

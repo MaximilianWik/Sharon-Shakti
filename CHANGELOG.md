@@ -29,6 +29,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - `Divider` variants: `rose`, `fleur`, `diamond` (alongside `quatrefoil`)
 - Distressed grunge overlays (`Grunge`) on hero, both CTA bands, footer
 
+### Removed
+- `Grunge` component and all usages — removed at owner's direction
+
 ### Changed
 - Nav: crenellation (battlement) top border, portcullis mobile icon,
   pointed-arch hover underline
