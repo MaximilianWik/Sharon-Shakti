@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { BOOKING, isWorkingDay } from "@/lib/booking-config";
+import Button from "@/components/Button";
+import Gargoyle from "@/components/ornaments/Gargoyle";
 
 type Slot = { label: string; start: string; end: string; available: boolean };
 type DayResponse = {
@@ -39,6 +41,7 @@ export default function BookingFlow() {
   const [selectedSlot, setSelectedSlot] = useState<Slot | null>(null);
 
   const [form, setForm] = useState({ name: "", email: "", notes: "" });
+  const [consent, setConsent] = useState(false);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [submit, setSubmit] = useState<Status>("idle");
   const [error, setError] = useState<string | null>(null);
@@ -281,17 +284,13 @@ export default function BookingFlow() {
             </p>
           )}
 
-          <div className="flex flex-col gap-5">
-            <Field
-              label="Name"
-              error={fieldErrors.name}
-            >
+          <div className="flex flex-col gap-7">
+            <Field label="Name" error={fieldErrors.name}>
               <input
                 type="text"
                 required
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
-                className="w-full border-b border-ash-dim/60 bg-transparent py-3 text-bone outline-none transition-colors focus:border-oxblood-bright"
               />
             </Field>
             <Field label="Email" error={fieldErrors.email}>
@@ -300,36 +299,46 @@ export default function BookingFlow() {
                 required
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
-                className="w-full border-b border-ash-dim/60 bg-transparent py-3 text-bone outline-none transition-colors focus:border-oxblood-bright"
               />
             </Field>
-            <Field
-              label="What do you want made?"
-              error={fieldErrors.notes}
-              optional
-            >
+            <Field label="What do you want made?" error={fieldErrors.notes} optional>
               <textarea
                 rows={3}
                 value={form.notes}
                 onChange={(e) => setForm({ ...form, notes: e.target.value })}
                 placeholder="Concept, placement, size, references…"
-                className="w-full resize-none border-b border-ash-dim/60 bg-transparent py-3 text-bone outline-none transition-colors placeholder:text-ash/50 focus:border-oxblood-bright"
               />
             </Field>
           </div>
 
+          {/* Illuminated-manuscript consent checkbox */}
+          <div className="mt-7 flex items-start gap-4">
+            <button
+              type="button"
+              role="checkbox"
+              aria-checked={consent}
+              aria-label="I understand this is a consultation request"
+              onClick={() => setConsent((v) => !v)}
+              className="illuminated-check"
+              data-cursor="hover"
+            >
+              {consent ? "S" : ""}
+            </button>
+            <p className="max-w-xs text-sm leading-relaxed text-ash">
+              I understand this is a request for a consultation, and that Sharon
+              confirms every booking personally before it is final.
+            </p>
+          </div>
+
           {error && <p className="mt-5 text-sm text-oxblood-bright">{error}</p>}
 
-          <button
+          <Button
             type="submit"
-            disabled={!selectedSlot || submit === "submitting"}
-            data-cursor={selectedSlot ? "hover" : undefined}
-            className="mt-8 inline-flex w-full items-center justify-center gap-3 bg-oxblood px-10 py-5 text-bone transition-colors duration-300 hover:bg-oxblood-bright disabled:cursor-not-allowed disabled:bg-ash-dim disabled:text-ash"
+            disabled={!selectedSlot || !consent || submit === "submitting"}
+            className="mt-8 w-full"
           >
-            <span className="label">
-              {submit === "submitting" ? "Requesting…" : "Request this session"}
-            </span>
-          </button>
+            {submit === "submitting" ? "Requesting…" : "Request this session"}
+          </Button>
           <p className="mt-4 text-xs leading-relaxed text-ash/60">
             This sends a consultation request. Sharon confirms every booking
             personally before it&rsquo;s final.
@@ -357,7 +366,10 @@ function Field({
         {label}
         {optional && <span className="text-ash/50">(optional)</span>}
       </span>
-      <div className="mt-1">{children}</div>
+      <div className="field-gothic mt-1">
+        {children}
+        <Gargoyle className="gargoyle" />
+      </div>
       {error && <span className="mt-1 block text-xs text-oxblood-bright">{error}</span>}
     </label>
   );

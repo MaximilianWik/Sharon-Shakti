@@ -2,6 +2,8 @@ import Link from "next/link";
 import Hero from "@/components/hero/Hero";
 import Reveal from "@/components/Reveal";
 import Divider from "@/components/Divider";
+import Button from "@/components/Button";
+import Grunge from "@/components/Grunge";
 import RoseWindow from "@/components/ornaments/RoseWindow";
 import WorkPlate from "@/components/WorkPlate";
 import { works } from "@/lib/works";
@@ -40,7 +42,7 @@ export default function Home() {
         </Reveal>
       </section>
 
-      <Divider className="mx-auto max-w-[1600px] px-6 md:px-12" />
+      <Divider variant="diamond" className="mx-auto max-w-[1600px] px-6 md:px-12" />
 
       {/* Featured work */}
       <section className="mx-auto max-w-[1600px] px-6 py-32 md:px-12 md:py-48">
@@ -74,6 +76,7 @@ export default function Home() {
 
       {/* Booking CTA band */}
       <section className="relative overflow-hidden border-y border-ash-dim/40 bg-void">
+        <Grunge id="cta" variant="streak" opacity={0.16} />
         <RoseWindow className="pointer-events-none absolute left-1/2 top-1/2 h-[34rem] w-[34rem] -translate-x-1/2 -translate-y-1/2 text-ash-dim/20" />
         <div className="relative mx-auto flex max-w-[1600px] flex-col items-start gap-10 px-6 py-32 md:px-12 md:py-44">
           <Reveal as="h2" className="font-heading text-[clamp(2rem,6vw,4.25rem)] uppercase leading-[1.08] tracking-heading text-bone">
@@ -82,16 +85,7 @@ export default function Home() {
             that <span className="text-oxblood-bright">stays.</span>
           </Reveal>
           <Reveal>
-            <Link
-              href="/book"
-              data-cursor="hover"
-              className="group inline-flex items-center gap-4 bg-oxblood px-10 py-5 text-bone transition-colors duration-300 hover:bg-oxblood-bright"
-            >
-              <span className="label">Check availability</span>
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden className="transition-transform duration-500 ease-out-expo group-hover:translate-x-1">
-                <path d="M3 9h12M10 4l5 5-5 5" stroke="currentColor" strokeWidth="1.4" />
-              </svg>
-            </Link>
+            <Button href="/book">Check availability</Button>
           </Reveal>
         </div>
       </section>

@@ -1,22 +1,23 @@
 import Link from "next/link";
-import Arcade from "@/components/ornaments/Arcade";
 import RoseWindow from "@/components/ornaments/RoseWindow";
+import CathedralFacade from "@/components/ornaments/CathedralFacade";
+import RibbedColumn from "@/components/ornaments/RibbedColumn";
+import Grunge from "@/components/Grunge";
 
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer className="relative overflow-hidden border-t border-ash-dim/40 bg-ink">
-      {/* Blind arcade crowning the footer */}
-      <Arcade
-        bays={14}
-        className="absolute inset-x-0 top-0 h-8 w-full text-ash-dim/70 md:h-10"
-      />
+      <Grunge id="footer" variant="streak" opacity={0.13} seed={19} />
+      {/* Cathedral facade silhouette crowning the footer */}
+      <CathedralFacade className="absolute inset-x-0 top-0 h-14 w-full text-ash-dim/60 md:h-20" />
       {/* Faint rose window bleeding off the right edge */}
       <RoseWindow className="pointer-events-none absolute -right-24 top-1/2 h-[28rem] w-[28rem] -translate-y-1/2 text-ash-dim/25" />
 
-      <div className="relative mx-auto max-w-[1600px] px-6 pb-20 pt-24 md:px-12 md:pt-28">
-        <div className="flex flex-col gap-16 md:flex-row md:items-end md:justify-between">
-          <div className="max-w-xl">
+      <div className="relative mx-auto max-w-[1600px] px-6 pb-8 pt-28 md:px-12 md:pt-36">
+        <div className="flex flex-col gap-12 md:flex-row md:items-stretch md:gap-0">
+          {/* Column 1 — CTA */}
+          <div className="max-w-xl md:flex-1 md:pr-12">
             <p className="label text-ash">The Black Gallery</p>
             <h2 className="mt-6 font-heading text-3xl uppercase leading-[1.15] tracking-heading text-bone md:text-5xl">
               Commit it
@@ -33,27 +34,24 @@ export default function Footer() {
             </Link>
           </div>
 
-          <nav aria-label="Footer" className="flex gap-16">
+          <RibbedColumn className="hidden self-stretch md:flex" />
+
+          {/* Column 2 — Pages */}
+          <nav aria-label="Footer pages" className="md:flex-1 md:px-12">
+            <p className="label mb-4 text-ash">Pages</p>
             <ul className="flex flex-col gap-3">
-              <li className="label mb-2 text-ash">Pages</li>
-              <li>
-                <Link href="/work" className="text-bone/70 transition-colors hover:text-bone">
-                  Work
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="text-bone/70 transition-colors hover:text-bone">
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link href="/book" className="text-bone/70 transition-colors hover:text-bone">
-                  Book
-                </Link>
-              </li>
+              <li><Link href="/work" className="text-bone/70 transition-colors hover:text-bone">Work</Link></li>
+              <li><Link href="/about" className="text-bone/70 transition-colors hover:text-bone">About</Link></li>
+              <li><Link href="/book" className="text-bone/70 transition-colors hover:text-bone">Book</Link></li>
             </ul>
+          </nav>
+
+          <RibbedColumn className="hidden self-stretch md:flex" />
+
+          {/* Column 3 — Elsewhere */}
+          <div className="md:flex-1 md:pl-12">
+            <p className="label mb-4 text-ash">Elsewhere</p>
             <ul className="flex flex-col gap-3">
-              <li className="label mb-2 text-ash">Elsewhere</li>
               <li>
                 <a
                   href="https://www.instagram.com/sharonnshakti/"
@@ -65,14 +63,17 @@ export default function Footer() {
                 </a>
               </li>
             </ul>
-          </nav>
+          </div>
         </div>
 
-        <div className="mt-20 flex flex-col gap-2 border-t border-ash-dim/30 pt-8 text-ash md:flex-row md:items-center md:justify-between">
+        <div className="mt-16 flex flex-col gap-2 border-t border-ash-dim/30 pt-8 text-ash md:flex-row md:items-center md:justify-between">
           <p className="label">© {year} Sharon</p>
           <p className="label">Horror Realism · Blackwork · Dark Art</p>
         </div>
       </div>
+
+      {/* Cross-tile base row */}
+      <div className="cross-tiles relative w-full" />
     </footer>
   );
 }

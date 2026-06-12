@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import Divider from "@/components/Divider";
+import Button from "@/components/Button";
+import Grunge from "@/components/Grunge";
 import Arch from "@/components/ornaments/Arch";
 import Placeholder from "@/components/Placeholder";
 
@@ -71,7 +72,7 @@ export default function AboutPage() {
         </Reveal>
       </section>
 
-      <Divider className="mx-auto mt-24 max-w-[1600px] px-6 md:px-12" />
+      <Divider variant="fleur" className="mx-auto mt-24 max-w-[1600px] px-6 md:px-12" />
 
       {/* Long-form */}
       <section className="mx-auto max-w-[1600px] px-6 py-32 md:px-12 md:py-44">
@@ -111,20 +112,14 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="border-y border-ash-dim/40 bg-void">
-        <div className="mx-auto flex max-w-[1600px] flex-col items-start gap-8 px-6 py-28 md:px-12 md:py-40">
+      <section className="relative overflow-hidden border-y border-ash-dim/40 bg-void">
+        <Grunge id="about-cta" variant="streak" opacity={0.16} seed={11} />
+        <div className="relative mx-auto flex max-w-[1600px] flex-col items-start gap-8 px-6 py-28 md:px-12 md:py-40">
           <Reveal as="h2" className="font-heading text-[clamp(2rem,6vw,4.25rem)] uppercase leading-[1.08] tracking-heading text-bone">
             Bring me your <span className="text-oxblood-bright">dread.</span>
           </Reveal>
           <Reveal>
-            <Link
-              href="/book"
-              data-cursor="hover"
-              className="group inline-flex items-center gap-4 bg-oxblood px-10 py-5 text-bone transition-colors duration-300 hover:bg-oxblood-bright"
-            >
-              <span className="label">Request a consultation</span>
-              <span className="inline-block h-px w-10 bg-bone transition-all duration-500 ease-out-expo group-hover:w-16" />
-            </Link>
+            <Button href="/book">Request a consultation</Button>
           </Reveal>
         </div>
       </section>

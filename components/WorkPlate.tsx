@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Placeholder from "./Placeholder";
+import TraceryCorner from "./ornaments/TraceryCorner";
 import type { Work } from "@/lib/works";
 
 const spanClass: Record<NonNullable<Work["span"]>, string> = {
@@ -51,6 +52,15 @@ export default function WorkPlate({
       <div className="absolute inset-0 transition-transform duration-[1200ms] ease-out-expo group-hover:scale-[1.04]">
         <Placeholder seed={work.seed} label={work.title} />
       </div>
+
+      {/* Leaded / stained-glass tint */}
+      <div className="leaded-glass pointer-events-none absolute inset-0 opacity-40 transition-opacity duration-700 group-hover:opacity-70" />
+
+      {/* Tracery corners */}
+      <TraceryCorner corner="tl" className="pointer-events-none absolute left-1.5 top-1.5 h-6 w-6 text-ash/55 transition-colors duration-500 group-hover:text-oxblood-bright" />
+      <TraceryCorner corner="tr" className="pointer-events-none absolute right-1.5 top-1.5 h-6 w-6 text-ash/55 transition-colors duration-500 group-hover:text-oxblood-bright" />
+      <TraceryCorner corner="bl" className="pointer-events-none absolute bottom-1.5 left-1.5 h-6 w-6 text-ash/55 transition-colors duration-500 group-hover:text-oxblood-bright" />
+      <TraceryCorner corner="br" className="pointer-events-none absolute bottom-1.5 right-1.5 h-6 w-6 text-ash/55 transition-colors duration-500 group-hover:text-oxblood-bright" />
 
       <span className="absolute inset-x-0 bottom-0 h-px w-0 bg-oxblood-bright transition-all duration-700 ease-out-expo group-hover:w-full" />
 

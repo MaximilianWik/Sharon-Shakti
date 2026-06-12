@@ -21,8 +21,24 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Rose-window backdrops behind the home booking CTA and in the footer
 - Blind arcade crowning the footer
 - Pointed-arch (cathedral) frame around the About portrait
+- **Gothic UI kit (monochrome integration)** — new components rendered in
+  bone/ash/oxblood (no gold/stone): `Button` (pointed-arch primary with oxblood
+  glow + stone-texture reveal, destructive, rose-window `IconButton`),
+  `TraceryCorner` (4-way), `FleurDeLis`, `RibbedColumn`, `DiamondChain`,
+  `Portcullis`, `CathedralFacade`, `Gargoyle`
+- `Divider` variants: `rose`, `fleur`, `diamond` (alongside `quatrefoil`)
+- Distressed grunge overlays (`Grunge`) on hero, both CTA bands, footer
 
 ### Changed
+- Nav: crenellation (battlement) top border, portcullis mobile icon,
+  pointed-arch hover underline
+- Footer: cathedral-facade silhouette crown, ribbed-column dividers between the
+  three columns, cross-tile base row
+- Gallery plates: tracery corners + leaded-glass tint overlay
+- Booking form: gothic fields (corner clips + oxblood focus glow + gargoyle
+  watermark), illuminated-manuscript consent checkbox, pointed-arch submit
+- Scrollbar: stacked stone-block thumb + cracked-stone track, oxblood border
+- All page CTAs now use the pointed-arch `Button`
 - Replaced the Bodoni Moda + Inter type system with a three-role gothic system
   (SingleGhost / Cinzel / EB Garamond); Inter (sans) removed entirely
 - All expressive headings (statements, CTAs, piece titles, nav links) moved from

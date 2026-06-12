@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Reveal from "@/components/Reveal";
+import Button from "@/components/Button";
 import WorkPlate from "@/components/WorkPlate";
 import { works } from "@/lib/works";
 
@@ -52,14 +52,7 @@ export default function WorkPage() {
           <h2 className="max-w-2xl font-heading text-3xl uppercase leading-[1.15] tracking-heading text-bone md:text-4xl">
             Something here speak to you?
           </h2>
-          <Link
-            href="/book"
-            data-cursor="hover"
-            className="group inline-flex items-center gap-4 bg-oxblood px-10 py-5 text-bone transition-colors duration-300 hover:bg-oxblood-bright"
-          >
-            <span className="label">Begin a commission</span>
-            <span className="inline-block h-px w-10 bg-bone transition-all duration-500 ease-out-expo group-hover:w-16" />
-          </Link>
+          <Button href="/book">Begin a commission</Button>
         </Reveal>
       </section>
     </div>

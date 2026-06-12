@@ -6,6 +6,16 @@
   --font-display: "SingleGhost", Georgia, serif;
   --font-heading: "Cinzel", Georgia, serif;
   --font-body: "EB Garamond", Georgia, serif;
+
+  /* Responsive pointed-arch silhouettes (clip-path, % based) */
+  --arch: polygon(
+    0% 100%, 0% 22%, 8% 13%, 22% 6%, 37% 1.5%, 50% 0%,
+    63% 1.5%, 78% 6%, 92% 13%, 100% 22%, 100% 100%
+  );
+  --arch-shallow: polygon(
+    0% 100%, 0% 100%, 0% 42%, 25% 16%, 50% 6%, 75% 16%, 100% 42%, 100% 100%
+  );
+  --oxblood-glow: 0 0 22px rgba(154, 22, 32, 0.45);
 }
 
 * {
@@ -87,18 +97,31 @@ a {
   outline-offset: 3px;
 }
 
-/* Thin scrollbar */
+/* Scrollbar — stacked stone blocks, cracked-stone track, oxblood border */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 13px;
 }
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  background-color: #080808;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent 0 21px,
+    rgba(58, 58, 58, 0.35) 21px 22px
+  );
+  border-left: 1px solid #1a1a1a;
 }
 ::-webkit-scrollbar-thumb {
-  background: #3a3a3a;
+  background-color: #141414;
+  background-image: repeating-linear-gradient(
+    0deg,
+    #1b1b1b 0 13px,
+    #0d0d0d 13px 14px
+  );
+  border: 1px solid rgba(154, 22, 32, 0.45);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.6);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #6e1014;
+  border-color: #9a1620;
 }
 
 /* Labels / eyebrows / nav — engraved gothic caps */
@@ -128,3 +151,202 @@ a {
     transform: translateY(333%);
   }
 }
+
+/* ============================================================
+   GOTHIC ARCHITECTURE PRIMITIVES (monochrome: bone / ash / oxblood)
+   ============================================================ */
+
+/* Pointed-arch clips */
+.arch-clip { clip-path: var(--arch); }
+.arch-shallow-clip { clip-path: var(--arch-shallow); }
+
+/* Crenellation (battlement) strip — colour via currentColor */
+.crenellation {
+  height: 12px;
+  background: currentColor;
+  -webkit-mask:
+    linear-gradient(#000, #000) bottom / 100% 3px no-repeat,
+    repeating-linear-gradient(90deg, #000 0 13px, transparent 13px 26px);
+  mask:
+    linear-gradient(#000, #000) bottom / 100% 3px no-repeat,
+    repeating-linear-gradient(90deg, #000 0 13px, transparent 13px 26px);
+  -webkit-mask-composite: source-over;
+  mask-composite: add;
+}
+
+/* Gothic text field — bottom rule, corner clips, oxblood focus glow + gargoyle */
+.field-gothic { position: relative; }
+.field-gothic input,
+.field-gothic textarea {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid rgba(125, 125, 125, 0.55);
+  background: transparent;
+  color: #f3f2ef;
+  padding: 0.75rem 0.25rem;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.field-gothic textarea { resize: none; }
+.field-gothic input::placeholder,
+.field-gothic textarea::placeholder { color: rgba(125, 125, 125, 0.6); }
+.field-gothic::before,
+.field-gothic::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  width: 9px;
+  height: 9px;
+  border: 1px solid #7d7d7d;
+  pointer-events: none;
+  transition: border-color 0.3s;
+}
+.field-gothic::before { left: 0; border-top: 0; border-right: 0; }
+.field-gothic::after { right: 0; border-top: 0; border-left: 0; }
+.field-gothic:focus-within input,
+.field-gothic:focus-within textarea {
+  border-color: #9a1620;
+  box-shadow: 0 1px 0 0 #9a1620, var(--oxblood-glow);
+}
+.field-gothic:focus-within::before,
+.field-gothic:focus-within::after { border-color: #9a1620; }
+.field-gothic .gargoyle {
+  position: absolute;
+  right: 0.25rem;
+  bottom: 2.4rem;
+  width: 84px;
+  height: 84px;
+  opacity: 0;
+  pointer-events: none;
+  color: #f3f2ef;
+  transition: opacity 0.55s ease;
+}
+.field-gothic:focus-within .gargoyle { opacity: 0.1; }
+
+/* Illuminated-manuscript checkbox — a square initial that lights in oxblood */
+.illuminated-check {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border: 1px solid #7d7d7d;
+  background: #0a0a0a;
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  line-height: 1;
+  color: #3a3a3a;
+  cursor: pointer;
+  transition: border-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+.illuminated-check::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border: 1px solid rgba(125, 125, 125, 0.3);
+  pointer-events: none;
+}
+.illuminated-check[aria-checked="true"] {
+  border-color: #9a1620;
+  color: #9a1620;
+  box-shadow: var(--oxblood-glow);
+}
+
+/* Leaded / stained-glass overlay (monochrome, oxblood-tinted) */
+.leaded-glass::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(110, 16, 20, 0.22), rgba(10, 10, 10, 0.05)),
+    repeating-linear-gradient(60deg, transparent 0 26px, rgba(243, 242, 239, 0.07) 26px 27px),
+    repeating-linear-gradient(-60deg, transparent 0 26px, rgba(243, 242, 239, 0.07) 26px 27px);
+  mix-blend-mode: screen;
+}
+
+/* Cross-tile row (footer base) */
+.cross-tiles {
+  height: 26px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Cpath d='M13 5V21M7.5 11H18.5' stroke='%237d7d7d' stroke-width='1' opacity='0.5'/%3E%3C/svg%3E");
+  background-size: 26px 26px;
+  background-repeat: repeat-x;
+  opacity: 0.7;
+}
+
+/* Pointed-arch button — bone rim, dark fill, oxblood glow + stone reveal */
+.btn-arch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1.25rem 2.75rem 0.95rem;
+  isolation: isolate;
+  clip-path: var(--arch);
+  background: #f3f2ef;
+  border: 0;
+  cursor: pointer;
+  transition: filter 0.35s, background 0.35s;
+}
+.btn-arch::before {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  z-index: -2;
+  clip-path: var(--arch);
+  background: linear-gradient(180deg, #141414, #0a0a0a);
+  transition: background 0.35s;
+}
+.btn-arch::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  z-index: -1;
+  clip-path: var(--arch);
+  background-image: url("/grain.svg");
+  background-size: 150px;
+  opacity: 0;
+  mix-blend-mode: screen;
+  transition: opacity 0.45s;
+}
+.btn-arch .lbl {
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #f3f2ef;
+}
+.btn-arch:hover { filter: drop-shadow(var(--oxblood-glow)); background: #9a1620; }
+.btn-arch:hover::before { background: linear-gradient(180deg, #1c1216, #0a0a0a); }
+.btn-arch:hover::after { opacity: 0.14; }
+.btn-arch--destructive { background: #6e1014; }
+.btn-arch--destructive::before { background: linear-gradient(180deg, #6e1014, #470a0d); }
+.btn-arch--destructive:hover { background: #9a1620; }
+.btn-arch[aria-disabled="true"],
+.btn-arch:disabled {
+  opacity: 0.45;
+  filter: none;
+  cursor: not-allowed;
+}
+
+/* Icon button — rose-window frame */
+.icon-btn {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  color: #f3f2ef;
+}
+.icon-btn .frame {
+  position: absolute;
+  inset: 0;
+  color: #7d7d7d;
+  transition: color 0.3s, filter 0.3s;
+}
+.icon-btn:hover .frame { color: #9a1620; filter: drop-shadow(var(--oxblood-glow)); }

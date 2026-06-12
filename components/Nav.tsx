@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import Portcullis from "@/components/ornaments/Portcullis";
 
 const links = [
   { href: "/work", label: "Work" },
@@ -34,6 +35,9 @@ export default function Nav() {
           : "bg-transparent"
       }`}
     >
+      {(scrolled || open) && (
+        <div className="crenellation w-full text-oxblood-bright/70" aria-hidden />
+      )}
       <nav className="mx-auto flex max-w-[1600px] items-center justify-between px-6 py-5 md:px-12">
         <Link
           href="/"
@@ -54,9 +58,11 @@ export default function Nav() {
                 >
                   {l.label}
                   <span
-                    className={`absolute -bottom-0.5 left-0 h-px bg-oxblood-bright transition-all duration-500 ease-out-expo ${
-                      active ? "w-full" : "w-0 group-hover:w-full"
+                    aria-hidden
+                    className={`absolute -bottom-1 left-1/2 h-2 -translate-x-1/2 bg-oxblood-bright transition-all duration-500 ease-out-expo ${
+                      active ? "w-6" : "w-0 group-hover:w-6"
                     }`}
+                    style={{ clipPath: "polygon(0 100%, 0 55%, 50% 0, 100% 55%, 100% 100%)" }}
                   />
                 </Link>
               </li>
@@ -69,19 +75,10 @@ export default function Nav() {
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="flex h-8 w-8 flex-col items-center justify-center gap-1.5 md:hidden"
+          className="h-8 w-8 text-bone transition-colors hover:text-oxblood-bright md:hidden"
           data-cursor="hover"
         >
-          <span
-            className={`block h-px w-6 bg-bone transition-transform duration-300 ${
-              open ? "translate-y-[3.5px] rotate-45" : ""
-            }`}
-          />
-          <span
-            className={`block h-px w-6 bg-bone transition-transform duration-300 ${
-              open ? "-translate-y-[3.5px] -rotate-45" : ""
-            }`}
-          />
+          <Portcullis className={`h-8 w-8 transition-transform duration-300 ${open ? "translate-y-0.5" : ""}`} />
         </button>
       </nav>
 

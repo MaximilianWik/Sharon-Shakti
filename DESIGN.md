@@ -65,7 +65,48 @@ Layered, not lifted. Depth comes from the choreographed motion and the black-on-
 
 ## 5. Components
 
-<!-- No components exist yet. Re-run $impeccable document once the UI is built to capture real button / input / nav / gallery-frame primitives. -->
+Gothic architecture vocabulary, rendered strictly in the monochrome palette
+(bone / ash / oxblood — no gold, no stone-blue). Aged-gold strokes from the
+source kit map to bone/ash filigree; blood red maps to oxblood; gold glow maps
+to the oxblood glow `var(--oxblood-glow)`.
+
+### Buttons
+- **Primary** (`btn-arch`): pointed-arch silhouette (`clip-path: var(--arch)`),
+  bone rim over a dark fill, Cinzel caps label. Hover: oxblood fill, oxblood
+  drop-shadow glow, faint stone-texture reveal.
+- **Destructive** (`btn-arch--destructive`): oxblood fill, bone label.
+- **Icon** (`IconButton`): circular rose-window frame, oxblood on hover.
+
+### Cards (gallery plates)
+- Four `TraceryCorner` filigrees + leaded-glass tint overlay (`.leaded-glass`,
+  oxblood-tinted diamond leading). Oxblood hairline draws across on hover.
+
+### Form fields (`.field-gothic`)
+- Bottom rule only, flanked by small gothic corner clips. Focus: oxblood border
+  + `var(--oxblood-glow)` and a faint gargoyle watermark fades in.
+- Checkbox replaced by an **illuminated-manuscript square initial**
+  (`.illuminated-check`) that lights oxblood when checked.
+
+### Navigation
+- Crenellation (battlement) top border (`.crenellation`), portcullis mobile
+  icon, pointed-arch hover underline.
+
+### Dividers
+- `Divider` variants — `quatrefoil` · `rose` (rose-window medallion) · `fleur`
+  (mirrored fleur-de-lis) · `diamond` (pointed-diamond chain). `RibbedColumn`
+  for vertical / split dividers.
+
+### Footer
+- Cathedral-facade silhouette crown, ribbed-column dividers, cross-tile base.
+
+### Scrollbar
+- Stacked stone-block thumb with oxblood border over a cracked-stone track.
+
+### Named Rules
+**The Gilt-Is-Oxblood Rule.** This kit ships gold in its source palette; here
+gold never appears. Metallic accents are bone/ash; the single voice stays
+oxblood. Any gold, blue, or jewel tone is forbidden (see The No-Hue Rule).
+
 
 ## 6. Do's and Don'ts
 
