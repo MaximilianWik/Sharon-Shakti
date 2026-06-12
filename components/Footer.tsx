@@ -1,18 +1,18 @@
 import Link from "next/link";
+import Arcade from "@/components/ornaments/Arcade";
 import RoseWindow from "@/components/ornaments/RoseWindow";
-import CathedralFacade from "@/components/ornaments/CathedralFacade";
 import RibbedColumn from "@/components/ornaments/RibbedColumn";
 
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer className="relative overflow-hidden border-t border-ash-dim/40 bg-ink">
-      {/* Cathedral facade silhouette crowning the footer */}
-      <CathedralFacade className="absolute inset-x-0 top-0 h-14 w-full text-ash-dim/60 md:h-20" />
+      {/* Blind arcade crowning the footer */}
+      <Arcade bays={14} className="absolute inset-x-0 top-0 h-8 w-full text-ash-dim/70 md:h-10" />
       {/* Faint rose window bleeding off the right edge */}
       <RoseWindow className="pointer-events-none absolute -right-24 top-1/2 h-[28rem] w-[28rem] -translate-y-1/2 text-ash-dim/25" />
 
-      <div className="relative mx-auto max-w-[1600px] px-6 pb-8 pt-28 md:px-12 md:pt-36">
+      <div className="relative mx-auto max-w-[1600px] px-6 pb-8 pt-20 md:px-12 md:pt-24">
         <div className="flex flex-col gap-12 md:flex-row md:items-stretch md:gap-0">
           {/* Column 1 — CTA */}
           <div className="max-w-xl md:flex-1 md:pr-12">

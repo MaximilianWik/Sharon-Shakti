@@ -31,6 +31,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### Removed
 - `Grunge` component and all usages — removed at owner's direction
+- `CathedralFacade` — removed (silhouette rendered as house shapes, not a cathedral); replaced with the original blind arcade in the footer
 
 ### Changed
 - Nav: crenellation (battlement) top border, portcullis mobile icon,
