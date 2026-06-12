@@ -1,11 +1,13 @@
 import Link from "next/link";
 import Arcade from "@/components/ornaments/Arcade";
 import RoseWindow from "@/components/ornaments/RoseWindow";
+import Grunge from "@/components/Grunge";
 
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer className="relative overflow-hidden border-t border-ash-dim/40 bg-ink">
+      <Grunge id="footer" variant="streak" opacity={0.13} seed={19} />
       {/* Blind arcade crowning the footer */}
       <Arcade
         bays={14}

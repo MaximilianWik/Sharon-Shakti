@@ -18,6 +18,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - **Gothic architecture ornaments** (`components/ornaments/`): `Quatrefoil`,
   `RoseWindow` (rose-window tracery), `Arcade` (blind row of pointed arches),
   `Arch` (pointed-arch frame)
+- **Distressed grunge overlays** (`Grunge` component) — procedural vector
+  texture via SVG turbulence (streak / blotch / speckle); layered onto the
+  hero, both booking CTA bands, and the footer for a weathered-wall feel
 - Rose-window backdrops behind the home booking CTA and in the footer
 - Blind arcade crowning the footer
 - Pointed-arch (cathedral) frame around the About portrait

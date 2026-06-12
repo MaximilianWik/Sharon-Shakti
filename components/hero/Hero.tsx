@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
 import { gsap } from "gsap";
+import Grunge from "@/components/Grunge";
 
 const Hero3D = dynamic(() => import("./Hero3D"), {
   ssr: false,
@@ -50,6 +51,8 @@ export default function Hero() {
             "radial-gradient(120% 90% at 50% 38%, transparent 32%, rgba(0,0,0,0.5) 72%, rgba(0,0,0,0.82) 100%)",
         }}
       />
+
+      <Grunge id="hero" variant="streak" opacity={0.08} blend="screen" seed={3} />
 
       <div className="pointer-events-none absolute inset-0 mx-auto flex max-w-[1600px] flex-col justify-between px-6 py-28 md:px-12 md:py-32">
         <p data-hero-fade className="label text-ash">
