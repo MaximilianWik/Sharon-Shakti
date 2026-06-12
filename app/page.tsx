@@ -2,6 +2,7 @@ import Link from "next/link";
 import Hero from "@/components/hero/Hero";
 import Reveal from "@/components/Reveal";
 import Divider from "@/components/Divider";
+import RoseWindow from "@/components/ornaments/RoseWindow";
 import WorkPlate from "@/components/WorkPlate";
 import { works } from "@/lib/works";
 
@@ -16,7 +17,7 @@ export default function Home() {
       <section className="mx-auto max-w-[1600px] px-6 py-32 md:px-12 md:py-48">
         <Reveal
           as="p"
-          className="dropcap max-w-measure font-serif text-3xl font-light italic leading-[1.3] tracking-display text-bone md:text-5xl md:leading-[1.25]"
+          className="dropcap max-w-measure font-heading text-2xl leading-[1.5] tracking-heading text-bone md:text-3xl"
         >
           The skin remembers what the eye fears. Each piece is drawn slowly,
           in black and blood, to outlast the body it marks.
@@ -72,12 +73,13 @@ export default function Home() {
       </section>
 
       {/* Booking CTA band */}
-      <section className="relative border-y border-ash-dim/40 bg-void">
-        <div className="mx-auto flex max-w-[1600px] flex-col items-start gap-10 px-6 py-32 md:px-12 md:py-44">
-          <Reveal as="h2" className="font-serif text-[clamp(2.25rem,7vw,5.5rem)] font-light italic leading-[1.0] tracking-display text-bone">
+      <section className="relative overflow-hidden border-y border-ash-dim/40 bg-void">
+        <RoseWindow className="pointer-events-none absolute left-1/2 top-1/2 h-[34rem] w-[34rem] -translate-x-1/2 -translate-y-1/2 text-ash-dim/20" />
+        <div className="relative mx-auto flex max-w-[1600px] flex-col items-start gap-10 px-6 py-32 md:px-12 md:py-44">
+          <Reveal as="h2" className="font-heading text-[clamp(2rem,6vw,4.25rem)] uppercase leading-[1.08] tracking-heading text-bone">
             Sit for a piece
             <br />
-            that <span className="italic text-oxblood-bright">stays.</span>
+            that <span className="text-oxblood-bright">stays.</span>
           </Reveal>
           <Reveal>
             <Link

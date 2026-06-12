@@ -12,14 +12,21 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ### Added
 - **SingleGhost** display font (local, `app/fonts/`) for H1 / hero titles
 - **Cinzel** (engraved caps) for H2 section titles, nav wordmark, and labels
-- **EB Garamond** (old-style serif) for body, expressive headings, and long-form
-- `Divider` component — ornamental gothic separator (hairlines flanking an oxblood lozenge)
+- **EB Garamond** (old-style serif) for body and long-form
+- `Divider` component — ornamental gothic separator (now centred on a quatrefoil)
 - Illuminated drop caps (`.dropcap`) on the home statement and About long-form
-- Arched (cathedral) top frame on the About portrait
+- **Gothic architecture ornaments** (`components/ornaments/`): `Quatrefoil`,
+  `RoseWindow` (rose-window tracery), `Arcade` (blind row of pointed arches),
+  `Arch` (pointed-arch frame)
+- Rose-window backdrops behind the home booking CTA and in the footer
+- Blind arcade crowning the footer
+- Pointed-arch (cathedral) frame around the About portrait
 
 ### Changed
 - Replaced the Bodoni Moda + Inter type system with a three-role gothic system
   (SingleGhost / Cinzel / EB Garamond); Inter (sans) removed entirely
+- All expressive headings (statements, CTAs, piece titles, nav links) moved from
+  EB Garamond italic to **Cinzel** uppercase caps
 - Labels are now engraved Cinzel caps with wider tracking
 - Deepened the hero vignette and increased film-grain opacity for a darker mood
 - Body type set in EB Garamond at a larger base size for literary legibility

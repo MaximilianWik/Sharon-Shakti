@@ -96,7 +96,7 @@ export default function Nav() {
             <li key={l.href}>
               <Link
                 href={l.href}
-                className="block border-b border-ash-dim/30 py-4 font-serif text-3xl italic text-bone last:border-0"
+                className="block border-b border-ash-dim/30 py-4 font-heading text-2xl uppercase tracking-heading text-bone last:border-0"
               >
                 {l.label}
               </Link>

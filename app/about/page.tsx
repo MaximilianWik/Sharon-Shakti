@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import Divider from "@/components/Divider";
+import Arch from "@/components/ornaments/Arch";
 import Placeholder from "@/components/Placeholder";
 
 export const metadata: Metadata = {
@@ -22,10 +23,11 @@ export default function AboutPage() {
       {/* Intro: portrait + name */}
       <header className="mx-auto grid max-w-[1600px] grid-cols-1 gap-12 px-6 pb-24 md:grid-cols-12 md:px-12">
         <Reveal className="md:col-span-5" y={56}>
-          <div className="relative aspect-[3/4] overflow-hidden rounded-t-[46%] bg-ink-raised">
-            <Placeholder seed={88} label="Portrait of Sharon" />
-            <span className="absolute inset-x-0 bottom-0 h-px bg-oxblood-bright/60" />
-          </div>
+          <Arch className="text-oxblood-bright/50">
+            <div className="relative aspect-[3/4] bg-ink-raised">
+              <Placeholder seed={88} label="Portrait of Sharon" />
+            </div>
+          </Arch>
         </Reveal>
 
         <div className="flex flex-col justify-end md:col-span-7">
@@ -61,7 +63,7 @@ export default function AboutPage() {
           {facets.map((f) => (
             <div key={f.k} className="bg-ink p-8 md:p-10">
               <p className="label text-oxblood-bright">{f.k}</p>
-              <p className="mt-4 font-serif text-2xl italic leading-tight tracking-display text-bone md:text-3xl">
+              <p className="mt-4 font-heading text-lg uppercase leading-tight tracking-heading text-bone md:text-xl">
                 {f.v}
               </p>
             </div>
@@ -75,7 +77,7 @@ export default function AboutPage() {
       <section className="mx-auto max-w-[1600px] px-6 py-32 md:px-12 md:py-44">
         <div className="grid grid-cols-1 gap-16 md:grid-cols-12">
           <Reveal as="h2" className="md:col-span-4">
-            <span className="font-serif text-3xl font-light italic leading-tight tracking-display text-bone md:text-4xl">
+            <span className="font-heading text-2xl uppercase leading-tight tracking-heading text-bone md:text-3xl">
               One hand,
               <br />
               many dark forms.
@@ -111,7 +113,7 @@ export default function AboutPage() {
       {/* CTA */}
       <section className="border-y border-ash-dim/40 bg-void">
         <div className="mx-auto flex max-w-[1600px] flex-col items-start gap-8 px-6 py-28 md:px-12 md:py-40">
-          <Reveal as="h2" className="font-serif text-[clamp(2.25rem,7vw,5.5rem)] font-light italic leading-[1.0] tracking-display text-bone">
+          <Reveal as="h2" className="font-heading text-[clamp(2rem,6vw,4.25rem)] uppercase leading-[1.08] tracking-heading text-bone">
             Bring me your <span className="text-oxblood-bright">dread.</span>
           </Reveal>
           <Reveal>

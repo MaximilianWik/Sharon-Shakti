@@ -127,7 +127,7 @@ export default function BookingFlow() {
     return (
       <div className="border border-ash-dim/40 bg-ink-raised p-10 md:p-16">
         <span className="label text-oxblood-bright">Requested</span>
-        <h2 className="mt-6 font-serif text-4xl italic leading-tight tracking-display text-bone md:text-5xl">
+        <h2 className="mt-6 font-heading text-3xl uppercase leading-tight tracking-heading text-bone md:text-4xl">
           Your consultation
           <br />
           is reserved.

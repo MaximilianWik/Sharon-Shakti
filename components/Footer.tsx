@@ -1,17 +1,27 @@
 import Link from "next/link";
+import Arcade from "@/components/ornaments/Arcade";
+import RoseWindow from "@/components/ornaments/RoseWindow";
 
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="relative border-t border-ash-dim/40 bg-ink">
-      <div className="mx-auto max-w-[1600px] px-6 py-20 md:px-12">
+    <footer className="relative overflow-hidden border-t border-ash-dim/40 bg-ink">
+      {/* Blind arcade crowning the footer */}
+      <Arcade
+        bays={14}
+        className="absolute inset-x-0 top-0 h-8 w-full text-ash-dim/70 md:h-10"
+      />
+      {/* Faint rose window bleeding off the right edge */}
+      <RoseWindow className="pointer-events-none absolute -right-24 top-1/2 h-[28rem] w-[28rem] -translate-y-1/2 text-ash-dim/25" />
+
+      <div className="relative mx-auto max-w-[1600px] px-6 pb-20 pt-24 md:px-12 md:pt-28">
         <div className="flex flex-col gap-16 md:flex-row md:items-end md:justify-between">
           <div className="max-w-xl">
             <p className="label text-ash">The Black Gallery</p>
-            <h2 className="mt-6 font-serif text-4xl italic leading-[1.1] tracking-display text-bone md:text-6xl">
+            <h2 className="mt-6 font-heading text-3xl uppercase leading-[1.15] tracking-heading text-bone md:text-5xl">
               Commit it
               <br />
-              <span className="italic text-oxblood-bright">to skin.</span>
+              <span className="text-oxblood-bright">to skin.</span>
             </h2>
             <Link
               href="/book"
