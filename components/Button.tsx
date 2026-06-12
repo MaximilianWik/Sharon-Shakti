@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import type { ReactNode } from "react";
-import RoseWindow from "@/components/ornaments/RoseWindow";
 
 type ButtonProps = {
   children: ReactNode;
@@ -64,48 +63,6 @@ export default function Button({
       data-cursor={disabled ? undefined : "hover"}
     >
       {inner}
-    </button>
-  );
-}
-
-/** Circular icon button framed by a rose window. */
-export function IconButton({
-  children,
-  onClick,
-  label,
-  href,
-  className = "",
-}: {
-  children: ReactNode;
-  onClick?: () => void;
-  label: string;
-  href?: string;
-  className?: string;
-}) {
-  const content = (
-    <>
-      <RoseWindow className="frame" spokes={8} />
-      <span className="relative z-10 flex h-5 w-5 items-center justify-center">
-        {children}
-      </span>
-    </>
-  );
-  if (href) {
-    return (
-      <Link href={href} aria-label={label} className={`icon-btn ${className}`} data-cursor="hover">
-        {content}
-      </Link>
-    );
-  }
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      aria-label={label}
-      className={`icon-btn ${className}`}
-      data-cursor="hover"
-    >
-      {content}
     </button>
   );
 }

@@ -156,14 +156,14 @@ export default function BookingFlow() {
   }
 
   return (
-    <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.1fr,0.9fr]">
+    <div className="grid min-w-0 grid-cols-1 gap-12 xl:grid-cols-[minmax(0,1fr)_minmax(21rem,0.85fr)]">
       {/* Left: date + slots */}
-      <div>
+      <div className="min-w-0">
         <span className="label text-oxblood-bright">01 — Choose a day</span>
 
         <div
           ref={stripRef}
-          className="mt-6 flex gap-2 overflow-x-auto pb-3"
+          className="mt-6 grid grid-cols-[repeat(auto-fit,minmax(4.2rem,1fr))] gap-2"
           style={{ scrollbarWidth: "thin" }}
         >
           {days.map((d) => {
@@ -175,7 +175,7 @@ export default function BookingFlow() {
                 disabled={!d.working}
                 onClick={() => setSelectedDate(d.iso)}
                 data-cursor={d.working ? "hover" : undefined}
-                className={`group relative flex min-w-[68px] shrink-0 flex-col items-center gap-1 overflow-hidden border px-3 py-4 transition-all duration-300 ${
+                className={`group relative flex min-w-0 flex-col items-center gap-1 overflow-hidden border px-2 py-4 transition-all duration-300 ${
                   active
                     ? "border-oxblood-bright bg-oxblood/20 text-bone shadow-[inset_0_0_0_1px_rgba(243,242,239,0.16),0_0_18px_rgba(154,22,32,0.22)]"
                     : d.working
@@ -204,7 +204,7 @@ export default function BookingFlow() {
           <span className="label text-oxblood-bright">02 — Pick a time</span>
           <div className="mt-6 min-h-[8rem]">
             {slotsStatus === "loading" && (
-              <div className="grid grid-cols-3 gap-2 sm:grid-cols-4">
+              <div className="grid grid-cols-[repeat(auto-fit,minmax(4.5rem,1fr))] gap-2">
                 {Array.from({ length: 8 }).map((_, i) => (
                   <div key={i} className="h-12 animate-pulse bg-ink-raised" />
                 ))}
@@ -234,7 +234,7 @@ export default function BookingFlow() {
             )}
 
             {slotsStatus === "idle" && day?.isWorkingDay && day.slots.some((s) => s.available) && (
-              <div className="grid grid-cols-3 gap-2 sm:grid-cols-4">
+              <div className="grid grid-cols-[repeat(auto-fit,minmax(4.5rem,1fr))] gap-2">
                 {day.slots.map((s) => {
                   const active = selectedSlot?.start === s.start;
                   return (
@@ -278,7 +278,7 @@ export default function BookingFlow() {
       {/* Right: details form */}
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-6 border-t border-ash-dim/40 pt-10 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0"
+        className="flex min-w-0 flex-col gap-6 border-t border-ash-dim/40 pt-10 xl:border-l xl:border-t-0 xl:pl-12 xl:pt-0"
       >
         <span className="label text-oxblood-bright">03 — Your details</span>
 

@@ -278,11 +278,12 @@ a {
 /* Reliquary button — notched bone frame, oxblood underglow, tracery pins */
 .btn-reliquary {
   position: relative;
-  display: inline-flex;
+  display: inline-grid;
   min-height: 3.65rem;
+  grid-template-columns: minmax(0, 1fr) 2.8rem;
   align-items: center;
   justify-content: center;
-  gap: 0.85rem;
+  column-gap: 0.85rem;
   overflow: hidden;
   isolation: isolate;
   padding: 1rem 2.55rem;
@@ -348,9 +349,7 @@ a {
   letter-spacing: 0.24em;
   text-transform: uppercase;
   color: currentColor;
-  transition:
-    letter-spacing 0.35s ease,
-    transform 0.35s ease;
+  transition: color 0.35s ease;
 }
 .btn-reliquary__wash {
   position: absolute;
@@ -391,15 +390,14 @@ a {
 .btn-reliquary__arrow {
   position: relative;
   z-index: 2;
-  width: 2.2rem;
+  width: 2.8rem;
   height: 1px;
   background: rgba(154, 22, 32, 0.95);
   transform: scaleX(0.58);
   transform-origin: left;
   transition:
     background 0.35s ease,
-    transform 0.35s ease,
-    width 0.35s ease;
+    transform 0.35s ease;
 }
 .btn-reliquary__arrow::after {
   content: "";
@@ -430,8 +428,7 @@ a {
     repeating-linear-gradient(90deg, transparent 0 22px, rgba(243, 242, 239, 0.045) 22px 23px);
 }
 .btn-reliquary:hover .lbl {
-  letter-spacing: 0.3em;
-  transform: translateX(0.14rem);
+  color: #f3f2ef;
 }
 .btn-reliquary:hover .btn-reliquary__wash {
   height: calc(100% - 10px);
@@ -443,7 +440,6 @@ a {
   transform: rotate(45deg) scale(0.82);
 }
 .btn-reliquary:hover .btn-reliquary__arrow {
-  width: 2.8rem;
   background: #f3f2ef;
   transform: scaleX(1);
 }
@@ -475,91 +471,6 @@ a {
   display: none;
 }
 
-/* Gothic corner frame — low-noise section/card markers */
-.gothic-corners {
-  position: relative;
-  isolation: isolate;
-}
-.gothic-corners::before,
-.gothic-corners::after {
-  content: "";
-  position: absolute;
-  width: var(--corner-size, 3rem);
-  height: var(--corner-size, 3rem);
-  pointer-events: none;
-  opacity: var(--corner-opacity, 0.58);
-  transition:
-    opacity 0.35s ease,
-    border-color 0.35s ease,
-    transform 0.35s ease;
-}
-.gothic-corners::before {
-  left: var(--corner-inset, 0);
-  top: var(--corner-inset, 0);
-  border-left: 1px solid rgba(243, 242, 239, 0.38);
-  border-top: 1px solid rgba(243, 242, 239, 0.38);
-  box-shadow: inset 10px 10px 0 -9px rgba(154, 22, 32, 0.52);
-}
-.gothic-corners::after {
-  right: var(--corner-inset, 0);
-  bottom: var(--corner-inset, 0);
-  border-right: 1px solid rgba(243, 242, 239, 0.38);
-  border-bottom: 1px solid rgba(243, 242, 239, 0.38);
-  box-shadow: inset -10px -10px 0 -9px rgba(154, 22, 32, 0.52);
-}
-.gothic-corners--all .gothic-corner-extra::before,
-.gothic-corners--all .gothic-corner-extra::after {
-  content: "";
-  position: absolute;
-  width: var(--corner-size, 3rem);
-  height: var(--corner-size, 3rem);
-  pointer-events: none;
-  opacity: var(--corner-opacity, 0.58);
-  transition:
-    opacity 0.35s ease,
-    border-color 0.35s ease,
-    transform 0.35s ease;
-}
-.gothic-corners--all .gothic-corner-extra::before {
-  right: var(--corner-inset, 0);
-  top: var(--corner-inset, 0);
-  border-right: 1px solid rgba(243, 242, 239, 0.38);
-  border-top: 1px solid rgba(243, 242, 239, 0.38);
-  box-shadow: inset -10px 10px 0 -9px rgba(154, 22, 32, 0.52);
-}
-.gothic-corners--all .gothic-corner-extra::after {
-  left: var(--corner-inset, 0);
-  bottom: var(--corner-inset, 0);
-  border-left: 1px solid rgba(243, 242, 239, 0.38);
-  border-bottom: 1px solid rgba(243, 242, 239, 0.38);
-  box-shadow: inset 10px -10px 0 -9px rgba(154, 22, 32, 0.52);
-}
-.gothic-corners:hover::before,
-.gothic-corners:hover::after,
-.gothic-corners:hover .gothic-corner-extra::before,
-.gothic-corners:hover .gothic-corner-extra::after {
-  opacity: 0.92;
-  border-color: rgba(243, 242, 239, 0.58);
-}
-.gothic-corners--section {
-  --corner-size: clamp(3.25rem, 7vw, 7rem);
-  --corner-opacity: 0.28;
-}
-.gothic-corners--panel {
-  --corner-size: 2.5rem;
-  --corner-inset: 0.75rem;
-  --corner-opacity: 0.52;
-}
-.gothic-corners--booking {
-  --corner-size: clamp(3.5rem, 6vw, 5.75rem);
-  --corner-inset: 0.9rem;
-  --corner-opacity: 0.72;
-}
-.gothic-corners--gallery {
-  --corner-size: clamp(3rem, 5vw, 4.5rem);
-  --corner-opacity: 0.42;
-}
-
 /* Crypt nave footer */
 .footer-crypt-link {
   position: relative;
@@ -572,18 +483,13 @@ a {
 }
 .footer-crypt-link::before {
   content: "";
-  width: 0.45rem;
-  height: 0.45rem;
-  border: 1px solid rgba(154, 22, 32, 0.8);
-  border-radius: 999px;
-  box-shadow:
-    -0.22rem 0 0 -1px rgba(154, 22, 32, 0.55),
-    0.22rem 0 0 -1px rgba(154, 22, 32, 0.55),
-    0 -0.22rem 0 -1px rgba(154, 22, 32, 0.55),
-    0 0.22rem 0 -1px rgba(154, 22, 32, 0.55);
-  opacity: 0;
-  transform: scale(0.5) rotate(45deg);
+  width: 0.38rem;
+  height: 0.38rem;
+  border: 1px solid rgba(154, 22, 32, 0.85);
+  transform: scale(0.45) rotate(45deg);
   transition: opacity 0.3s ease, transform 0.3s ease;
+  flex-shrink: 0;
+  opacity: 0;
 }
 .footer-crypt-link::after {
   content: "";
@@ -606,33 +512,3 @@ a {
   transform: scale(1) rotate(45deg);
 }
 .footer-crypt-link:hover::after { transform: scaleX(1); }
-.footer-rose-medallion .frame {
-  transition:
-    color 0.45s ease,
-    filter 0.45s ease,
-    transform 0.6s ease;
-}
-.footer-rose-medallion:hover .frame {
-  color: rgba(154, 22, 32, 0.9);
-  filter: drop-shadow(0 0 28px rgba(154, 22, 32, 0.35));
-  transform: rotate(7deg) scale(1.025);
-}
-
-.icon-btn {
-  position: relative;
-  width: 56px;
-  height: 56px;
-  display: grid;
-  place-items: center;
-  background: transparent;
-  border: 0;
-  cursor: pointer;
-  color: #f3f2ef;
-}
-.icon-btn .frame {
-  position: absolute;
-  inset: 0;
-  color: #7d7d7d;
-  transition: color 0.3s, filter 0.3s;
-}
-.icon-btn:hover .frame { color: #9a1620; filter: drop-shadow(var(--oxblood-glow)); }

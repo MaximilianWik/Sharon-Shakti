@@ -21,8 +21,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
   `Arch` (pointed-arch frame)
 - Rose-window backdrops behind the home booking CTA and in the footer
 - Pointed-arch (cathedral) frame around the About portrait
-- Restrained gothic corner frames for statement blocks, panels, gallery sections,
-  booking surfaces, and CTA bands
+- Gothic UI kit `TraceryCorner` markers for statement blocks, panels, gallery sections,
+  booking surfaces, footer CTA, and CTA bands; removed plain CSS corner pseudo-elements
 - **Gothic UI kit (monochrome integration)** — new components rendered in
   bone/ash/oxblood (no gold/stone): `Button` (reliquary primary with notched
   bone frame, oxblood underglow, tracery pins, destructive variant, rose-window
@@ -37,14 +37,17 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ### Changed
 - Nav: crenellation (battlement) top border, portcullis mobile icon,
   reliquary hairline hover underline
-- Footer: crypt-nave layout with an interactive central rose-window medallion,
-  ribbed-column dividers, reliquary CTA, animated footer links, softened
-  cross-tile base row
+- Footer: crypt-nave layout with ribbed-column dividers, reliquary CTA,
+  animated footer links, softened cross-tile base row
 - Gallery plates: tracery corners + leaded-glass tint overlay, now tightening into
   a restrained frame on hover
-- Booking form: gothic fields (corner clips + oxblood focus glow + gargoyle
-  watermark), illuminated-manuscript consent checkbox, reliquary submit, selected
-  day/slot reliquary states
+- Home page: removed duplicate booking CTAs so booking appears once via footer
+- Booking form: responsive date grid, responsive slot grid, non-overflowing details
+  panel, gothic fields (corner clips + oxblood focus glow + gargoyle watermark),
+  illuminated-manuscript consent checkbox, reliquary submit, selected day/slot
+  reliquary states
+- Reliquary button hover now keeps fixed grid geometry so label and arrow do not
+  shift layout
 - Scrollbar: stacked stone-block thumb + cracked-stone track, oxblood border
 - All page CTAs now use the reliquary `Button`
 - Replaced the Bodoni Moda + Inter type system with a three-role gothic system

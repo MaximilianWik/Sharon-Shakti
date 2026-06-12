@@ -4,6 +4,7 @@ import Divider from "@/components/Divider";
 import Button from "@/components/Button";
 import Arch from "@/components/ornaments/Arch";
 import Placeholder from "@/components/Placeholder";
+import TraceryCorner from "@/components/ornaments/TraceryCorner";
 
 export const metadata: Metadata = {
   title: "About",
@@ -61,7 +62,9 @@ export default function AboutPage() {
           stagger={0.1}
         >
           {facets.map((f) => (
-            <div key={f.k} className="gothic-corners gothic-corners--panel bg-ink p-8 md:p-10">
+            <div key={f.k} className="relative bg-ink p-8 md:p-10">
+              <TraceryCorner corner="tl" className="pointer-events-none absolute left-2 top-2 h-9 w-9 text-ash/35" strokeWidth={1.5} />
+              <TraceryCorner corner="br" className="pointer-events-none absolute bottom-2 right-2 h-9 w-9 text-ash/35" strokeWidth={1.5} />
               <p className="label text-oxblood-bright">{f.k}</p>
               <p className="mt-4 font-heading text-lg uppercase leading-tight tracking-heading text-bone md:text-xl">
                 {f.v}
@@ -111,7 +114,9 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="gothic-corners gothic-corners--section relative overflow-hidden border-y border-ash-dim/40 bg-void">
+      <section className="relative overflow-hidden border-y border-ash-dim/40 bg-void">
+        <TraceryCorner corner="tl" className="pointer-events-none absolute left-4 top-4 h-16 w-16 text-ash/25 md:h-24 md:w-24" strokeWidth={1.4} />
+        <TraceryCorner corner="br" className="pointer-events-none absolute bottom-4 right-4 h-16 w-16 text-ash/25 md:h-24 md:w-24" strokeWidth={1.4} />
         <div className="relative mx-auto flex max-w-[1600px] flex-col items-start gap-8 px-6 py-28 md:px-12 md:py-40">
           <Reveal as="h2" className="font-heading text-[clamp(2rem,6vw,4.25rem)] uppercase leading-[1.08] tracking-heading text-bone">
             Bring me your <span className="text-oxblood-bright">dread.</span>
