@@ -9,6 +9,21 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Added
+- **SingleGhost** display font (local, `app/fonts/`) for H1 / hero titles
+- **Cinzel** (engraved caps) for H2 section titles, nav wordmark, and labels
+- **EB Garamond** (old-style serif) for body, expressive headings, and long-form
+- `Divider` component — ornamental gothic separator (hairlines flanking an oxblood lozenge)
+- Illuminated drop caps (`.dropcap`) on the home statement and About long-form
+- Arched (cathedral) top frame on the About portrait
+
+### Changed
+- Replaced the Bodoni Moda + Inter type system with a three-role gothic system
+  (SingleGhost / Cinzel / EB Garamond); Inter (sans) removed entirely
+- Labels are now engraved Cinzel caps with wider tracking
+- Deepened the hero vignette and increased film-grain opacity for a darker mood
+- Body type set in EB Garamond at a larger base size for literary legibility
+
 ---
 
 ## [0.1.0] — 2026-06-12

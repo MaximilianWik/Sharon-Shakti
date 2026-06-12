@@ -20,11 +20,14 @@ const config: Config = {
       },
       fontFamily: {
         display: ["var(--font-display)", "Georgia", "serif"],
-        sans: ["var(--font-body)", "system-ui", "sans-serif"],
+        heading: ["var(--font-heading)", "Georgia", "serif"],
+        serif: ["var(--font-body)", "Georgia", "serif"],
+        sans: ["var(--font-body)", "Georgia", "serif"],
       },
       letterSpacing: {
-        display: "-0.02em",
-        label: "0.18em",
+        display: "-0.01em",
+        heading: "0.16em",
+        label: "0.28em",
       },
       maxWidth: {
         measure: "68ch",

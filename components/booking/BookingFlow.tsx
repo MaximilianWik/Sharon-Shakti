@@ -127,7 +127,7 @@ export default function BookingFlow() {
     return (
       <div className="border border-ash-dim/40 bg-ink-raised p-10 md:p-16">
         <span className="label text-oxblood-bright">Requested</span>
-        <h2 className="mt-6 font-display text-4xl leading-tight tracking-display text-bone md:text-5xl">
+        <h2 className="mt-6 font-serif text-4xl italic leading-tight tracking-display text-bone md:text-5xl">
           Your consultation
           <br />
           is reserved.
@@ -183,7 +183,7 @@ export default function BookingFlow() {
                 <span className="label text-[0.6rem]">
                   {d.date.toLocaleDateString(undefined, { weekday: "short" })}
                 </span>
-                <span className="font-display text-2xl leading-none tracking-display">
+                <span className="font-serif text-2xl leading-none tracking-display">
                   {d.date.getDate()}
                 </span>
                 <span className="label text-[0.55rem] text-ash">

@@ -49,7 +49,7 @@ export default function WorkPage() {
       {/* Tail CTA */}
       <section className="mx-auto max-w-[1600px] px-6 py-32 md:px-12 md:py-44">
         <Reveal className="flex flex-col items-start gap-8 border-t border-ash-dim/40 pt-16">
-          <h2 className="max-w-2xl font-display text-4xl font-light leading-[1.1] tracking-display text-bone md:text-6xl">
+          <h2 className="max-w-2xl font-serif text-4xl font-light italic leading-[1.1] tracking-display text-bone md:text-5xl">
             Something here speak to you?
           </h2>
           <Link

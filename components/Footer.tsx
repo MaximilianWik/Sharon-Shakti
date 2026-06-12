@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="flex flex-col gap-16 md:flex-row md:items-end md:justify-between">
           <div className="max-w-xl">
             <p className="label text-ash">The Black Gallery</p>
-            <h2 className="mt-6 font-display text-4xl leading-[1.05] tracking-display text-bone md:text-6xl">
+            <h2 className="mt-6 font-serif text-4xl italic leading-[1.1] tracking-display text-bone md:text-6xl">
               Commit it
               <br />
               <span className="italic text-oxblood-bright">to skin.</span>

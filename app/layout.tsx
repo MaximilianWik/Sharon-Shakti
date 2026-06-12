@@ -1,22 +1,32 @@
 import type { Metadata } from "next";
-import { Bodoni_Moda, Inter } from "next/font/google";
+import localFont from "next/font/local";
+import { Cinzel, EB_Garamond } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import Cursor from "@/components/Cursor";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
-const display = Bodoni_Moda({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "900"],
-  style: ["normal", "italic"],
+// H1 / hero — the decorative horror display face.
+const display = localFont({
+  src: "./fonts/SingleGhost.ttf",
   variable: "--font-display",
   display: "swap",
 });
 
-const body = Inter({
+// H2 / section titles / labels — engraved, monumental, gothic.
+const heading = Cinzel({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-heading",
+  display: "swap",
+});
+
+// Body & expressive headings — literary old-style serif.
+const body = EB_Garamond({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
   variable: "--font-body",
   display: "swap",
 });
@@ -43,7 +53,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${display.variable} ${body.variable}`}>
+    <html
+      lang="en"
+      className={`${display.variable} ${heading.variable} ${body.variable}`}
+    >
       <body className="grain">
         <SmoothScroll>
           <Cursor />

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Hero from "@/components/hero/Hero";
 import Reveal from "@/components/Reveal";
+import Divider from "@/components/Divider";
 import WorkPlate from "@/components/WorkPlate";
 import { works } from "@/lib/works";
 
@@ -15,7 +16,7 @@ export default function Home() {
       <section className="mx-auto max-w-[1600px] px-6 py-32 md:px-12 md:py-48">
         <Reveal
           as="p"
-          className="max-w-measure font-display text-3xl font-light leading-[1.25] tracking-display text-bone md:text-5xl md:leading-[1.2]"
+          className="dropcap max-w-measure font-serif text-3xl font-light italic leading-[1.3] tracking-display text-bone md:text-5xl md:leading-[1.25]"
         >
           The skin remembers what the eye fears. Each piece is drawn slowly,
           in black and blood, to outlast the body it marks.
@@ -38,10 +39,12 @@ export default function Home() {
         </Reveal>
       </section>
 
+      <Divider className="mx-auto max-w-[1600px] px-6 md:px-12" />
+
       {/* Featured work */}
-      <section className="mx-auto max-w-[1600px] px-6 pb-32 md:px-12 md:pb-48">
+      <section className="mx-auto max-w-[1600px] px-6 py-32 md:px-12 md:py-48">
         <Reveal className="mb-12 flex items-end justify-between gap-6">
-          <h2 className="font-display text-4xl tracking-display text-bone md:text-6xl">
+          <h2 className="font-heading text-3xl uppercase tracking-heading text-bone md:text-5xl">
             Selected work
           </h2>
           <Link
@@ -71,7 +74,7 @@ export default function Home() {
       {/* Booking CTA band */}
       <section className="relative border-y border-ash-dim/40 bg-void">
         <div className="mx-auto flex max-w-[1600px] flex-col items-start gap-10 px-6 py-32 md:px-12 md:py-44">
-          <Reveal as="h2" className="font-display text-[clamp(2.25rem,7vw,5.5rem)] font-light leading-[0.95] tracking-display text-bone">
+          <Reveal as="h2" className="font-serif text-[clamp(2.25rem,7vw,5.5rem)] font-light italic leading-[1.0] tracking-display text-bone">
             Sit for a piece
             <br />
             that <span className="italic text-oxblood-bright">stays.</span>

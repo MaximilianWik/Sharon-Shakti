@@ -38,7 +38,7 @@ export default function Nav() {
         <Link
           href="/"
           aria-label="Sharon — home"
-          className="font-display text-xl font-semibold tracking-display text-bone transition-opacity hover:opacity-70"
+          className="font-heading text-xl font-semibold tracking-heading text-bone transition-opacity hover:opacity-70"
         >
           SHARON
         </Link>
@@ -96,7 +96,7 @@ export default function Nav() {
             <li key={l.href}>
               <Link
                 href={l.href}
-                className="block border-b border-ash-dim/30 py-4 font-display text-2xl text-bone last:border-0"
+                className="block border-b border-ash-dim/30 py-4 font-serif text-3xl italic text-bone last:border-0"
               >
                 {l.label}
               </Link>

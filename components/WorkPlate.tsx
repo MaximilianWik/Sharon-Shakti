@@ -56,7 +56,7 @@ export default function WorkPlate({
 
       <figcaption className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 bg-gradient-to-t from-black/80 to-transparent p-5 md:p-6">
         <div className="translate-y-1 opacity-90 transition-all duration-500 ease-out-expo group-hover:translate-y-0 group-hover:opacity-100">
-          <h3 className="font-display text-2xl leading-none tracking-display text-bone md:text-3xl">
+          <h3 className="font-serif text-2xl italic leading-none tracking-display text-bone md:text-3xl">
             {work.title}
           </h3>
           <p className="label mt-2 text-ash">

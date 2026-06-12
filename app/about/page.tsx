@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
+import Divider from "@/components/Divider";
 import Placeholder from "@/components/Placeholder";
 
 export const metadata: Metadata = {
@@ -21,9 +22,9 @@ export default function AboutPage() {
       {/* Intro: portrait + name */}
       <header className="mx-auto grid max-w-[1600px] grid-cols-1 gap-12 px-6 pb-24 md:grid-cols-12 md:px-12">
         <Reveal className="md:col-span-5" y={56}>
-          <div className="relative aspect-[3/4] overflow-hidden bg-ink-raised">
+          <div className="relative aspect-[3/4] overflow-hidden rounded-t-[46%] bg-ink-raised">
             <Placeholder seed={88} label="Portrait of Sharon" />
-            <span className="absolute left-0 top-0 h-px w-1/2 bg-oxblood-bright" />
+            <span className="absolute inset-x-0 bottom-0 h-px bg-oxblood-bright/60" />
           </div>
         </Reveal>
 
@@ -60,7 +61,7 @@ export default function AboutPage() {
           {facets.map((f) => (
             <div key={f.k} className="bg-ink p-8 md:p-10">
               <p className="label text-oxblood-bright">{f.k}</p>
-              <p className="mt-4 font-display text-2xl leading-tight tracking-display text-bone md:text-3xl">
+              <p className="mt-4 font-serif text-2xl italic leading-tight tracking-display text-bone md:text-3xl">
                 {f.v}
               </p>
             </div>
@@ -68,11 +69,13 @@ export default function AboutPage() {
         </Reveal>
       </section>
 
+      <Divider className="mx-auto mt-24 max-w-[1600px] px-6 md:px-12" />
+
       {/* Long-form */}
       <section className="mx-auto max-w-[1600px] px-6 py-32 md:px-12 md:py-44">
         <div className="grid grid-cols-1 gap-16 md:grid-cols-12">
           <Reveal as="h2" className="md:col-span-4">
-            <span className="font-display text-3xl font-light leading-tight tracking-display text-bone md:text-4xl">
+            <span className="font-serif text-3xl font-light italic leading-tight tracking-display text-bone md:text-4xl">
               One hand,
               <br />
               many dark forms.
@@ -83,7 +86,7 @@ export default function AboutPage() {
             className="flex max-w-measure flex-col gap-6 text-lg leading-relaxed text-bone/75 md:col-span-8"
             stagger={0.08}
           >
-            <p>
+            <p className="dropcap">
               The same instinct that holds a room from a stage guides the
               machine: timing, restraint, and the willingness to sit inside
               discomfort until it becomes beautiful. Sharon&rsquo;s tattooing
@@ -108,8 +111,8 @@ export default function AboutPage() {
       {/* CTA */}
       <section className="border-y border-ash-dim/40 bg-void">
         <div className="mx-auto flex max-w-[1600px] flex-col items-start gap-8 px-6 py-28 md:px-12 md:py-40">
-          <Reveal as="h2" className="font-display text-[clamp(2.25rem,7vw,5.5rem)] font-light leading-[0.95] tracking-display text-bone">
-            Bring me your <span className="italic text-oxblood-bright">dread.</span>
+          <Reveal as="h2" className="font-serif text-[clamp(2.25rem,7vw,5.5rem)] font-light italic leading-[1.0] tracking-display text-bone">
+            Bring me your <span className="text-oxblood-bright">dread.</span>
           </Reveal>
           <Reveal>
             <Link
