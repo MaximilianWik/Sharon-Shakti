@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <rect width="200" height="200" fill="#0a0a0a"/>
+  <g fill="none" stroke="#9a1620" stroke-linecap="round">
+    <!-- outer ring -->
+    <circle cx="100" cy="100" r="92" stroke-width="3.5"/>
+    <!-- mid ring -->
+    <circle cx="100" cy="100" r="78" stroke-width="2.5"/>
+    <!-- inner ring -->
+    <circle cx="100" cy="100" r="34" stroke-width="2.5"/>
+    <!-- 12 mullions (inner→mid) -->
+    <line x1="134" y1="100" x2="178" y2="100" stroke-width="2.5"/>
+    <line x1="129.44" y1="117" x2="167.55" y2="139" stroke-width="2.5"/>
+    <line x1="117" y1="129.44" x2="139" y2="167.55" stroke-width="2.5"/>
+    <line x1="100" y1="134" x2="100" y2="178" stroke-width="2.5"/>
+    <line x1="83" y1="129.44" x2="61" y2="167.55" stroke-width="2.5"/>
+    <line x1="70.56" y1="117" x2="32.45" y2="139" stroke-width="2.5"/>
+    <line x1="66" y1="100" x2="22" y2="100" stroke-width="2.5"/>
+    <line x1="70.56" y1="83" x2="32.45" y2="61" stroke-width="2.5"/>
+    <line x1="83" y1="70.56" x2="61" y2="32.45" stroke-width="2.5"/>
+    <line x1="100" y1="66" x2="100" y2="22" stroke-width="2.5"/>
+    <line x1="117" y1="70.56" x2="139" y2="32.45" stroke-width="2.5"/>
+    <line x1="129.44" y1="83" x2="167.55" y2="61" stroke-width="2.5"/>
+    <!-- 12 foil circles between spokes -->
+    <circle cx="154.09" cy="114.49" r="9" stroke-width="2.5"/>
+    <circle cx="139.6" cy="139.6" r="9" stroke-width="2.5"/>
+    <circle cx="114.49" cy="154.09" r="9" stroke-width="2.5"/>
+    <circle cx="85.51" cy="154.09" r="9" stroke-width="2.5"/>
+    <circle cx="60.4" cy="139.6" r="9" stroke-width="2.5"/>
+    <circle cx="45.91" cy="114.49" r="9" stroke-width="2.5"/>
+    <circle cx="45.91" cy="85.51" r="9" stroke-width="2.5"/>
+    <circle cx="60.4" cy="60.4" r="9" stroke-width="2.5"/>
+    <circle cx="85.51" cy="45.91" r="9" stroke-width="2.5"/>
+    <circle cx="114.49" cy="45.91" r="9" stroke-width="2.5"/>
+    <circle cx="139.6" cy="60.4" r="9" stroke-width="2.5"/>
+    <circle cx="154.09" cy="85.51" r="9" stroke-width="2.5"/>
+    <!-- centre hub -->
+    <circle cx="100" cy="100" r="12" stroke-width="2.5"/>
+  </g>
+  <!-- centre dot -->
+  <circle cx="100" cy="100" r="4.5" fill="#9a1620"/>
+</svg>

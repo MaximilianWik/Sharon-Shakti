@@ -35,9 +35,6 @@ export default function Nav() {
           : "bg-transparent"
       }`}
     >
-      {(scrolled || open) && (
-        <div className="crenellation w-full text-oxblood-bright/70" aria-hidden />
-      )}
       <nav className="mx-auto flex max-w-[1600px] items-center justify-between px-6 py-5 md:px-12">
         <Link
           href="/"

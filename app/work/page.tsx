@@ -15,7 +15,7 @@ export default function WorkPage() {
   return (
     <div className="pt-32 md:pt-40">
       {/* Header */}
-      <header className="relative mx-auto max-w-[1600px] px-6 pb-16 md:px-12 md:pb-24">
+      <header className="relative mx-auto max-w-[1600px] px-6 pb-16 pt-16 md:px-12 md:pb-24 md:pt-20">
         <TraceryCorner corner="tl" className="pointer-events-none absolute left-6 top-0 h-16 w-16 text-ash/30 md:left-12 md:h-24 md:w-24" strokeWidth={1.4} />
         <Reveal as="p" className="label text-oxblood-bright">
           The Gallery
@@ -41,7 +41,7 @@ export default function WorkPage() {
 
       {/* Gallery grid */}
       <section className="mx-auto max-w-[1600px] px-6 md:px-12">
-        <div className="relative p-3 md:p-4">
+        <div className="relative p-10 md:p-14">
           <TraceryCorner corner="tl" className="pointer-events-none absolute left-0 top-0 h-16 w-16 text-ash/30 md:h-24 md:w-24" strokeWidth={1.4} />
           <TraceryCorner corner="tr" className="pointer-events-none absolute right-0 top-0 h-16 w-16 text-ash/30 md:h-24 md:w-24" strokeWidth={1.4} />
           <TraceryCorner corner="bl" className="pointer-events-none absolute bottom-0 left-0 h-16 w-16 text-ash/30 md:h-24 md:w-24" strokeWidth={1.4} />
