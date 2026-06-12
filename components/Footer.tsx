@@ -60,7 +60,7 @@ export default function Footer() {
 
         <div className="mt-16 flex flex-col gap-2 border-t border-ash-dim/30 pt-8 text-ash md:mt-20 md:flex-row md:items-center md:justify-between">
           <p className="label">© {year} Sharon</p>
-          <p className="label">Horror Realism · Blackwork · Dark Art</p>
+          <p className="label hidden sm:block">Horror Realism · Blackwork · Dark Art</p>
         </div>
       </div>
 
