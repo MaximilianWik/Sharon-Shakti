@@ -1,0 +1,95 @@
+import Link from "next/link";
+import Hero from "@/components/hero/Hero";
+import Reveal from "@/components/Reveal";
+import WorkPlate from "@/components/WorkPlate";
+import { works } from "@/lib/works";
+
+export default function Home() {
+  const featured = works.slice(0, 5);
+
+  return (
+    <>
+      <Hero />
+
+      {/* Statement */}
+      <section className="mx-auto max-w-[1600px] px-6 py-32 md:px-12 md:py-48">
+        <Reveal
+          as="p"
+          className="max-w-measure font-display text-3xl font-light leading-[1.25] tracking-display text-bone md:text-5xl md:leading-[1.2]"
+        >
+          The skin remembers what the eye fears. Each piece is drawn slowly,
+          in black and blood, to outlast the body it marks.
+        </Reveal>
+
+        <Reveal
+          className="mt-16 grid gap-12 border-t border-ash-dim/40 pt-12 md:grid-cols-3"
+          stagger={0.12}
+        >
+          {[
+            { k: "Discipline", v: "Horror realism, blackwork & dark art — exclusively." },
+            { k: "Cadence", v: "A handful of sessions a month. Each design is one of one." },
+            { k: "Studio", v: "By appointment only. Consultations precede every booking." },
+          ].map((it) => (
+            <div key={it.k}>
+              <p className="label text-oxblood-bright">{it.k}</p>
+              <p className="mt-3 max-w-xs leading-relaxed text-bone/70">{it.v}</p>
+            </div>
+          ))}
+        </Reveal>
+      </section>
+
+      {/* Featured work */}
+      <section className="mx-auto max-w-[1600px] px-6 pb-32 md:px-12 md:pb-48">
+        <Reveal className="mb-12 flex items-end justify-between gap-6">
+          <h2 className="font-display text-4xl tracking-display text-bone md:text-6xl">
+            Selected work
+          </h2>
+          <Link
+            href="/work"
+            data-cursor="hover"
+            className="group hidden shrink-0 items-center gap-3 text-bone md:flex"
+          >
+            <span className="label">The full gallery</span>
+            <span className="inline-block h-px w-12 bg-oxblood-bright transition-all duration-500 ease-out-expo group-hover:w-20" />
+          </Link>
+        </Reveal>
+
+        <div className="grid auto-rows-[minmax(0,1fr)] grid-cols-1 gap-3 md:grid-cols-3 md:gap-4">
+          {featured.map((w) => (
+            <WorkPlate key={w.slug} work={w} />
+          ))}
+        </div>
+
+        <Link
+          href="/work"
+          className="mt-10 flex items-center justify-center gap-3 border border-ash-dim/50 py-5 text-bone transition-colors hover:border-oxblood-bright hover:text-oxblood-bright md:hidden"
+        >
+          <span className="label">The full gallery</span>
+        </Link>
+      </section>
+
+      {/* Booking CTA band */}
+      <section className="relative border-y border-ash-dim/40 bg-void">
+        <div className="mx-auto flex max-w-[1600px] flex-col items-start gap-10 px-6 py-32 md:px-12 md:py-44">
+          <Reveal as="h2" className="font-display text-[clamp(2.25rem,7vw,5.5rem)] font-light leading-[0.95] tracking-display text-bone">
+            Sit for a piece
+            <br />
+            that <span className="italic text-oxblood-bright">stays.</span>
+          </Reveal>
+          <Reveal>
+            <Link
+              href="/book"
+              data-cursor="hover"
+              className="group inline-flex items-center gap-4 bg-oxblood px-10 py-5 text-bone transition-colors duration-300 hover:bg-oxblood-bright"
+            >
+              <span className="label">Check availability</span>
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden className="transition-transform duration-500 ease-out-expo group-hover:translate-x-1">
+                <path d="M3 9h12M10 4l5 5-5 5" stroke="currentColor" strokeWidth="1.4" />
+              </svg>
+            </Link>
+          </Reveal>
+        </div>
+      </section>
+    </>
+  );
+}
