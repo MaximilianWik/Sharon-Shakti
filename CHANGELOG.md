@@ -34,6 +34,11 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - `Grunge` component and all usages — removed at owner's direction
 - `CathedralFacade` — removed (silhouette rendered as house shapes, not a cathedral)
 
+### Fixed
+- Nav: removed red crenellation strip that appeared on scroll / mobile-menu open — rendered as a jarring oxblood battlement bar above the nav content
+- Work page header: added top padding so "The Gallery" label no longer overlaps the `tl` TraceryCorner ornament
+- Work gallery grid: increased container padding (`p-3→p-10` / `md:p-4→md:p-14`) so grid cells clear all four corner ornaments
+
 ### Changed
 - Nav: crenellation (battlement) top border, portcullis mobile icon,
   reliquary hairline hover underline
