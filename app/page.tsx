@@ -16,29 +16,32 @@ export default function Home() {
 
       {/* Statement */}
       <section className="mx-auto max-w-[1600px] px-6 py-32 md:px-12 md:py-48">
-        <Reveal
-          as="p"
-          className="dropcap max-w-measure font-heading text-2xl leading-[1.5] tracking-heading text-bone md:text-3xl"
-        >
-          The skin remembers what the eye fears. Each piece is drawn slowly,
-          in black and blood, to outlast the body it marks.
-        </Reveal>
+        <div className="gothic-corners gothic-corners--all gothic-corners--section relative px-4 py-8 md:px-10 md:py-12">
+          <span className="gothic-corner-extra" aria-hidden />
+          <Reveal
+            as="p"
+            className="dropcap max-w-measure font-heading text-2xl leading-[1.5] tracking-heading text-bone md:text-3xl"
+          >
+            The skin remembers what the eye fears. Each piece is drawn slowly,
+            in black and blood, to outlast the body it marks.
+          </Reveal>
 
-        <Reveal
-          className="mt-16 grid gap-12 border-t border-ash-dim/40 pt-12 md:grid-cols-3"
-          stagger={0.12}
-        >
-          {[
-            { k: "Discipline", v: "Horror realism, blackwork & dark art — exclusively." },
-            { k: "Cadence", v: "A handful of sessions a month. Each design is one of one." },
-            { k: "Studio", v: "By appointment only. Consultations precede every booking." },
-          ].map((it) => (
-            <div key={it.k}>
-              <p className="label text-oxblood-bright">{it.k}</p>
-              <p className="mt-3 max-w-xs leading-relaxed text-bone/70">{it.v}</p>
-            </div>
-          ))}
-        </Reveal>
+          <Reveal
+            className="mt-16 grid gap-12 border-t border-ash-dim/40 pt-12 md:grid-cols-3"
+            stagger={0.12}
+          >
+            {[
+              { k: "Discipline", v: "Horror realism, blackwork & dark art — exclusively." },
+              { k: "Cadence", v: "A handful of sessions a month. Each design is one of one." },
+              { k: "Studio", v: "By appointment only. Consultations precede every booking." },
+            ].map((it) => (
+              <div key={it.k}>
+                <p className="label text-oxblood-bright">{it.k}</p>
+                <p className="mt-3 max-w-xs leading-relaxed text-bone/70">{it.v}</p>
+              </div>
+            ))}
+          </Reveal>
+        </div>
       </section>
 
       <Divider variant="diamond" className="mx-auto max-w-[1600px] px-6 md:px-12" />
@@ -74,7 +77,7 @@ export default function Home() {
       </section>
 
       {/* Booking CTA band */}
-      <section className="relative overflow-hidden border-y border-ash-dim/40 bg-void">
+      <section className="gothic-corners gothic-corners--section relative overflow-hidden border-y border-ash-dim/40 bg-void">
         <RoseWindow className="pointer-events-none absolute left-1/2 top-1/2 h-[34rem] w-[34rem] -translate-x-1/2 -translate-y-1/2 text-ash-dim/20" />
         <div className="relative mx-auto flex max-w-[1600px] flex-col items-start gap-10 px-6 py-32 md:px-12 md:py-44">
           <Reveal as="h2" className="font-heading text-[clamp(2rem,6vw,4.25rem)] uppercase leading-[1.08] tracking-heading text-bone">

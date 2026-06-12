@@ -15,7 +15,7 @@ type ButtonProps = {
   external?: boolean;
 };
 
-/** Pointed-arch button. Renders a Link when `href` is set, else a <button>. */
+/** Reliquary button. Renders a Link when `href` is set, else a <button>. */
 export default function Button({
   children,
   href,
@@ -26,8 +26,18 @@ export default function Button({
   className = "",
   external = false,
 }: ButtonProps) {
-  const cls = `btn-arch ${variant === "destructive" ? "btn-arch--destructive" : ""} ${className}`;
-  const inner = <span className="lbl">{children}</span>;
+  const cls = `btn-reliquary ${variant === "destructive" ? "btn-reliquary--destructive" : ""} ${className}`;
+  const inner = (
+    <>
+      <span className="btn-reliquary__wash" aria-hidden />
+      <span className="btn-reliquary__pin btn-reliquary__pin--tl" aria-hidden />
+      <span className="btn-reliquary__pin btn-reliquary__pin--tr" aria-hidden />
+      <span className="btn-reliquary__pin btn-reliquary__pin--bl" aria-hidden />
+      <span className="btn-reliquary__pin btn-reliquary__pin--br" aria-hidden />
+      <span className="lbl">{children}</span>
+      <span className="btn-reliquary__arrow" aria-hidden />
+    </>
+  );
 
   if (href && !disabled) {
     if (external) {

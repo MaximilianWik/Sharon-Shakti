@@ -34,7 +34,10 @@ export default function BookPage() {
       </header>
 
       <section className="mx-auto max-w-[1600px] px-6 pb-32 md:px-12 md:pb-44">
-        <BookingFlow />
+        <div className="gothic-corners gothic-corners--all gothic-corners--booking border border-ash-dim/35 bg-ink/35 p-5 md:p-8">
+          <span className="gothic-corner-extra" aria-hidden />
+          <BookingFlow />
+        </div>
       </section>
     </div>
   );

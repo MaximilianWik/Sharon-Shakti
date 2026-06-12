@@ -59,10 +59,9 @@ export default function Nav() {
                   {l.label}
                   <span
                     aria-hidden
-                    className={`absolute -bottom-1 left-1/2 h-2 -translate-x-1/2 bg-oxblood-bright transition-all duration-500 ease-out-expo ${
-                      active ? "w-6" : "w-0 group-hover:w-6"
+                    className={`absolute -bottom-1 left-1/2 h-px -translate-x-1/2 bg-oxblood-bright transition-all duration-500 ease-out-expo before:absolute before:left-1/2 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-x-1/2 before:-translate-y-1/2 before:rotate-45 before:border before:border-oxblood-bright before:bg-ink ${
+                      active ? "w-8" : "w-0 group-hover:w-8"
                     }`}
-                    style={{ clipPath: "polygon(0 100%, 0 55%, 50% 0, 100% 55%, 100% 100%)" }}
                   />
                 </Link>
               </li>

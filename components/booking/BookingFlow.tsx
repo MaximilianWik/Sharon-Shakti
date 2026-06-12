@@ -175,14 +175,17 @@ export default function BookingFlow() {
                 disabled={!d.working}
                 onClick={() => setSelectedDate(d.iso)}
                 data-cursor={d.working ? "hover" : undefined}
-                className={`flex min-w-[68px] shrink-0 flex-col items-center gap-1 border px-3 py-4 transition-colors duration-300 ${
+                className={`group relative flex min-w-[68px] shrink-0 flex-col items-center gap-1 overflow-hidden border px-3 py-4 transition-all duration-300 ${
                   active
-                    ? "border-oxblood-bright bg-oxblood/20 text-bone"
+                    ? "border-oxblood-bright bg-oxblood/20 text-bone shadow-[inset_0_0_0_1px_rgba(243,242,239,0.16),0_0_18px_rgba(154,22,32,0.22)]"
                     : d.working
-                    ? "border-ash-dim/50 text-bone/80 hover:border-bone/60"
+                    ? "border-ash-dim/50 text-bone/80 hover:border-bone/60 hover:bg-bone/[0.03]"
                     : "cursor-not-allowed border-ash-dim/20 text-ash/40"
                 }`}
               >
+                {active && (
+                  <span className="pointer-events-none absolute inset-1 border border-bone/15" aria-hidden />
+                )}
                 <span className="label text-[0.6rem]">
                   {d.date.toLocaleDateString(undefined, { weekday: "short" })}
                 </span>
@@ -241,15 +244,23 @@ export default function BookingFlow() {
                       disabled={!s.available}
                       onClick={() => setSelectedSlot(s)}
                       data-cursor={s.available ? "hover" : undefined}
-                      className={`h-12 border text-sm transition-colors duration-200 ${
+                      className={`group relative h-12 overflow-hidden border text-sm transition-all duration-300 ${
                         active
-                          ? "border-oxblood-bright bg-oxblood text-bone"
+                          ? "border-oxblood-bright bg-oxblood/85 text-bone shadow-[inset_0_0_0_1px_rgba(243,242,239,0.18),0_0_16px_rgba(154,22,32,0.24)]"
                           : s.available
-                          ? "border-ash-dim/50 text-bone/80 hover:border-bone/60"
+                          ? "border-ash-dim/50 text-bone/80 hover:border-bone/60 hover:bg-bone/[0.03]"
                           : "cursor-not-allowed border-transparent text-ash/30 line-through"
                       }`}
                     >
-                      {s.label}
+                      {active && (
+                        <>
+                          <span className="absolute left-1 top-1 h-2 w-2 border-l border-t border-bone/45" aria-hidden />
+                          <span className="absolute right-1 top-1 h-2 w-2 border-r border-t border-bone/45" aria-hidden />
+                          <span className="absolute bottom-1 left-1 h-2 w-2 border-b border-l border-bone/45" aria-hidden />
+                          <span className="absolute bottom-1 right-1 h-2 w-2 border-b border-r border-bone/45" aria-hidden />
+                        </>
+                      )}
+                      <span className="relative z-10">{s.label}</span>
                     </button>
                   );
                 })}

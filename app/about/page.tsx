@@ -61,7 +61,7 @@ export default function AboutPage() {
           stagger={0.1}
         >
           {facets.map((f) => (
-            <div key={f.k} className="bg-ink p-8 md:p-10">
+            <div key={f.k} className="gothic-corners gothic-corners--panel bg-ink p-8 md:p-10">
               <p className="label text-oxblood-bright">{f.k}</p>
               <p className="mt-4 font-heading text-lg uppercase leading-tight tracking-heading text-bone md:text-xl">
                 {f.v}
@@ -111,7 +111,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="relative overflow-hidden border-y border-ash-dim/40 bg-void">
+      <section className="gothic-corners gothic-corners--section relative overflow-hidden border-y border-ash-dim/40 bg-void">
         <div className="relative mx-auto flex max-w-[1600px] flex-col items-start gap-8 px-6 py-28 md:px-12 md:py-40">
           <Reveal as="h2" className="font-heading text-[clamp(2rem,6vw,4.25rem)] uppercase leading-[1.08] tracking-heading text-bone">
             Bring me your <span className="text-oxblood-bright">dread.</span>

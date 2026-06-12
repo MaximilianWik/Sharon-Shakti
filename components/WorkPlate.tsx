@@ -47,22 +47,25 @@ export default function WorkPlate({
     <figure
       ref={ref}
       data-cursor="hover"
-      className={`group relative overflow-hidden bg-ink-raised ${spanClass[span]}`}
+      className={`group relative overflow-hidden border border-ash-dim/20 bg-ink-raised transition-colors duration-700 hover:border-bone/25 ${spanClass[span]}`}
     >
       <div className="absolute inset-0 transition-transform duration-[1200ms] ease-out-expo group-hover:scale-[1.04]">
         <Placeholder seed={work.seed} label={work.title} />
       </div>
 
       {/* Leaded / stained-glass tint */}
-      <div className="leaded-glass pointer-events-none absolute inset-0 opacity-40 transition-opacity duration-700 group-hover:opacity-70" />
+      <div className="leaded-glass pointer-events-none absolute inset-0 opacity-30 transition-opacity duration-700 group-hover:opacity-60" />
 
       {/* Tracery corners */}
-      <TraceryCorner corner="tl" className="pointer-events-none absolute left-1.5 top-1.5 h-6 w-6 text-ash/55 transition-colors duration-500 group-hover:text-oxblood-bright" />
-      <TraceryCorner corner="tr" className="pointer-events-none absolute right-1.5 top-1.5 h-6 w-6 text-ash/55 transition-colors duration-500 group-hover:text-oxblood-bright" />
-      <TraceryCorner corner="bl" className="pointer-events-none absolute bottom-1.5 left-1.5 h-6 w-6 text-ash/55 transition-colors duration-500 group-hover:text-oxblood-bright" />
-      <TraceryCorner corner="br" className="pointer-events-none absolute bottom-1.5 right-1.5 h-6 w-6 text-ash/55 transition-colors duration-500 group-hover:text-oxblood-bright" />
+      <TraceryCorner corner="tl" className="pointer-events-none absolute left-2 top-2 h-7 w-7 text-ash/40 transition-all duration-500 group-hover:translate-x-1 group-hover:translate-y-1 group-hover:text-bone/80" />
+      <TraceryCorner corner="tr" className="pointer-events-none absolute right-2 top-2 h-7 w-7 text-ash/40 transition-all duration-500 group-hover:-translate-x-1 group-hover:translate-y-1 group-hover:text-bone/80" />
+      <TraceryCorner corner="bl" className="pointer-events-none absolute bottom-2 left-2 h-7 w-7 text-ash/40 transition-all duration-500 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-bone/80" />
+      <TraceryCorner corner="br" className="pointer-events-none absolute bottom-2 right-2 h-7 w-7 text-ash/40 transition-all duration-500 group-hover:-translate-x-1 group-hover:-translate-y-1 group-hover:text-bone/80" />
 
-      <span className="absolute inset-x-0 bottom-0 h-px w-0 bg-oxblood-bright transition-all duration-700 ease-out-expo group-hover:w-full" />
+      <span className="absolute left-3 right-3 top-3 h-px scale-x-0 bg-oxblood-bright/80 transition-transform duration-700 ease-out-expo group-hover:scale-x-100" />
+      <span className="absolute bottom-3 left-3 right-3 h-px scale-x-0 bg-oxblood-bright/80 transition-transform duration-700 ease-out-expo group-hover:scale-x-100" />
+      <span className="absolute bottom-3 left-3 top-3 w-px scale-y-0 bg-oxblood-bright/80 transition-transform duration-700 ease-out-expo group-hover:scale-y-100" />
+      <span className="absolute bottom-3 right-3 top-3 w-px scale-y-0 bg-oxblood-bright/80 transition-transform duration-700 ease-out-expo group-hover:scale-y-100" />
 
       <figcaption className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 bg-gradient-to-t from-black/80 to-transparent p-5 md:p-6">
         <div className="translate-y-1 opacity-90 transition-all duration-500 ease-out-expo group-hover:translate-y-0 group-hover:opacity-100">

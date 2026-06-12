@@ -10,6 +10,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 
 ### Added
+- Standalone `grunge-texture-index.html` preview for tuning a transplantable CSS-only grunge texture overlay
 - **SingleGhost** display font (local, `app/fonts/`) for H1 / hero titles
 - **Cinzel** (engraved caps) for H2 section titles, nav wordmark, and labels
 - **EB Garamond** (old-style serif) for body and long-form
@@ -19,30 +20,33 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
   `RoseWindow` (rose-window tracery), `Arcade` (blind row of pointed arches),
   `Arch` (pointed-arch frame)
 - Rose-window backdrops behind the home booking CTA and in the footer
-- Blind arcade crowning the footer
 - Pointed-arch (cathedral) frame around the About portrait
+- Restrained gothic corner frames for statement blocks, panels, gallery sections,
+  booking surfaces, and CTA bands
 - **Gothic UI kit (monochrome integration)** — new components rendered in
-  bone/ash/oxblood (no gold/stone): `Button` (pointed-arch primary with oxblood
-  glow + stone-texture reveal, destructive, rose-window `IconButton`),
-  `TraceryCorner` (4-way), `FleurDeLis`, `RibbedColumn`, `DiamondChain`,
-  `Portcullis`, `CathedralFacade`, `Gargoyle`
+  bone/ash/oxblood (no gold/stone): `Button` (reliquary primary with notched
+  bone frame, oxblood underglow, tracery pins, destructive variant, rose-window
+  `IconButton`), `TraceryCorner` (4-way), `FleurDeLis`, `RibbedColumn`,
+  `DiamondChain`, `Portcullis`, `Gargoyle`
 - `Divider` variants: `rose`, `fleur`, `diamond` (alongside `quatrefoil`)
-- Distressed grunge overlays (`Grunge`) on hero, both CTA bands, footer
 
 ### Removed
 - `Grunge` component and all usages — removed at owner's direction
-- `CathedralFacade` — removed (silhouette rendered as house shapes, not a cathedral); replaced with the original blind arcade in the footer
+- `CathedralFacade` — removed (silhouette rendered as house shapes, not a cathedral)
 
 ### Changed
 - Nav: crenellation (battlement) top border, portcullis mobile icon,
-  pointed-arch hover underline
-- Footer: cathedral-facade silhouette crown, ribbed-column dividers between the
-  three columns, cross-tile base row
-- Gallery plates: tracery corners + leaded-glass tint overlay
+  reliquary hairline hover underline
+- Footer: crypt-nave layout with an interactive central rose-window medallion,
+  ribbed-column dividers, reliquary CTA, animated footer links, softened
+  cross-tile base row
+- Gallery plates: tracery corners + leaded-glass tint overlay, now tightening into
+  a restrained frame on hover
 - Booking form: gothic fields (corner clips + oxblood focus glow + gargoyle
-  watermark), illuminated-manuscript consent checkbox, pointed-arch submit
+  watermark), illuminated-manuscript consent checkbox, reliquary submit, selected
+  day/slot reliquary states
 - Scrollbar: stacked stone-block thumb + cracked-stone track, oxblood border
-- All page CTAs now use the pointed-arch `Button`
+- All page CTAs now use the reliquary `Button`
 - Replaced the Bodoni Moda + Inter type system with a three-role gothic system
   (SingleGhost / Cinzel / EB Garamond); Inter (sans) removed entirely
 - All expressive headings (statements, CTAs, piece titles, nav links) moved from
