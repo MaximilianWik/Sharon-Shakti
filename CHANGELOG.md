@@ -10,6 +10,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 
 ### Added
+- **Styled confirmation emails** — client confirmation and Sharon notification now use a branded dark-ink HTML template (Cinzel headings, EB Garamond body, oxblood accents) matching the site aesthetic; plain-text fallback included
 - Standalone `grunge-texture-index.html` preview for tuning a transplantable CSS-only grunge texture overlay
 - **SingleGhost** display font (local, `app/fonts/`) for H1 / hero titles
 - **Cinzel** (engraved caps) for H2 section titles, nav wordmark, and labels
