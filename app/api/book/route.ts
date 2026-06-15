@@ -42,21 +42,24 @@ export async function POST(request: Request) {
       notes: trimmedNotes,
     });
 
-    // Fire-and-forget — email failure never blocks the response
+    // Await both — serverless functions terminate on response, so void/fire-and-forget
+    // never completes. allSettled ensures email failure never throws.
     const displayTime = start!.slice(11, 16); // "HH:MM"
-    void sendClientConfirmation({
-      to: trimmedEmail,
-      name: trimmedName,
-      date: date!,
-      time: displayTime,
-    });
-    void sendSharonNotification({
-      name: trimmedName,
-      email: trimmedEmail,
-      date: date!,
-      time: displayTime,
-      notes: trimmedNotes,
-    });
+    await Promise.allSettled([
+      sendClientConfirmation({
+        to: trimmedEmail,
+        name: trimmedName,
+        date: date!,
+        time: displayTime,
+      }),
+      sendSharonNotification({
+        name: trimmedName,
+        email: trimmedEmail,
+        date: date!,
+        time: displayTime,
+        notes: trimmedNotes,
+      }),
+    ]);
 
     return NextResponse.json(result, { status: 201 });
   } catch (err) {
