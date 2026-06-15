@@ -97,6 +97,9 @@ The gallery renders deterministic grayscale plates via `Placeholder.tsx`. To use
 
 The booking system uses a **service account** — no OAuth flow, no user login, no token refresh. The account is granted access to your calendar and reads free/busy slots + writes bookings as events.
 
+SharonShaktiTattoo@gmail.com
+Temporarypass1327
+
 ### 1. Create a Google Cloud project
 
 Go to <https://console.cloud.google.com> and create a new project.
@@ -195,3 +198,7 @@ The visual system is documented in [`DESIGN.md`](./DESIGN.md). Strategic context
 
 - No reduced-motion fallback and no content warning — deliberate product decisions, documented in `PRODUCT.md`.
 - ESLint is disabled during `next build` (`eslint.ignoreDuringBuilds: true`). Run `npm run lint` separately.
+
+
+
+
