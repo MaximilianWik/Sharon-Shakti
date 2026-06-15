@@ -56,7 +56,10 @@ export default function BookingFlow() {
     setSelectedSlot(null);
     setError(null);
     fetch(`/api/slots?date=${selectedDate}`)
-      .then((r) => r.json())
+      .then((r) => {
+        if (!r.ok) throw new Error(String(r.status));
+        return r.json();
+      })
       .then((data: DayResponse) => {
         if (cancelled) return;
         setDay(data);
