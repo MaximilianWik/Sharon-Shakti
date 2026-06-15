@@ -115,3 +115,10 @@ Google Calendar → Settings → her personal calendar → Share with specific p
 GOOGLE_PERSONAL_CALENDAR_ID → her personal calendar ID (found under Settings → her calendar → Integrate calendar → Calendar ID — usually her personal Gmail address).
 
 Redeploy and her personal events will block slots automatically.
+
+## Add appointments to personal calendar
+From the sharonshaktitattoo@gmail.com account:
+
+Google Calendar → Settings → sharonshaktitattoo@gmail.com calendar → Share with specific people → add her personal email → "Make changes to events"
+
+Once she accepts, the tattoo appointments calendar appears as an overlay in her personal Google Calendar. She sees everything in one place, in a different colour. Any events she adds from her personal calendar also show up there, and since we're already reading both calendars for free/busy, the blocking stays in sync too.
