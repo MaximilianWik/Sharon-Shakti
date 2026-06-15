@@ -149,10 +149,9 @@ export default function BookingFlow() {
           <dd>{form.email}</dd>
         </dl>
         <p className="mt-8 max-w-md text-sm leading-relaxed text-ash">
-          A calendar invitation has been sent to {form.email}. Sharon will
-          confirm details before your session.
+          Sharon will be in touch at {form.email} to confirm details before your session.
           {confirmation.mode === "mock" &&
-            " (Demo mode — no live calendar connected; configure Google Calendar credentials to go live.)"}
+            " (Demo mode: no live calendar connected.)"}
         </p>
       </div>
     );

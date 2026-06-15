@@ -238,7 +238,6 @@ export async function createBooking(input: BookingInput) {
 
   const event = await calendar.events.insert({
     calendarId: process.env.GOOGLE_CALENDAR_ID as string,
-    sendUpdates: "all",
     requestBody: {
       summary: `Consultation — ${input.name}`,
       description: [
@@ -251,7 +250,6 @@ export async function createBooking(input: BookingInput) {
         .join("\n"),
       start: { dateTime: input.start, timeZone: CONFIG.timeZone },
       end: { dateTime: end, timeZone: CONFIG.timeZone },
-      attendees: [{ email: input.email, displayName: input.name }],
     },
   });
 
