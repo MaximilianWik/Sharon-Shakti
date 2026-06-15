@@ -170,17 +170,23 @@ export async function getDayAvailability(
   const dayMin = raw[0]?.startInstant ?? new Date();
   const dayMax = raw[raw.length - 1]?.endInstant ?? new Date();
 
+  const calendarIds = [
+    process.env.GOOGLE_CALENDAR_ID as string,
+    process.env.GOOGLE_PERSONAL_CALENDAR_ID,
+  ].filter(Boolean) as string[];
+
   const fb = await calendar.freebusy.query({
     requestBody: {
       timeMin: dayMin.toISOString(),
       timeMax: dayMax.toISOString(),
       timeZone: CONFIG.timeZone,
-      items: [{ id: process.env.GOOGLE_CALENDAR_ID }],
+      items: calendarIds.map((id) => ({ id })),
     },
   });
 
-  const busy =
-    fb.data.calendars?.[process.env.GOOGLE_CALENDAR_ID as string]?.busy ?? [];
+  const busy = calendarIds.flatMap(
+    (id) => fb.data.calendars?.[id]?.busy ?? []
+  );
 
   const overlaps = (start: Date, end: Date) =>
     busy.some((b) => {

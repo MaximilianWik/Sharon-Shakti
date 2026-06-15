@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { createBooking, type BookingInput } from "@/lib/calendar";
+import { sendClientConfirmation, sendSharonNotification } from "@/lib/email";
 
 export const dynamic = "force-dynamic";
 
@@ -29,13 +30,34 @@ export async function POST(request: Request) {
   }
 
   try {
+    const trimmedName = name!.trim();
+    const trimmedEmail = email!.trim();
+    const trimmedNotes = notes?.trim();
+
     const result = await createBooking({
       date: date!,
       start: start!,
-      name: name!.trim(),
-      email: email!.trim(),
-      notes: notes?.trim(),
+      name: trimmedName,
+      email: trimmedEmail,
+      notes: trimmedNotes,
     });
+
+    // Fire-and-forget — email failure never blocks the response
+    const displayTime = start!.slice(11, 16); // "HH:MM"
+    void sendClientConfirmation({
+      to: trimmedEmail,
+      name: trimmedName,
+      date: date!,
+      time: displayTime,
+    });
+    void sendSharonNotification({
+      name: trimmedName,
+      email: trimmedEmail,
+      date: date!,
+      time: displayTime,
+      notes: trimmedNotes,
+    });
+
     return NextResponse.json(result, { status: 201 });
   } catch (err) {
     const code = (err as { code?: number }).code;
