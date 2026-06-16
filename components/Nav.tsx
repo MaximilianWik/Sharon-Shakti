@@ -41,7 +41,7 @@ export default function Nav() {
         <Link
           href="/"
           aria-label="Sharon Shakti, home"
-          className="font-display text-2xl text-bone transition-opacity hover:opacity-70"
+          className="font-heading text-xl tracking-heading text-bone transition-opacity hover:opacity-70"
         >
           Sharon Shakti
         </Link>
