@@ -144,10 +144,10 @@ function shell(opts: {
     <td align="center" style="padding:56px 16px 72px;">
       <table role="presentation" width="560" cellpadding="0" cellspacing="0" border="0" style="width:100%;max-width:560px;">
 
-        <!-- Header image — public/Email/EmailHeader.png (1230×327) -->
+        <!-- Header image — public/Email/EmailHeader.png → sharon-shakti.vercel.app/Email/EmailHeader.png -->
         <tr>
           <td style="padding:0;line-height:0;">
-            <img src="https://sharon.ink/Email/EmailHeader.png"
+            <img src="https://sharon-shakti.vercel.app/Email/EmailHeader.png"
               width="560" alt="Sharon Shakti Tattoo"
               style="display:block;width:100%;max-width:560px;height:auto;border:0;" />
           </td>
