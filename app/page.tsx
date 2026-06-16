@@ -2,12 +2,12 @@ import Link from "next/link";
 import Hero from "@/components/hero/Hero";
 import Reveal from "@/components/Reveal";
 import Divider from "@/components/Divider";
-import WorkPlate from "@/components/WorkPlate";
+import WorkGallery from "@/components/WorkGallery";
 import TraceryCorner from "@/components/ornaments/TraceryCorner";
-import { works } from "@/lib/works";
+import { getSelectedWorks } from "@/lib/works.server";
 
 export default function Home() {
-  const featured = works.slice(0, 5);
+  const featured = getSelectedWorks();
 
   return (
     <>
@@ -54,11 +54,7 @@ export default function Home() {
           </h2>
         </Reveal>
 
-        <div className="grid auto-rows-[minmax(0,1fr)] grid-cols-1 gap-3 md:grid-cols-3 md:gap-4">
-          {featured.map((w) => (
-            <WorkPlate key={w.slug} work={w} />
-          ))}
-        </div>
+        <WorkGallery works={featured} />
       </section>
     </>
   );

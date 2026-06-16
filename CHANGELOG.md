@@ -10,6 +10,16 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 
 ### Added
+- **Auto-populating galleries** — drop images into `public/work/selected/` (homepage) or `public/work/gallery/` (Work page) and they appear on next deploy. Build-time directory scan (`lib/works.server.ts`), dependency-free PNG/JPEG/WebP dimension reader, optional `meta.json` for captions, auto masonry span from aspect ratio
+- **Image lightbox** — click any plate to open a full-screen framer-motion view with scale/clip reveal, oxblood glow, tracery corners, prev/next + keyboard (←/→/Esc) nav and body scroll-lock
+- Home link in the primary nav (desktop + mobile)
+
+### Changed
+- All visible copy converted from third to first person (about, home statement, booking flow)
+- About portrait now a real image (`next/image`) instead of the generated placeholder
+- Removed the custom cursor entirely — native pointer restored (deleted `Cursor.tsx`, dropped `cursor:none`, stripped orphaned `data-cursor` attributes)
+
+### Added (prior)
 - **Styled confirmation emails** — client confirmation and Sharon notification now use a branded dark-ink HTML template (Cinzel headings, EB Garamond body, oxblood accents) matching the site aesthetic; plain-text fallback included
 - Standalone `grunge-texture-index.html` preview for tuning a transplantable CSS-only grunge texture overlay
 - **SingleGhost** display font (local, `app/fonts/`) for H1 / hero titles

@@ -1,23 +1,48 @@
+// Client-safe types & helpers for the work galleries.
+// NO Node/fs imports here — this file is importable from client components.
+// Filesystem scanning lives in works.server.ts (server components only).
+
+export type WorkSpan = "tall" | "wide" | "normal";
+
 export type Work = {
+  /** Public URL, e.g. /work/gallery/01-relic.png */
+  src: string;
+  /** Stable id derived from filename (ordering prefix stripped). */
   slug: string;
+  /** Display title. */
   title: string;
-  style: string;
-  placement: string;
-  year: number;
-  seed: number;
-  span?: "tall" | "wide" | "normal";
+  /** Natural pixel dimensions (for next/image + lightbox). */
+  width: number;
+  height: number;
+  /** Masonry hint, auto-derived from aspect ratio unless overridden. */
+  span: WorkSpan;
+  /** Optional caption metadata (from meta.json). */
+  style?: string;
+  placement?: string;
+  year?: number;
 };
 
-// Placeholder catalogue. Replace `seed`-driven plates with real photographs
-// (drop files in /public/works and swap <Placeholder> for next/image).
-export const works: Work[] = [
-  { slug: "the-mourner", title: "The Mourner", style: "Horror Realism", placement: "Full back", year: 2025, seed: 3, span: "tall" },
-  { slug: "ossuary", title: "Ossuary", style: "Blackwork", placement: "Forearm sleeve", year: 2025, seed: 7 },
-  { slug: "veil", title: "Veil", style: "Dark Art", placement: "Sternum", year: 2024, seed: 12, span: "wide" },
-  { slug: "relic", title: "Relic", style: "Blackwork", placement: "Thigh", year: 2024, seed: 19 },
-  { slug: "the-host", title: "The Host", style: "Horror Realism", placement: "Chest", year: 2024, seed: 23, span: "tall" },
-  { slug: "wound", title: "Wound", style: "Dark Art", placement: "Calf", year: 2023, seed: 31 },
-  { slug: "saint-of-flies", title: "Saint of Flies", style: "Horror Realism", placement: "Half sleeve", year: 2023, seed: 41, span: "wide" },
-  { slug: "marrow", title: "Marrow", style: "Blackwork", placement: "Spine", year: 2023, seed: 47 },
-  { slug: "effigy", title: "Effigy", style: "Dark Art", placement: "Hand", year: 2022, seed: 53 },
-];
+/** "01-the-mourner.png" -> "The Mourner" */
+export function titleFromFile(filename: string): string {
+  return filename
+    .replace(/\.[^.]+$/, "")
+    .replace(/^\d+[-_]/, "")
+    .replace(/[-_]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
+/** "01-the-mourner.png" -> "the-mourner" */
+export function slugFromFile(filename: string): string {
+  return filename.replace(/\.[^.]+$/, "").replace(/^\d+[-_]/, "");
+}
+
+/** Aspect ratio -> masonry span. */
+export function spanFromRatio(width: number, height: number): WorkSpan {
+  if (!width || !height) return "normal";
+  const r = width / height;
+  if (r >= 1.3) return "wide";
+  if (r <= 0.78) return "tall";
+  return "normal";
+}

@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Placeholder from "./Placeholder";
 import TraceryCorner from "./ornaments/TraceryCorner";
 import type { Work } from "@/lib/works";
 
@@ -15,8 +15,10 @@ const spanClass: Record<NonNullable<Work["span"]>, string> = {
 
 export default function WorkPlate({
   work,
+  onOpen,
 }: {
   work: Work;
+  onOpen?: () => void;
 }) {
   const ref = useRef<HTMLElement>(null);
   const span = work.span ?? "normal";
@@ -43,13 +45,37 @@ export default function WorkPlate({
     };
   }, []);
 
+  const interactive = Boolean(onOpen);
+
   return (
     <figure
       ref={ref}
-      className={`group relative overflow-hidden border border-ash-dim/20 bg-ink-raised transition-colors duration-700 hover:border-bone/25 ${spanClass[span]}`}
+      onClick={onOpen}
+      role={interactive ? "button" : undefined}
+      tabIndex={interactive ? 0 : undefined}
+      onKeyDown={
+        interactive
+          ? (e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                onOpen?.();
+              }
+            }
+          : undefined
+      }
+      aria-label={interactive ? `View ${work.title}` : undefined}
+      className={`group relative overflow-hidden border border-ash-dim/20 bg-ink-raised transition-colors duration-700 hover:border-bone/25 focus-visible:border-bone/40 ${
+        interactive ? "cursor-pointer" : ""
+      } ${spanClass[span]}`}
     >
       <div className="absolute inset-0 transition-transform duration-[1200ms] ease-out-expo group-hover:scale-[1.04]">
-        <Placeholder seed={work.seed} label={work.title} />
+        <Image
+          src={work.src}
+          alt={work.title}
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, 33vw"
+        />
       </div>
 
       {/* Leaded / stained-glass tint */}
@@ -71,11 +97,13 @@ export default function WorkPlate({
           <h3 className="font-heading text-lg uppercase leading-none tracking-heading text-bone md:text-xl">
             {work.title}
           </h3>
-          <p className="label mt-2 text-ash">
-            {work.style} · {work.placement}
-          </p>
+          {(work.style || work.placement) && (
+            <p className="label mt-2 text-ash">
+              {[work.style, work.placement].filter(Boolean).join(" · ")}
+            </p>
+          )}
         </div>
-        <span className="label shrink-0 text-bone/50">{work.year}</span>
+        {work.year && <span className="label shrink-0 text-bone/50">{work.year}</span>}
       </figcaption>
     </figure>
   );

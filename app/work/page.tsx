@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
 import Button from "@/components/Button";
-import WorkPlate from "@/components/WorkPlate";
+import WorkGallery from "@/components/WorkGallery";
 import TraceryCorner from "@/components/ornaments/TraceryCorner";
-import { works } from "@/lib/works";
+import { getGalleryWorks } from "@/lib/works.server";
 
 export const metadata: Metadata = {
   title: "Work",
@@ -46,11 +46,7 @@ export default function WorkPage() {
           <TraceryCorner corner="tr" className="pointer-events-none absolute right-0 top-0 h-16 w-16 text-ash/30 md:h-24 md:w-24" strokeWidth={1.4} />
           <TraceryCorner corner="bl" className="pointer-events-none absolute bottom-0 left-0 h-16 w-16 text-ash/30 md:h-24 md:w-24" strokeWidth={1.4} />
           <TraceryCorner corner="br" className="pointer-events-none absolute bottom-0 right-0 h-16 w-16 text-ash/30 md:h-24 md:w-24" strokeWidth={1.4} />
-          <div className="grid auto-rows-[minmax(0,1fr)] grid-cols-1 gap-3 md:grid-cols-3 md:gap-4">
-            {works.map((w) => (
-              <WorkPlate key={w.slug} work={w} />
-            ))}
-          </div>
+          <WorkGallery works={getGalleryWorks()} />
         </div>
       </section>
 
