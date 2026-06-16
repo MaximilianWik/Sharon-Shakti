@@ -10,11 +10,17 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 
 ### Added
+- **FAQ & Aftercare page** (`/care`) — interactive FAQ accordion + numbered aftercare guide (generic placeholder copy for Sharon to edit), with ember particles. Added to nav
+- **Ember particle field** (`EmberField`) — low-density oxblood canvas2D embers, DPR-aware, respects reduced-motion. Used on the Care page and Instagram section
+- **Instagram section** on the About page — dark feed teaser linking to @sharonnshakti (replaces the redundant booking CTA)
+- **Fully-booked days greyed out** in the booking calendar — new `/api/availability` (single FreeBusy query across the horizon) + `getHorizonAvailability()`; the day strip disables/greys full days and auto-jumps the selection to the first open day. Mock mode now defaults every future slot to available
 - **Auto-populating galleries** — drop images into `public/work/selected/` (homepage) or `public/work/gallery/` (Work page) and they appear on next deploy. Build-time directory scan (`lib/works.server.ts`), dependency-free PNG/JPEG/WebP dimension reader, optional `meta.json` for captions, auto masonry span from aspect ratio
 - **Image lightbox** — click any plate to open a full-screen framer-motion view with scale/clip reveal, oxblood glow, tracery corners, prev/next + keyboard (←/→/Esc) nav and body scroll-lock
 - Home link in the primary nav (desktop + mobile)
 
 ### Changed
+- Removed the redundant "Book" CTA sections from the Work and About pages (the footer already carries one)
+- Removed the corner ornament from the Work page intro header
 - All visible copy converted from third to first person (about, home statement, booking flow)
 - About portrait now a real image (`next/image`) instead of the generated placeholder
 - Removed the custom cursor entirely — native pointer restored (deleted `Cursor.tsx`, dropped `cursor:none`, stripped orphaned `data-cursor` attributes)

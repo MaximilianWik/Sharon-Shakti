@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
-import Button from "@/components/Button";
 import WorkGallery from "@/components/WorkGallery";
 import TraceryCorner from "@/components/ornaments/TraceryCorner";
 import { getGalleryWorks } from "@/lib/works.server";
@@ -15,8 +14,7 @@ export default function WorkPage() {
   return (
     <div className="pt-32 md:pt-40">
       {/* Header */}
-      <header className="relative mx-auto max-w-[1600px] px-6 pb-16 pt-16 md:px-12 md:pb-24 md:pt-20">
-        <TraceryCorner corner="tl" className="pointer-events-none absolute left-6 top-0 h-16 w-16 text-ash/30 md:left-12 md:h-24 md:w-24" strokeWidth={1.4} />
+      <header className="mx-auto max-w-[1600px] px-6 pb-16 pt-16 md:px-12 md:pb-24 md:pt-20">
         <Reveal as="p" className="label text-oxblood-bright">
           The Gallery
         </Reveal>
@@ -50,16 +48,6 @@ export default function WorkPage() {
         </div>
       </section>
 
-      {/* Tail CTA */}
-      <section className="mx-auto max-w-[1600px] px-6 py-32 md:px-12 md:py-44">
-        <Reveal className="relative flex flex-col items-start gap-8 border-t border-ash-dim/40 pt-16">
-          <TraceryCorner corner="tl" className="pointer-events-none absolute left-0 top-12 h-14 w-14 text-ash/25" strokeWidth={1.4} />
-          <h2 className="max-w-2xl font-heading text-3xl uppercase leading-[1.15] tracking-heading text-bone md:text-4xl">
-            Something here speak to you?
-          </h2>
-          <Button href="/book">Begin a commission</Button>
-        </Reveal>
-      </section>
     </div>
   );
 }

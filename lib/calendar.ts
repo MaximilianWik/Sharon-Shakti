@@ -136,13 +136,7 @@ function buildSlots(dateStr: string) {
   return slots;
 }
 
-// Deterministic pseudo-busy pattern for mock mode.
-function mockBusy(dateStr: string, index: number) {
-  const seed = dateStr
-    .split("")
-    .reduce((a, c) => a + c.charCodeAt(0), index * 13);
-  return seed % 3 === 0;
-}
+// ---- mock availability: all future slots open by default ----
 
 export async function getDayAvailability(
   dateStr: string
@@ -157,11 +151,11 @@ export async function getDayAvailability(
   }
 
   if (!hasCredentials()) {
-    const slots: Slot[] = raw.map((s, i) => ({
+    const slots: Slot[] = raw.map((s) => ({
       label: s.label,
       start: s.startISO,
       end: s.endISO,
-      available: s.startInstant.getTime() > now && !mockBusy(dateStr, i),
+      available: s.startInstant.getTime() > now,
     }));
     return { date: dateStr, isWorkingDay: true, slots, mode: "mock" };
   }
@@ -267,4 +261,89 @@ export async function createBooking(input: BookingInput) {
     end,
     eventId: event.data.id,
   };
+}
+
+// ---------------------------------------------------------------------------
+// Horizon summary — per-day {isWorkingDay, fullyBooked} for the whole booking
+// window. Powers greying-out fully-booked days in the calendar strip.
+// ---------------------------------------------------------------------------
+
+export type DaySummary = {
+  date: string;
+  isWorkingDay: boolean;
+  fullyBooked: boolean;
+};
+
+export async function getHorizonAvailability(): Promise<{
+  days: DaySummary[];
+  mode: "live" | "mock";
+}> {
+  // Horizon date strings (YYYY-MM-DD) in the studio time zone.
+  const fmt = new Intl.DateTimeFormat("en-CA", {
+    timeZone: CONFIG.timeZone,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  });
+  const today = Date.now();
+  const dates: string[] = [];
+  for (let i = 0; i < CONFIG.horizonDays; i++) {
+    dates.push(fmt.format(new Date(today + i * 86400000)));
+  }
+
+  const now = Date.now();
+
+  if (!hasCredentials()) {
+    const days = dates.map((date): DaySummary => {
+      const working = CONFIG.workingDays.includes(weekday(date));
+      if (!working) return { date, isWorkingDay: false, fullyBooked: false };
+      const slots = buildSlots(date);
+      const fullyBooked = slots.every((s) => s.startInstant.getTime() <= now);
+      return { date, isWorkingDay: true, fullyBooked };
+    });
+    return { days, mode: "mock" };
+  }
+
+  // Live: a single FreeBusy query across the entire horizon, then bucket.
+  const calendar = getCalendar();
+  const firstSlots = buildSlots(dates[0]);
+  const lastSlots = buildSlots(dates[dates.length - 1]);
+  const timeMin = (firstSlots[0]?.startInstant ?? new Date()).toISOString();
+  const timeMax = (
+    lastSlots[lastSlots.length - 1]?.endInstant ?? new Date()
+  ).toISOString();
+
+  const calendarIds = [
+    process.env.GOOGLE_CALENDAR_ID as string,
+    process.env.GOOGLE_PERSONAL_CALENDAR_ID,
+  ].filter(Boolean) as string[];
+
+  const fb = await calendar.freebusy.query({
+    requestBody: {
+      timeMin,
+      timeMax,
+      timeZone: CONFIG.timeZone,
+      items: calendarIds.map((id) => ({ id })),
+    },
+  });
+  const busy = calendarIds.flatMap((id) => fb.data.calendars?.[id]?.busy ?? []);
+  const overlaps = (start: Date, end: Date) =>
+    busy.some((b) => {
+      const bs = new Date(b.start as string).getTime();
+      const be = new Date(b.end as string).getTime();
+      return start.getTime() < be && end.getTime() > bs;
+    });
+
+  const days = dates.map((date): DaySummary => {
+    const working = CONFIG.workingDays.includes(weekday(date));
+    if (!working) return { date, isWorkingDay: false, fullyBooked: false };
+    const slots = buildSlots(date);
+    const fullyBooked = slots.every(
+      (s) =>
+        s.startInstant.getTime() <= now ||
+        overlaps(s.startInstant, s.endInstant)
+    );
+    return { date, isWorkingDay: true, fullyBooked };
+  });
+  return { days, mode: "live" };
 }

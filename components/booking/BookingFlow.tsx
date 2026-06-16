@@ -47,6 +47,7 @@ export default function BookingFlow() {
   const [error, setError] = useState<string | null>(null);
   const [confirmation, setConfirmation] = useState<{ start: string; end: string; mode: string } | null>(null);
   const [reloadKey, setReloadKey] = useState(0);
+  const [bookedDays, setBookedDays] = useState<Record<string, boolean>>({});
 
   const stripRef = useRef<HTMLDivElement>(null);
 
@@ -72,6 +73,28 @@ export default function BookingFlow() {
       cancelled = true;
     };
   }, [selectedDate, reloadKey]);
+
+  // Whole-horizon availability — grey out fully-booked days in the strip.
+  useEffect(() => {
+    let cancelled = false;
+    fetch("/api/availability")
+      .then((r) => (r.ok ? r.json() : Promise.reject(new Error("availability"))))
+      .then((data: { days: { date: string; fullyBooked: boolean }[] }) => {
+        if (cancelled) return;
+        const map: Record<string, boolean> = {};
+        for (const d of data.days) map[d.date] = d.fullyBooked;
+        setBookedDays(map);
+        setSelectedDate((cur) => {
+          if (!map[cur]) return cur;
+          const open = days.find((dd) => dd.working && !map[dd.iso]);
+          return open ? open.iso : cur;
+        });
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, [days]);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -170,18 +193,20 @@ export default function BookingFlow() {
         >
           {days.map((d) => {
             const active = d.iso === selectedDate;
+            const booked = !!bookedDays[d.iso];
+            const disabled = !d.working || booked;
             return (
               <button
                 key={d.iso}
                 type="button"
-                disabled={!d.working}
-                onClick={() => setSelectedDate(d.iso)}
+                disabled={disabled}
+                onClick={() => !disabled && setSelectedDate(d.iso)}
                 className={`group relative flex min-w-0 flex-col items-center gap-1 overflow-hidden border px-2 py-4 transition-all duration-300 ${
                   active
                     ? "border-oxblood-bright bg-oxblood/20 text-bone shadow-[inset_0_0_0_1px_rgba(243,242,239,0.16),0_0_18px_rgba(154,22,32,0.22)]"
-                    : d.working
-                    ? "border-ash-dim/50 text-bone/80 hover:border-bone/60 hover:bg-bone/[0.03]"
-                    : "cursor-not-allowed border-ash-dim/20 text-ash/40"
+                    : disabled
+                    ? "cursor-not-allowed border-ash-dim/20 text-ash/40"
+                    : "border-ash-dim/50 text-bone/80 hover:border-bone/60 hover:bg-bone/[0.03]"
                 }`}
               >
                 {active && (
@@ -196,6 +221,9 @@ export default function BookingFlow() {
                 <span className="label text-[0.55rem] text-ash">
                   {d.date.toLocaleDateString(undefined, { month: "short" })}
                 </span>
+                {booked && (
+                  <span className="label mt-0.5 text-[0.5rem] text-oxblood-bright/70">Full</span>
+                )}
               </button>
             );
           })}

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
 import Divider from "@/components/Divider";
-import Button from "@/components/Button";
+import InstagramSection from "@/components/InstagramSection";
 import Arch from "@/components/ornaments/Arch";
 import Image from "next/image";
 import TraceryCorner from "@/components/ornaments/TraceryCorner";
@@ -27,7 +27,7 @@ export default function AboutPage() {
           <Arch className="text-oxblood-bright/50">
             <div className="relative aspect-[3/4] bg-ink-raised">
               <Image
-                src="/placeholder/placeholder10.png"
+                src="/about/portrait.png"
                 alt="Portrait of Sharon"
                 fill
                 className="object-cover"
@@ -120,19 +120,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="relative overflow-hidden border-y border-ash-dim/40 bg-void">
-        <TraceryCorner corner="tl" className="pointer-events-none absolute left-4 top-4 h-16 w-16 text-ash/25 md:h-24 md:w-24" strokeWidth={1.4} />
-        <TraceryCorner corner="br" className="pointer-events-none absolute bottom-4 right-4 h-16 w-16 text-ash/25 md:h-24 md:w-24" strokeWidth={1.4} />
-        <div className="relative mx-auto flex max-w-[1600px] flex-col items-start gap-8 px-6 py-28 md:px-12 md:py-40">
-          <Reveal as="h2" className="font-heading text-[clamp(2rem,6vw,4.25rem)] uppercase leading-[1.08] tracking-heading text-bone">
-            Bring me your <span className="text-oxblood-bright">dread.</span>
-          </Reveal>
-          <Reveal>
-            <Button href="/book">Request a consultation</Button>
-          </Reveal>
-        </div>
-      </section>
+      {/* Instagram */}
+      <InstagramSection />
     </div>
   );
 }
