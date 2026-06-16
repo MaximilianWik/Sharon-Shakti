@@ -10,6 +10,36 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 
 ### Added
+- **Scroll progress bar** (`ScrollProgress`) — 2px oxblood line at viewport top, scales with page scroll
+- **Back-to-top button** (`BackToTop`) — fixed diamond-accent button, appears after 400px scroll
+- **Lightbox swipe** — drag left/right on mobile to navigate works (Framer Motion `drag="x"`)
+- **Work gallery style filter** — filter buttons appear automatically when works have `style` metadata; hidden until meta.json populated
+- **`/api/availability`** horizon summary with fully-booked day detection
+- **`app/sitemap.ts`** — Next.js built-in sitemap covering all 5 routes
+- **`public/robots.txt`** — Allow all, points to sitemap
+- **`app/opengraph-image.tsx`** — branded dark OG image for social sharing (Next.js ImageResponse)
+- **`app/error.tsx`** — branded error boundary with retry + home link
+- **`PrintButton`** on `/care` — `window.print()` for aftercare instructions
+- **After-booking `/care` link** — "Review aftercare instructions" in the booking success state
+- **`public/instagram/`** folder — drop up to 6 images here, they auto-populate the about page Instagram section. Prefix with `01-`, `02-`… to control order. No code changes needed to update.
+
+### Changed
+- Work page description: removed outdated "representative placeholder" disclaimer
+- About h1: "Sharon" → "Sharon Shakti"
+- About metadata: fixed description string after em-dash removal
+- Home facets: "exclusively" → "Nothing else."
+- Hero subtitle: "Slow, deliberate, permanent." → "slow and deliberate, permanent."
+- Eyebrow labels removed from page headers (Work, About, Book, Care) and footer "The Black Gallery" — reduces AI-grammar scaffolding
+- `InstagramSection` converted to server component; tiles scanned from `public/instagram/` via `getInstagramTiles()`
+- `metadataBase` updated to `sharon-shakti.vercel.app` (configurable via `NEXT_PUBLIC_SITE_URL`)
+- `text-wrap: balance` applied globally to h1–h3 in globals.css
+- FaqAccordion: inner div gets `min-h-0` for Firefox grid-row-collapse compatibility
+- `icosahedronGeometry` detail reduced 64 → 48 (~30% fewer vertices, imperceptible quality change)
+- GSAP `ScrollTrigger.registerPlugin` consolidated to module level in `SmoothScroll.tsx` (removed duplicate calls from `Reveal` and `WorkPlate`)
+- `getHorizonAvailability` date iteration: replaced `ms × i` arithmetic with `setDate(+i)` — survives DST transitions
+- `.env.example` updated with `NEXT_PUBLIC_SITE_URL`
+
+### Added
 - **FAQ & Aftercare page** (`/care`) — interactive FAQ accordion + numbered aftercare guide (generic placeholder copy for Sharon to edit), with ember particles. Added to nav
 - **Ember particle field** (`EmberField`) — low-density oxblood canvas2D embers, DPR-aware, respects reduced-motion. Used on the Care page and Instagram section
 - **Instagram section** on the About page — dark feed teaser linking to @sharonnshakti (replaces the redundant booking CTA)

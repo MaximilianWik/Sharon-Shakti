@@ -285,10 +285,14 @@ export async function getHorizonAvailability(): Promise<{
     month: "2-digit",
     day: "2-digit",
   });
-  const today = Date.now();
+  // Use calendar-aware date stepping (not ms arithmetic) to survive DST transitions.
+  const base = new Date();
+  base.setHours(12, 0, 0, 0); // noon avoids DST hour edge cases
   const dates: string[] = [];
   for (let i = 0; i < CONFIG.horizonDays; i++) {
-    dates.push(fmt.format(new Date(today + i * 86400000)));
+    const d = new Date(base);
+    d.setDate(base.getDate() + i);
+    dates.push(fmt.format(d));
   }
 
   const now = Date.now();

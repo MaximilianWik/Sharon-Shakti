@@ -15,9 +15,6 @@ export default function WorkPage() {
     <div className="pt-32 md:pt-40">
       {/* Header */}
       <header className="mx-auto max-w-[1600px] px-6 pb-16 pt-16 md:px-12 md:pb-24 md:pt-20">
-        <Reveal as="p" className="label text-oxblood-bright">
-          The Gallery
-        </Reveal>
         <Reveal
           as="h1"
           y={56}
@@ -32,8 +29,6 @@ export default function WorkPage() {
         >
           Healed and fresh work across horror realism, blackwork and dark art.
           Every piece is bespoke, designed for one body and never repeated.
-          Imagery shown is representative placeholder while the archive is
-          digitised.
         </Reveal>
       </header>
 

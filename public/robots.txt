@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sharon-shakti.vercel.app/sitemap.xml

@@ -72,7 +72,7 @@ export default function Hero() {
             data-hero-fade
             className="mt-8 max-w-md text-balance text-base leading-relaxed text-bone/70"
           >
-            Horror realism rendered like fine art. Slow, deliberate, permanent.
+            Horror realism rendered like fine art, slow and deliberate, permanent.
             Step into the black gallery.
           </p>
         </div>

@@ -5,6 +5,9 @@ import Lenis from "lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+// Register once at module level — guarantees availability before any component effects.
+gsap.registerPlugin(ScrollTrigger);
+
 export default function SmoothScroll({
   children,
 }: {
@@ -13,8 +16,6 @@ export default function SmoothScroll({
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),

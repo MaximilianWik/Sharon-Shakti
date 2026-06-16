@@ -44,7 +44,7 @@ export default function FaqAccordion({ items }: { items: Faq[] }) {
                 isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
               }`}
             >
-              <div className="overflow-hidden">
+              <div className="min-h-0 overflow-hidden">
                 <p className="max-w-measure pb-7 pl-8 leading-relaxed text-bone/70">{it.a}</p>
               </div>
             </div>

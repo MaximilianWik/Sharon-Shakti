@@ -13,7 +13,6 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-12 md:grid-cols-[1.1fr_auto_0.7fr_auto_0.7fr] md:gap-12">
           <div className="relative max-w-xl">
             <TraceryCorner corner="tl" className="pointer-events-none absolute -left-4 -top-4 h-12 w-12 text-ash/35" strokeWidth={1.5} />
-            <p className="label text-ash">The Black Gallery</p>
             <h2 className="mt-6 font-heading text-3xl uppercase leading-[1.15] tracking-heading text-bone md:text-5xl">
               Commit it
               <br />

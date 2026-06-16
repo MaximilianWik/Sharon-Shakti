@@ -5,6 +5,8 @@ import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import ScrollProgress from "@/components/ScrollProgress";
+import BackToTop from "@/components/BackToTop";
 
 // H1 / hero — the decorative horror display face.
 const display = localFont({
@@ -31,7 +33,7 @@ const body = EB_Garamond({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://sharon.ink"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://sharon-shakti.vercel.app"),
   title: {
     default: "SHARON | Horror Realism · Blackwork · Dark Art",
     template: "%s | SHARON",
@@ -58,9 +60,11 @@ export default function RootLayout({
     >
       <body className="grain">
         <SmoothScroll>
+          <ScrollProgress />
           <Nav />
           <main>{children}</main>
           <Footer />
+          <BackToTop />
         </SmoothScroll>
       </body>
     </html>

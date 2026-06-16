@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
 import Divider from "@/components/Divider";
 import EmberField from "@/components/EmberField";
+import PrintButton from "@/components/PrintButton";
 import FaqAccordion, { type Faq } from "@/components/FaqAccordion";
 import TraceryCorner from "@/components/ornaments/TraceryCorner";
 
@@ -77,9 +78,6 @@ export default function CarePage() {
       <header className="relative overflow-hidden">
         <EmberField density={24} />
         <div className="relative mx-auto max-w-[1600px] px-6 pb-16 md:px-12 md:pb-24">
-          <Reveal as="p" className="label text-oxblood-bright">
-            Care
-          </Reveal>
           <Reveal
             as="h1"
             y={56}
@@ -128,6 +126,7 @@ export default function CarePage() {
               </div>
             ))}
           </Reveal>
+          <PrintButton />
           <p className="mt-10 max-w-measure text-sm leading-relaxed text-ash">
             These are general guidelines. If anything looks or feels wrong (spreading redness, heat, or discharge) see a doctor. When in doubt,
             message me.

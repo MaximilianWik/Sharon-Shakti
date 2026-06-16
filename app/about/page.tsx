@@ -10,7 +10,7 @@ import TraceryCorner from "@/components/ornaments/TraceryCorner";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Sharon, horror-realism, blackwork and dark-art tattoo artist, blues & soul musician, burlesque performer.",
+    "Sharon Shakti: horror-realism, blackwork and dark-art tattoo artist, blues & soul musician, burlesque performer.",
 };
 
 const facets = [
@@ -41,15 +41,12 @@ export default function AboutPage() {
         </Reveal>
 
         <div className="flex flex-col justify-end md:col-span-7">
-          <Reveal as="p" className="label text-oxblood-bright">
-            The Artist
-          </Reveal>
           <Reveal
             as="h1"
             y={56}
             className="mt-6 font-display text-[clamp(1.75rem,8vw,6rem)] font-light leading-[0.88] tracking-display text-bone"
           >
-            Sharon
+            Sharon Shakti
           </Reveal>
           <Reveal
             as="p"

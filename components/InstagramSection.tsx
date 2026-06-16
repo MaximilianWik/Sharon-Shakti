@@ -1,24 +1,13 @@
-"use client";
-
 import Image from "next/image";
 import EmberField from "./EmberField";
 import TraceryCorner from "./ornaments/TraceryCorner";
+import { getInstagramTiles } from "@/lib/works.server";
+
+// Drop images into public/instagram/ (prefix 01-, 02- … to control order).
+// Up to 6 images are shown. Replace them any time — no code changes needed.
 
 const HANDLE = "sharonnshakti";
 const PROFILE = `https://www.instagram.com/${HANDLE}/`;
-
-// Dark feed teaser. A true auto-updating IG feed needs the Graph API or a
-// third-party widget (and IG's own embed cards are light-themed, clashing with
-// the gallery). This dark grid links out to the profile; swap tiles for real
-// post thumbnails or drop in /p/<shortcode>/embed iframes when desired.
-const TILES = [
-  "/placeholder/placeholder11.png",
-  "/placeholder/placeholder12.png",
-  "/placeholder/placeholder13.png",
-  "/placeholder/placeholder14.png",
-  "/placeholder/placeholder15.png",
-  "/placeholder/placeholder7.png",
-];
 
 function IgGlyph({ className = "" }: { className?: string }) {
   return (
@@ -31,6 +20,8 @@ function IgGlyph({ className = "" }: { className?: string }) {
 }
 
 export default function InstagramSection() {
+  const tiles = getInstagramTiles(6);
+
   return (
     <section className="relative overflow-hidden border-y border-ash-dim/40 bg-void">
       <EmberField density={20} />
@@ -39,7 +30,6 @@ export default function InstagramSection() {
 
       <div className="relative mx-auto max-w-[1600px] px-6 py-24 md:px-12 md:py-32">
         <div className="flex flex-col items-start gap-4">
-          <span className="label text-oxblood-bright">Elsewhere</span>
           <a
             href={PROFILE}
             target="_blank"
@@ -54,33 +44,35 @@ export default function InstagramSection() {
           </p>
         </div>
 
-        <div className="mt-12 grid grid-cols-2 gap-2 sm:grid-cols-3 md:mt-16 md:gap-3">
-          {TILES.map((src, i) => (
-            <a
-              key={src}
-              href={PROFILE}
-              target="_blank"
-              rel="noreferrer"
-              className="group relative aspect-square overflow-hidden border border-ash-dim/20 bg-ink-raised"
-              aria-label={`View @${HANDLE} on Instagram`}
-            >
-              <Image
-                src={src}
-                alt=""
-                fill
-                className="object-cover opacity-80 grayscale transition-all duration-700 group-hover:scale-105 group-hover:opacity-100 group-hover:grayscale-0"
-                sizes="(max-width: 640px) 50vw, 33vw"
-              />
-              <div className="pointer-events-none absolute inset-0 bg-void/30 transition-colors duration-500 group-hover:bg-void/10" />
-              <IgGlyph className="pointer-events-none absolute left-1/2 top-1/2 h-8 w-8 -translate-x-1/2 -translate-y-1/2 text-bone opacity-0 transition-opacity duration-500 group-hover:opacity-90" />
-              {i === TILES.length - 1 && (
-                <span className="pointer-events-none absolute inset-0 flex items-center justify-center bg-void/55 font-heading text-sm uppercase tracking-heading text-bone opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-                  View all
-                </span>
-              )}
-            </a>
-          ))}
-        </div>
+        {tiles.length > 0 && (
+          <div className="mt-12 grid grid-cols-2 gap-2 sm:grid-cols-3 md:mt-16 md:gap-3">
+            {tiles.map((src, i) => (
+              <a
+                key={src}
+                href={PROFILE}
+                target="_blank"
+                rel="noreferrer"
+                className="group relative aspect-square overflow-hidden border border-ash-dim/20 bg-ink-raised"
+                aria-label={`View @${HANDLE} on Instagram`}
+              >
+                <Image
+                  src={src}
+                  alt=""
+                  fill
+                  className="object-cover opacity-80 grayscale transition-all duration-700 group-hover:scale-105 group-hover:opacity-100 group-hover:grayscale-0"
+                  sizes="(max-width: 640px) 50vw, 33vw"
+                />
+                <div className="pointer-events-none absolute inset-0 bg-void/30 transition-colors duration-500 group-hover:bg-void/10" />
+                <IgGlyph className="pointer-events-none absolute left-1/2 top-1/2 h-8 w-8 -translate-x-1/2 -translate-y-1/2 text-bone opacity-0 transition-opacity duration-500 group-hover:opacity-90" />
+                {i === tiles.length - 1 && (
+                  <span className="pointer-events-none absolute inset-0 flex items-center justify-center bg-void/55 font-heading text-sm uppercase tracking-heading text-bone opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                    View all
+                  </span>
+                )}
+              </a>
+            ))}
+          </div>
+        )}
 
         <a
           href={PROFILE}

@@ -13,9 +13,6 @@ export default function BookPage() {
   return (
     <div className="pt-32 md:pt-40">
       <header className="mx-auto max-w-[1600px] px-6 pb-16 md:px-12 md:pb-20">
-        <Reveal as="p" className="label text-oxblood-bright">
-          Booking
-        </Reveal>
         <Reveal
           as="h1"
           y={56}

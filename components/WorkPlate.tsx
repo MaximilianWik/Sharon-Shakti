@@ -26,7 +26,6 @@ export default function WorkPlate({
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    gsap.registerPlugin(ScrollTrigger);
     const anim = gsap.fromTo(
       el,
       { opacity: 0, y: 56, clipPath: "inset(8% 0 0 0)" },

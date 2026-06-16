@@ -106,11 +106,19 @@ export default function Lightbox({
           {/* Framed image */}
           <motion.figure
             key={work.slug}
-            className="relative z-[1] m-0 flex max-h-full max-w-full flex-col items-center"
+            className="relative z-[1] m-0 flex max-h-full max-w-full cursor-grab flex-col items-center active:cursor-grabbing"
             initial={{ opacity: 0, scale: 0.92, y: 24, clipPath: "inset(6% 0 0 0)" }}
             animate={{ opacity: 1, scale: 1, y: 0, clipPath: "inset(0% 0 0 0)" }}
             exit={{ opacity: 0, scale: 0.96, y: 12 }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            drag={works.length > 1 ? "x" : false}
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.25}
+            onDragEnd={(_, info) => {
+              const { offset, velocity } = info;
+              if (offset.x < -60 || velocity.x < -400) next();
+              else if (offset.x > 60 || velocity.x > 400) prev();
+            }}
             onClick={(e) => e.stopPropagation()}
           >
             <div className="relative">

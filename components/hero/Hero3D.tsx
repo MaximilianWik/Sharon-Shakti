@@ -56,7 +56,7 @@ function DisplacedMass() {
 
   return (
     <mesh ref={meshRef}>
-      <icosahedronGeometry args={[1.6, 64]} />
+      <icosahedronGeometry args={[1.6, 48]} />
       <shaderMaterial
         ref={matRef}
         vertexShader={vertexShader}

@@ -30,8 +30,6 @@ export default function Reveal({
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    gsap.registerPlugin(ScrollTrigger);
-
     const targets =
       stagger != null ? Array.from(el.children) : [el];
 

@@ -132,3 +132,20 @@ export function getAboutPortrait(): string | null {
     return null;
   }
 }
+
+/** Instagram tiles — up to 6 images from public/instagram/ in sort order.
+ *  Drop any images into that folder to populate the about page feed teaser.
+ *  Prefix filenames with 01-, 02- … to control order. */
+export function getInstagramTiles(limit = 6): string[] {
+  const dir = path.join(process.cwd(), "public", "instagram");
+  try {
+    return fs
+      .readdirSync(dir)
+      .filter((f) => IMAGE_RE.test(f))
+      .sort()
+      .slice(0, limit)
+      .map((f) => `/instagram/${f}`);
+  } catch {
+    return [];
+  }
+}

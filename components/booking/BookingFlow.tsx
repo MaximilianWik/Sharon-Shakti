@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { BOOKING, isWorkingDay } from "@/lib/booking-config";
 import Button from "@/components/Button";
+import Link from "next/link";
 import Gargoyle from "@/components/ornaments/Gargoyle";
 
 type Slot = { label: string; start: string; end: string; available: boolean };
@@ -176,6 +177,13 @@ export default function BookingFlow() {
           {confirmation.mode === "mock" &&
             " (Demo mode: no live calendar connected.)"}
         </p>
+        <Link
+          href="/care"
+          className="mt-6 inline-flex items-center gap-3 text-bone/70 transition-colors hover:text-bone"
+        >
+          <span className="label text-xs">Review aftercare instructions</span>
+          <span className="inline-block h-px w-8 bg-oxblood-bright" />
+        </Link>
       </div>
     );
   }
