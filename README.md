@@ -178,3 +178,28 @@ npm run dev       # http://localhost:3000
 npm run build     # production build
 npm run typecheck # tsc --noEmit
 ```
+
+
+## Sync to personal calendar (read only)
+1. Share her personal calendar with the service account
+Google Calendar → Settings → her personal calendar → Share with specific people → add booking@tattoo-appointments.iam.gserviceaccount.com → permission: "See only free/busy (hide details)" is enough.
+---
+
+2. Add the env var in Vercel
+GOOGLE_PERSONAL_CALENDAR_ID → her personal calendar ID (found under Settings → her calendar → Integrate calendar → Calendar ID — usually her personal Gmail address).
+## Google Calendar setup
+
+Redeploy and her personal events will block slots automatically.
+1. Create a GCP project and enable the Calendar API.
+2. Create a service account; download the JSON key.
+3. Share Sharon's Google Calendar with the service account email (give "Make changes to events" permission).
+4. Set `GOOGLE_CLIENT_EMAIL`, `GOOGLE_PRIVATE_KEY`, `GOOGLE_CALENDAR_ID` in Vercel.
+
+## Add appointments to personal calendar
+From the sharonshaktitattoo@gmail.com account:
+---
+
+Google Calendar → Settings → sharonshaktitattoo@gmail.com calendar → Share with specific people → add her personal email → "Make changes to events"
+## Development
+
+Once she accepts, the tattoo appointments calendar appears as an overlay in her personal Google Calendar. She sees everything in one place, in a different colour. Any events she adds from her personal calendar also show up there, and since we're already reading both calendars for free/busy, the blocking stays in sync too.
