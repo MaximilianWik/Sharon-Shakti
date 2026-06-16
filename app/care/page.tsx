@@ -81,11 +81,11 @@ export default function CarePage() {
           <Reveal
             as="h1"
             y={56}
-            className="mt-6 font-display text-[clamp(1.75rem,8vw,6rem)] font-light leading-[0.9] tracking-display text-bone"
+            className="mt-6 font-display text-[clamp(1.75rem,8vw,6rem)] font-light leading-[1.2] tracking-display text-bone"
           >
             FAQ &amp; Aftercare
           </Reveal>
-          <Reveal as="p" delay={0.1} className="mt-8 max-w-measure leading-relaxed text-bone/70">
+          <Reveal as="p" delay={0.1} className="mt-14 max-w-measure leading-relaxed text-bone/70">
             What to expect, how to prepare, and how to heal your tattoo so it
             outlasts everything around it.
           </Reveal>
