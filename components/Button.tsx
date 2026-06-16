@@ -41,13 +41,13 @@ export default function Button({
   if (href && !disabled) {
     if (external) {
       return (
-        <a href={href} target="_blank" rel="noreferrer" className={cls} data-cursor="hover">
+        <a href={href} target="_blank" rel="noreferrer" className={cls}>
           {inner}
         </a>
       );
     }
     return (
-      <Link href={href} className={cls} data-cursor="hover">
+      <Link href={href} className={cls}>
         {inner}
       </Link>
     );
@@ -60,7 +60,6 @@ export default function Button({
       disabled={disabled}
       aria-disabled={disabled}
       className={cls}
-      data-cursor={disabled ? undefined : "hover"}
     >
       {inner}
     </button>

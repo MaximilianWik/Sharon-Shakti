@@ -46,7 +46,6 @@ export default function WorkPlate({
   return (
     <figure
       ref={ref}
-      data-cursor="hover"
       className={`group relative overflow-hidden border border-ash-dim/20 bg-ink-raised transition-colors duration-700 hover:border-bone/25 ${spanClass[span]}`}
     >
       <div className="absolute inset-0 transition-transform duration-[1200ms] ease-out-expo group-hover:scale-[1.04]">

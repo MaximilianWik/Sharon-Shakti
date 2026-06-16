@@ -22,7 +22,7 @@ export default function Home() {
             as="p"
             className="dropcap max-w-measure font-heading text-2xl leading-[1.5] tracking-heading text-bone md:text-3xl"
           >
-            The skin remembers what the eye fears. Each piece is drawn slowly,
+            The skin remembers what the eye fears. Each piece I draw slowly,
             in black and blood, to outlast the body it marks.
           </Reveal>
 

@@ -47,15 +47,8 @@ body {
   font-size: 1.0625rem;
   margin: 0;
   overflow-x: hidden;
-  cursor: none;
 }
 
-/* Hide custom cursor fallback on touch / coarse pointers */
-@media (pointer: coarse) {
-  body {
-    cursor: auto;
-  }
-}
 
 ::selection {
   background: #6e1014;

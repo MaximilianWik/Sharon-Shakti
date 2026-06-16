@@ -149,7 +149,7 @@ export default function BookingFlow() {
           <dd>{form.email}</dd>
         </dl>
         <p className="mt-8 max-w-md text-sm leading-relaxed text-ash">
-          Sharon will be in touch at {form.email} to confirm details before your session.
+          I&rsquo;ll be in touch at {form.email} to confirm details before your session.
           {confirmation.mode === "mock" &&
             " (Demo mode: no live calendar connected.)"}
         </p>
@@ -176,7 +176,6 @@ export default function BookingFlow() {
                 type="button"
                 disabled={!d.working}
                 onClick={() => setSelectedDate(d.iso)}
-                data-cursor={d.working ? "hover" : undefined}
                 className={`group relative flex min-w-0 flex-col items-center gap-1 overflow-hidden border px-2 py-4 transition-all duration-300 ${
                   active
                     ? "border-oxblood-bright bg-oxblood/20 text-bone shadow-[inset_0_0_0_1px_rgba(243,242,239,0.16),0_0_18px_rgba(154,22,32,0.22)]"
@@ -245,7 +244,6 @@ export default function BookingFlow() {
                       type="button"
                       disabled={!s.available}
                       onClick={() => setSelectedSlot(s)}
-                      data-cursor={s.available ? "hover" : undefined}
                       className={`group relative h-12 overflow-hidden border text-sm transition-all duration-300 ${
                         active
                           ? "border-oxblood-bright bg-oxblood/85 text-bone shadow-[inset_0_0_0_1px_rgba(243,242,239,0.18),0_0_16px_rgba(154,22,32,0.24)]"
@@ -333,13 +331,12 @@ export default function BookingFlow() {
               aria-label="I understand this is a consultation request"
               onClick={() => setConsent((v) => !v)}
               className="illuminated-check"
-              data-cursor="hover"
             >
               {consent ? "S" : ""}
             </button>
             <p className="max-w-xs text-sm leading-relaxed text-ash">
-              I understand this is a request for a consultation, and that Sharon
-              confirms every booking personally before it is final.
+              I understand this is a request for a consultation, and that I confirm
+              every booking personally before it is final.
             </p>
           </div>
 
@@ -353,7 +350,7 @@ export default function BookingFlow() {
             {submit === "submitting" ? "Requesting…" : "Request this session"}
           </Button>
           <p className="mt-4 text-xs leading-relaxed text-ash/60">
-            This sends a consultation request. Sharon confirms every booking
+            This sends a consultation request. I confirm every booking
             personally before it&rsquo;s final.
           </p>
         </div>

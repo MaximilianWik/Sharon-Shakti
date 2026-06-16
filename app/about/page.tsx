@@ -3,7 +3,7 @@ import Reveal from "@/components/Reveal";
 import Divider from "@/components/Divider";
 import Button from "@/components/Button";
 import Arch from "@/components/ornaments/Arch";
-import Placeholder from "@/components/Placeholder";
+import Image from "next/image";
 import TraceryCorner from "@/components/ornaments/TraceryCorner";
 
 export const metadata: Metadata = {
@@ -26,7 +26,14 @@ export default function AboutPage() {
         <Reveal className="md:col-span-5" y={56}>
           <Arch className="text-oxblood-bright/50">
             <div className="relative aspect-[3/4] bg-ink-raised">
-              <Placeholder seed={88} label="Portrait of Sharon" />
+              <Image
+                src="/placeholder/placeholder10.png"
+                alt="Portrait of Sharon"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 40vw"
+                priority
+              />
             </div>
           </Arch>
         </Reveal>
@@ -47,9 +54,9 @@ export default function AboutPage() {
             delay={0.1}
             className="mt-8 max-w-measure text-lg leading-relaxed text-bone/75"
           >
-            A dark artist working permanently in skin. Sharon renders horror
-            realism and blackwork with the patience of a painter and the nerve
-            of a performer — beauty pulled out of dread, never shock for its
+            A dark artist working permanently in skin. I render horror realism
+            and blackwork with the patience of a painter and the nerve of a
+            performer — beauty pulled out of dread, never shock for its
             own sake.
           </Reveal>
         </div>
@@ -94,9 +101,9 @@ export default function AboutPage() {
             <p className="dropcap">
               The same instinct that holds a room from a stage guides the
               machine: timing, restraint, and the willingness to sit inside
-              discomfort until it becomes beautiful. Sharon&rsquo;s tattooing
-              carries the cadence of a blues set and the theatre of burlesque —
-              an art of slow reveal.
+              discomfort until it becomes beautiful. My tattooing carries
+              the cadence of a blues set and the theatre of burlesque — an art
+              of slow reveal.
             </p>
             <p>
               Work is exclusively horror realism, blackwork and dark art. No

@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import Portcullis from "@/components/ornaments/Portcullis";
 
 const links = [
+  { href: "/", label: "Home" },
   { href: "/work", label: "Work" },
   { href: "/about", label: "About" },
   { href: "/book", label: "Book" },
@@ -72,7 +73,6 @@ export default function Nav() {
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
           className="h-8 w-8 text-bone transition-colors hover:text-oxblood-bright md:hidden"
-          data-cursor="hover"
         >
           <Portcullis className={`h-8 w-8 transition-transform duration-300 ${open ? "translate-y-0.5" : ""}`} />
         </button>

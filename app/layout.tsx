@@ -3,7 +3,6 @@ import localFont from "next/font/local";
 import { Cinzel, EB_Garamond } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
-import Cursor from "@/components/Cursor";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
@@ -59,7 +58,6 @@ export default function RootLayout({
     >
       <body className="grain">
         <SmoothScroll>
-          <Cursor />
           <Nav />
           <main>{children}</main>
           <Footer />

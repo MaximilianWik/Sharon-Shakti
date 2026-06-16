@@ -12,7 +12,6 @@ export default function NotFound() {
       </p>
       <Link
         href="/"
-        data-cursor="hover"
         className="group mt-10 inline-flex items-center gap-3 text-bone"
       >
         <span className="label">Return home</span>
