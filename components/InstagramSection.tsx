@@ -50,7 +50,7 @@ export default function InstagramSection() {
             @{HANDLE}
           </a>
           <p className="max-w-measure leading-relaxed text-bone/60">
-            Latest work, process and fragments — follow along on Instagram.
+            Latest work, process and fragments. Follow along on Instagram.
           </p>
         </div>
 

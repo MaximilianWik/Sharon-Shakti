@@ -19,11 +19,11 @@ const faqs: Faq[] = [
   },
   {
     q: "Do you take walk-ins?",
-    a: "No — I work by appointment only so each design gets the time it deserves. Use the Book page to request a consultation.",
+    a: "No. I work by appointment only so each design gets the time it deserves. Use the Book page to request a consultation.",
   },
   {
     q: "Does it hurt?",
-    a: "Tattooing is uncomfortable, and longer sessions test your endurance. Eat well beforehand, stay hydrated, and tell me if you need a break — we go at a pace you can sit with.",
+    a: "Tattooing is uncomfortable, and longer sessions test your endurance. Eat well beforehand, stay hydrated, and tell me if you need a break. We go at a pace you can sit with.",
   },
   {
     q: "How should I prepare for my session?",
@@ -35,18 +35,18 @@ const faqs: Faq[] = [
   },
   {
     q: "Do you offer touch-ups?",
-    a: "A complimentary touch-up is available within a reasonable window after healing if the piece needs it — provided aftercare was followed.",
+    a: "A complimentary touch-up is available within a reasonable window after healing if the piece needs it, provided aftercare was followed.",
   },
   {
     q: "What is your cancellation policy?",
-    a: "Life happens — let me know as early as you can to reschedule. Deposits and notice periods will be confirmed when you book.",
+    a: "Life happens, let me know as early as you can to reschedule. Deposits and notice periods will be confirmed when you book.",
   },
 ];
 
 const aftercare: { k: string; v: string }[] = [
   {
     k: "First hours",
-    v: "Leave the covering on for the time I tell you — usually 2–4 hours (or as advised for a second-skin wrap). It protects the fresh wound from bacteria.",
+    v: "Leave the covering on for the time I tell you, usually 2–4 hours (or as advised for a second-skin wrap). It protects the fresh wound from bacteria.",
   },
   {
     k: "First wash",
@@ -54,11 +54,11 @@ const aftercare: { k: string; v: string }[] = [
   },
   {
     k: "Moisturise",
-    v: "Apply a thin layer of a fragrance-free aftercare balm 2–3 times a day. Thin is key — the skin must breathe, not suffocate.",
+    v: "Apply a thin layer of a fragrance-free aftercare balm 2–3 times a day. Thin is key. The skin must breathe, not suffocate.",
   },
   {
     k: "Days 1–14",
-    v: "It will scab and flake — this is normal. Do not pick, scratch or peel. Let everything fall away on its own to protect the colour and linework.",
+    v: "It will scab and flake. This is normal. Do not pick, scratch or peel. Let everything fall away on its own to protect the colour and linework.",
   },
   {
     k: "Avoid",
@@ -129,8 +129,7 @@ export default function CarePage() {
             ))}
           </Reveal>
           <p className="mt-10 max-w-measure text-sm leading-relaxed text-ash">
-            These are general guidelines. If anything looks or feels wrong —
-            spreading redness, heat, or discharge — see a doctor. When in doubt,
+            These are general guidelines. If anything looks or feels wrong (spreading redness, heat, or discharge) see a doctor. When in doubt,
             message me.
           </p>
         </div>

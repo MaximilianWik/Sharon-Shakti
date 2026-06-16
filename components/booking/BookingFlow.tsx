@@ -184,7 +184,7 @@ export default function BookingFlow() {
     <div className="grid min-w-0 grid-cols-1 gap-12 xl:grid-cols-[minmax(0,1fr)_minmax(21rem,0.85fr)]">
       {/* Left: date + slots */}
       <div className="min-w-0">
-        <span className="label text-oxblood-bright">01 — Choose a day</span>
+        <span className="label text-oxblood-bright">01 · Choose a day</span>
 
         <div
           ref={stripRef}
@@ -230,7 +230,7 @@ export default function BookingFlow() {
         </div>
 
         <div className="mt-10">
-          <span className="label text-oxblood-bright">02 — Pick a time</span>
+          <span className="label text-oxblood-bright">02 · Pick a time</span>
           <div className="mt-6 min-h-[8rem]">
             {slotsStatus === "loading" && (
               <div className="grid grid-cols-[repeat(auto-fit,minmax(4rem,1fr))] gap-2">
@@ -297,7 +297,7 @@ export default function BookingFlow() {
           </div>
           {day?.mode === "mock" && (
             <p className="mt-4 text-xs text-ash/60">
-              Demo availability — connect Google Calendar to show real free/busy.
+              Demo mode. Connect Google Calendar to show real availability.
             </p>
           )}
         </div>
@@ -308,7 +308,7 @@ export default function BookingFlow() {
         onSubmit={handleSubmit}
         className="flex min-w-0 flex-col gap-6 border-t border-ash-dim/40 pt-10 xl:border-l xl:border-t-0 xl:pl-12 xl:pt-0"
       >
-        <span className="label text-oxblood-bright">03 — Your details</span>
+        <span className="label text-oxblood-bright">03 · Your details</span>
 
         <div
           className={`transition-opacity duration-300 ${

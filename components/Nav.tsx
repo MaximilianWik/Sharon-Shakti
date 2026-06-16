@@ -8,9 +8,9 @@ import Portcullis from "@/components/ornaments/Portcullis";
 const links = [
   { href: "/", label: "Home" },
   { href: "/work", label: "Work" },
+  { href: "/book", label: "Book" },
   { href: "/about", label: "About" },
   { href: "/care", label: "Care" },
-  { href: "/book", label: "Book" },
 ];
 
 export default function Nav() {
@@ -40,8 +40,8 @@ export default function Nav() {
       <nav className="mx-auto flex max-w-[1600px] items-center justify-between px-6 py-5 md:px-12">
         <Link
           href="/"
-          aria-label="Sharon — home"
-          className="font-heading text-xl font-semibold tracking-heading text-bone transition-opacity hover:opacity-70"
+          aria-label="Sharon, home"
+          className="font-display text-2xl text-bone transition-opacity hover:opacity-70"
         >
           SHARON
         </Link>

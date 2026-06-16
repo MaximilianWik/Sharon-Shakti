@@ -31,7 +31,7 @@ export default function WorkPage() {
           className="mt-8 max-w-measure leading-relaxed text-bone/70"
         >
           Healed and fresh work across horror realism, blackwork and dark art.
-          Every piece is bespoke — designed for one body and never repeated.
+          Every piece is bespoke, designed for one body and never repeated.
           Imagery shown is representative placeholder while the archive is
           digitised.
         </Reveal>

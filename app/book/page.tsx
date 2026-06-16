@@ -28,9 +28,7 @@ export default function BookPage() {
           delay={0.1}
           className="mt-8 max-w-measure leading-relaxed text-bone/70"
         >
-          Pick a day and time below. Availability is read live from the studio
-          calendar — open slots are real. Every request is a consultation first;
-          nothing touches skin before we&rsquo;ve spoken.
+          Choose a day and time. Every slot shown is live availability from my calendar. Each booking starts as a consultation, confirmed by me personally before anything is final.
         </Reveal>
       </header>
 

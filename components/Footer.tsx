@@ -20,8 +20,7 @@ export default function Footer() {
               <span className="text-oxblood-bright">to skin.</span>
             </h2>
             <p className="mt-6 max-w-sm leading-relaxed text-bone/60">
-              Horror realism, blackwork and dark art. By appointment only;
-              every piece begins as a consultation.
+              Horror realism, blackwork and dark art. I work by appointment only. Every piece begins with a conversation.
             </p>
             <Button href="/book" className="mt-10">
               Request a session
@@ -34,8 +33,9 @@ export default function Footer() {
             <p className="label mb-5 text-ash">Pages</p>
             <ul className="flex flex-col gap-4">
               <li><Link href="/work" className="footer-crypt-link">Work</Link></li>
-              <li><Link href="/about" className="footer-crypt-link">About</Link></li>
               <li><Link href="/book" className="footer-crypt-link">Book</Link></li>
+              <li><Link href="/about" className="footer-crypt-link">About</Link></li>
+              <li><Link href="/care" className="footer-crypt-link">Care</Link></li>
             </ul>
           </nav>
 

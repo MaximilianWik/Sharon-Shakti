@@ -9,7 +9,7 @@ import TraceryCorner from "@/components/ornaments/TraceryCorner";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Sharon — horror-realism, blackwork and dark-art tattoo artist, blues & soul musician, burlesque performer.",
+    "Sharon, horror-realism, blackwork and dark-art tattoo artist, blues & soul musician, burlesque performer.",
 };
 
 const facets = [
@@ -56,8 +56,7 @@ export default function AboutPage() {
           >
             A dark artist working permanently in skin. I render horror realism
             and blackwork with the patience of a painter and the nerve of a
-            performer — beauty pulled out of dread, never shock for its
-            own sake.
+            performer. Beauty pulled from dread, never shock for its own sake.
           </Reveal>
         </div>
       </header>
@@ -102,12 +101,11 @@ export default function AboutPage() {
               The same instinct that holds a room from a stage guides the
               machine: timing, restraint, and the willingness to sit inside
               discomfort until it becomes beautiful. My tattooing carries
-              the cadence of a blues set and the theatre of burlesque — an art
-              of slow reveal.
+              the cadence of a blues set and the theatre of burlesque, an art of slow reveal.
             </p>
             <p>
               Work is exclusively horror realism, blackwork and dark art. No
-              flash, no trends — each design is built from a single
+              flash, no trends. Each design is built from a single
               conversation and drawn for one body only. Sessions are long,
               deliberate, and treated as collaboration.
             </p>

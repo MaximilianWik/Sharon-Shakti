@@ -33,15 +33,15 @@ const body = EB_Garamond({
 export const metadata: Metadata = {
   metadataBase: new URL("https://sharon.ink"),
   title: {
-    default: "SHARON — Horror Realism · Blackwork · Dark Art",
-    template: "%s — SHARON",
+    default: "SHARON | Horror Realism · Blackwork · Dark Art",
+    template: "%s | SHARON",
   },
   description:
-    "The black gallery of Sharon — horror realism, blackwork and dark-art tattooing. View the work and book a session.",
+    "The black gallery of Sharon: horror realism, blackwork and dark-art tattooing. View the work and book a session.",
   openGraph: {
-    title: "SHARON — Horror Realism · Blackwork · Dark Art",
+    title: "SHARON | Horror Realism · Blackwork · Dark Art",
     description:
-      "The black gallery of Sharon — horror realism, blackwork and dark-art tattooing.",
+      "The black gallery of Sharon: horror realism, blackwork and dark-art tattooing.",
     type: "website",
   },
 };

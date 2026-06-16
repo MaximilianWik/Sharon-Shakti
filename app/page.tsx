@@ -31,7 +31,7 @@ export default function Home() {
             stagger={0.12}
           >
             {[
-              { k: "Discipline", v: "Horror realism, blackwork & dark art — exclusively." },
+              { k: "Discipline", v: "Horror realism, blackwork & dark art, exclusively." },
               { k: "Cadence", v: "A handful of sessions a month. Each design is one of one." },
               { k: "Studio", v: "By appointment only. Consultations precede every booking." },
             ].map((it) => (

@@ -221,7 +221,7 @@ export async function createBooking(input: BookingInput) {
     return {
       mode: "mock" as const,
       confirmed: true,
-      summary: `Consultation — ${input.name}`,
+      summary: `Consultation: ${input.name}`,
       start: input.start,
       end,
     };
@@ -239,7 +239,7 @@ export async function createBooking(input: BookingInput) {
   const event = await calendar.events.insert({
     calendarId: process.env.GOOGLE_CALENDAR_ID as string,
     requestBody: {
-      summary: `Consultation — ${input.name}`,
+      summary: `Consultation: ${input.name}`,
       description: [
         `Booked via sharon.ink`,
         `Name: ${input.name}`,
