@@ -82,7 +82,7 @@ export default function Nav() {
       {/* Mobile menu */}
       <div
         className={`overflow-hidden border-t border-ash-dim/40 bg-ink/95 backdrop-blur-md transition-[max-height] duration-500 ease-out-expo md:hidden ${
-          open ? "max-h-72" : "max-h-0"
+          open ? "max-h-[400px]" : "max-h-0"
         }`}
       >
         <ul className="flex flex-col px-6 py-2">
