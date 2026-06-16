@@ -17,7 +17,7 @@ export default function FaqAccordion({ items }: { items: Faq[] }) {
               type="button"
               onClick={() => setOpen(isOpen ? null : i)}
               aria-expanded={isOpen}
-              className="group flex w-full items-center justify-between gap-6 py-6 text-left transition-colors"
+              className="group flex w-full items-center justify-between gap-6 py-6 text-left transition-colors print:hidden"
             >
               <span className="flex items-center gap-4">
                 <span
@@ -39,13 +39,17 @@ export default function FaqAccordion({ items }: { items: Faq[] }) {
                 +
               </span>
             </button>
+            {/* Print: show question heading separately since button is hidden */}
+            <p className="hidden py-4 font-heading text-lg uppercase tracking-heading text-bone print:block">
+              {it.q}
+            </p>
             <div
-              className={`grid transition-all duration-500 ease-out-expo ${
+              className={`grid transition-all duration-500 ease-out-expo print:grid-rows-[1fr] print:opacity-100 ${
                 isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
               }`}
             >
               <div className="min-h-0 overflow-hidden">
-                <p className="max-w-measure pb-7 pl-8 leading-relaxed text-bone/70">{it.a}</p>
+                <p className="max-w-measure pb-7 pl-8 leading-relaxed text-bone/70 print:pl-0 print:text-black">{it.a}</p>
               </div>
             </div>
           </li>

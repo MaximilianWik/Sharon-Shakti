@@ -19,7 +19,7 @@ export default function ScrollProgress() {
   return (
     <div
       aria-hidden
-      className="pointer-events-none fixed left-0 right-0 top-0 z-[60] h-[2px] origin-left bg-oxblood-bright will-change-transform"
+      className="print:hidden pointer-events-none fixed left-0 right-0 top-0 z-[60] h-[2px] origin-left bg-oxblood-bright will-change-transform"
       style={{ transform: `scaleX(${progress})`, opacity: progress > 0.01 ? 1 : 0 }}
     />
   );
