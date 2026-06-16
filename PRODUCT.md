@@ -15,9 +15,33 @@ The job to be done: *see the work the way it deserves to be seen, believe in the
 
 ## Product Purpose
 
-A single-artist portfolio + booking site for **Sharon** (sharonnshakti) — a horror-realism, dark-art, blackwork tattoo artist. The site exists to present her tattoo work as gallery pieces, establish her as a serious dark-art practitioner, and convert belief into a booked appointment synced live to her Google Calendar.
+A single-artist portfolio + booking site for **Sharon Shakti** (@sharonnshakti) — a horror-realism, dark-art, blackwork tattoo artist based in Stockholm. The site exists to present her tattoo work as gallery pieces, establish her as a serious dark-art practitioner, and convert belief into a booked appointment synced live to her Google Calendar.
 
 Success = the work lands with weight, the artist feels singular and credible, and a qualified visitor books a real available slot in under a minute. Booking persists to Google Calendar as the source of truth — no database.
+
+**Live:** https://sharon-shakti.vercel.app/ (custom domain `sharon.ink` pending)
+
+## Current Pages
+
+| Route | Status |
+|---|---|
+| `/` | Live — 3D hero, statement, auto-populating selected work gallery |
+| `/work` | Live — full gallery, image lightbox |
+| `/about` | Live — bio, facets, Instagram section (@sharonnshakti) |
+| `/book` | Live — calendar-synced availability, consultation form, email confirmation |
+| `/care` | Live — FAQ accordion + aftercare guide (generic copy, needs Sharon's review) |
+
+## Content Pending from Sharon
+
+- [ ] Real tattoo images for `public/work/selected/` and `public/work/gallery/`
+- [ ] A photo of her for `public/about/` (any filename)
+- [ ] Bio text in first person
+- [ ] FAQ answers to replace the generic placeholders in `/care`
+- [ ] Aftercare instructions in her own words
+- [ ] Booking system confirmation: working days, hours, slot length, deposit policy
+- [ ] Studio details (name, address, link) if applicable
+- [ ] Pricing info (if any to display)
+
 
 ## Brand Personality
 

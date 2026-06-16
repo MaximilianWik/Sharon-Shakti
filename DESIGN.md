@@ -1,10 +1,9 @@
-<!-- SEED: re-run $impeccable document once there's code to capture the actual tokens and components. -->
 ---
-name: Sharon
+name: Sharon Shakti
 description: Horror gallery-grade portfolio + booking for a blackwork / horror-realism / dark-art tattoo artist. Drenched monochrome, oxblood as the one voice.
 ---
 
-# Design System: Sharon
+# Design System: Sharon Shakti
 
 ## 1. Overview
 
@@ -12,116 +11,169 @@ description: Horror gallery-grade portfolio + booking for a blackwork / horror-r
 
 A morgue-quiet exhibition hall hung with horror-realism and blackwork. The walls are absolute black, the labels are bone-white, and the only color in the entire building is blood. Work is hung like art, lit like art, paced like art — the visitor moves through it slowly, deliberately, in the dark. This is a gallery of the macabre, not a tattoo shop; reverence and restraint do the work that shock would cheapen.
 
-The system is **drenched monochrome**: black is the field, bone-white is the type and frame, and a single dark-red oxblood is the one voice — rare enough that every appearance reads as intentional, like blood on skin. Motion is **choreographed** (canvas / WebGL / GSAP, scroll-driven sequences, awwwards-grade) — the experience is meant to feel alive, crafted, and singular, taking direct inspiration from kayiseisagu.com's canvas-driven black/white restraint and bent toward the visceral. The imagery — high-contrast blackwork, dotwork, dark realism — supplies all the texture; the UI recedes so the ink commands.
-
-This system explicitly rejects: generic Squarespace tattoo templates, neon / cyberpunk "dark mode" (this is monochrome, never RGB-edgy), skulls-and-barbed-wire / tribal-clipart horror cliché, link-in-bio minimalism, and adolescent edgelord shock. The horror here is refined.
+The system is **drenched monochrome**: black is the field, bone-white is the type and frame, and a single dark-red oxblood is the one voice — rare enough that every appearance reads as intentional, like blood on skin. Motion is **choreographed** (canvas / WebGL / GSAP, scroll-driven sequences) — the experience must feel alive, crafted, and singular.
 
 **Key Characteristics:**
 - Drenched black field; bone-white type; oxblood as the sole accent (≤10%)
-- High-contrast serif display against grotesque sans body
+- Three-family type system: SingleGhost display / Cinzel heading / EB Garamond body
 - Choreographed, scroll-driven motion as the medium, not garnish
 - Gallery cadence: negative space, slow reveals, work hung not gridded
-- No reduced-motion fallback, no content warning (deliberate owner direction)
+- Gothic architecture vocabulary for ornaments and UI chrome
+
+---
 
 ## 2. Colors
 
-Drenched monochrome — a black surface, bone-white ink, and a single dark-red voice. No other hue ever appears.
+Drenched monochrome. No hue other than oxblood ever appears.
 
-### Primary
-- **Oxblood** (`[exact value to be resolved during implementation]` — a deep, dried-blood dark red; *not* bright crimson): The one voice. Booking CTAs, the active/critical state, a hairline under a hovered piece, the occasional drawn line. Rare by doctrine — its scarcity is the point.
+### Palette tokens (Tailwind + CSS custom properties)
 
-### Neutral
-- **Ink Black** (`[to be resolved]` — pure or near-pure black): The field. Backgrounds, the gallery walls, the void between works.
-- **Bone White** (`[to be resolved]` — pure or faintly warm off-white): All body type, frames, labels, dividers. The light in the dark room.
-- **Ash** (`[to be resolved]` — mid-grey): Secondary type, muted captions, inactive states. Sits between ink and bone.
+| Token | Value | Role |
+|---|---|---|
+| `void` | `#000000` | Absolute black — hero overlays, lightbox backdrop |
+| `ink` | `#0a0a0a` | Primary background — the gallery wall |
+| `ink-raised` | `#141414` | Elevated surfaces — cards, booking container |
+| `bone` | `#f3f2ef` | Primary text, frames, labels — the light |
+| `ash` | `#7d7d7d` | Secondary text, captions, inactive states |
+| `ash-dim` | `#3a3a3a` | Borders, dividers, subtle structure |
+| `oxblood` | `#6e1014` | Hover fills, destructive states, deeper blood |
+| `oxblood-bright` | `#9a1620` | **The one voice** — active states, CTAs, labels |
+
+### CSS custom properties
+```css
+--oxblood-glow: 0 0 22px rgba(154, 22, 32, 0.45);
+```
 
 ### Named Rules
-**The One Voice Rule.** Oxblood appears on ≤10% of any screen. It is the only color in the system; everything else is black, white, or grey. When in doubt, it stays black-and-white — blood is spent, not spilled.
 
-**The No-Hue Rule.** There is no second accent. No blue, no green, no gold. Any color that is not ink, bone, ash, or oxblood is forbidden.
+**The One Voice Rule.** Oxblood (`#9a1620` / `#6e1014`) appears on ≤10% of any screen. It is the only colour in the system. When in doubt, it stays black and white.
+
+**The No-Hue Rule.** No second accent. No blue, green, gold. Ink · bone · ash · oxblood — nothing else.
+
+**The Dark-Swallow Rule.** Surface separation via a near-black tonal step or 1px bone/ash hairline — never a floating grey card shadow.
+
+---
 
 ## 3. Typography
 
-**Display Font:** `[high-contrast serif / Didone — to be chosen at implementation]` (with a serif fallback)
-**Body Font:** `[grotesque sans — to be chosen at implementation]` (with a sans fallback)
+Three families, strict role assignment. No crossover.
 
-**Character:** A high-contrast display serif whose thick/thin stroke contrast mirrors blackwork's own solid-black-vs-fine-line duality, set against a clean, cold grotesque sans for everything functional. Gallery-grade gravitas up top; clinical legibility below.
+| Family | Variable | Source | Role |
+|---|---|---|---|
+| **SingleGhost** | `--font-display` / `font-display` | Local (`app/fonts/SingleGhost.ttf`) | H1 display — hero, about, page headers |
+| **Cinzel** | `--font-heading` / `font-heading` | Google Fonts | Section headings, nav links, labels, booking steps |
+| **EB Garamond** | `--font-body` / `font-serif` | Google Fonts | Body copy, captions, italic accents |
 
-### Hierarchy
-- **Display** (light/regular weight, large clamp — ceiling ≤6rem, line-height ~1): Artist name, section titles, the few words that hang on the wall. Letter-spacing ≥ -0.04em floor; the serif's contrast carries the weight, not tracking.
-- **Headline** (regular, mid-large): Piece titles, gallery-room headers.
-- **Body** (regular, 16–18px, line-height ~1.6, max 65–75ch): Bio, process, the rare paragraph. Bone-white on ink — verify ≥4.5:1 (trivial in monochrome).
-- **Label** (grotesque sans, small, mild uppercase tracking): Booking UI, timestamps, captions, nav.
+### Scale
+
+```
+Display (h1):   clamp(1.75rem, 8vw, 6rem) / leading-[0.9–0.92] / tracking-display (-0.01em)
+Heading (h2):   text-3xl–text-5xl / uppercase / tracking-heading (0.16em)
+Label:          text-[0.7rem] / uppercase / tracking-[0.28em] / font-heading
+Body:           text-[1.0625rem] (17px) / leading-relaxed / max-w-[68ch]
+```
 
 ### Named Rules
-**The Two-Voice Rule.** Serif speaks only in display and headline. Sans speaks everywhere functional. They never trade places, and no third family ever enters.
 
-## 4. Elevation
+**The Two-Voice Rule.** SingleGhost/Cinzel for display/heading only. EB Garamond for body only. They never swap roles.
 
-Layered, not lifted. Depth comes from the choreographed motion and the black-on-black tonal stacking (ink vs. a marginally lighter near-black surface), not from drop shadows. Shadows, when they exist at all, are deep and diffuse — the dark swallowing an edge — never the soft grey card-shadow of a 2014 app. If a surface looks like it's floating on a light-grey halo, it's wrong.
+**The Label System.** `.label` class: Cinzel, 0.7rem, uppercase, tracking 0.28em. Used for eyebrows, step numbers, captions. Use sparingly — an eyebrow on every section is AI grammar, not brand voice.
 
-### Named Rules
-**The Dark-Swallow Rule.** Separation between surfaces is achieved by a near-black tonal step or a 1px bone/ash hairline — never by a glowing drop shadow.
+---
 
-## 5. Components
+## 4. Spacing & Layout
 
-Gothic architecture vocabulary, rendered strictly in the monochrome palette
-(bone / ash / oxblood — no gold, no stone-blue). Aged-gold strokes from the
-source kit map to bone/ash filigree; blood red maps to oxblood; gold glow maps
-to the oxblood glow `var(--oxblood-glow)`.
+- Max content width: `max-w-[1600px]`
+- Horizontal page padding: `px-6 md:px-12`
+- Section vertical rhythm: `py-24 md:py-32` to `py-32 md:py-48` (breathe; don't compress)
+- Body text max width: `max-w-measure` = `68ch`
+- Grid: `grid-cols-1 md:grid-cols-3` for gallery; `md:grid-cols-12` for bio layout
+- Booking inner container: `p-4 sm:p-8 md:p-[5.5rem]`
 
-### Buttons
-- **Primary** (`btn-arch`): pointed-arch silhouette (`clip-path: var(--arch)`),
-  bone rim over a dark fill, Cinzel caps label. Hover: oxblood fill, oxblood
-  drop-shadow glow, faint stone-texture reveal.
-- **Destructive** (`btn-arch--destructive`): oxblood fill, bone label.
-- **Icon** (`IconButton`): circular rose-window frame, oxblood on hover.
+---
 
-### Cards (gallery plates)
-- Four `TraceryCorner` filigrees + leaded-glass tint overlay (`.leaded-glass`,
-  oxblood-tinted diamond leading). Oxblood hairline draws across on hover.
+## 5. Motion
+
+| Layer | Tool | Character |
+|---|---|---|
+| Hero 3D | R3F / Three.js | Breathing displaced mass + ash particle shell |
+| Page entrance | Framer Motion | `opacity 0→1, y 12→0, 0.6s expo-out` |
+| Scroll reveals | GSAP + ScrollTrigger | `opacity 0→1, y 40→0, clipPath inset` |
+| Gallery plates | GSAP | `opacity 0→1, y 56→0, clipPath 8%→0` |
+| Lightbox | Framer Motion | `scale 0.92→1, y 24→0, clipPath, backdrop blur` |
+| Smooth scroll | Lenis | `duration 1.2, expo easing` |
+| Ember particles | canvas2D | `oxblood radial gradients, 16–26 particles, drift upward` |
+
+---
+
+## 6. Components
+
+### Button (`Button.tsx` + `.btn-reliquary`)
+Pointed-arch silhouette via `clip-path`. Corner pins, oxblood wash on hover, animated arrow. Bone rim on dark fill; oxblood fill for destructive variant.
+
+### Gallery plate (`WorkPlate.tsx`)
+`next/image` fill + `object-cover` inside an aspect-ratio container. Four `TraceryCorner` filigrees animate inward on hover. Oxblood hairlines draw across all four edges. Leaded-glass tint overlay. GSAP scroll entrance with clipPath.
+
+### Lightbox (`Lightbox.tsx`)
+Framer Motion `AnimatePresence`. Backdrop: `bg-void/88 backdrop-blur-md` + oxblood radial underglow. Image: `scale 0.92→1` + `clipPath` reveal + tracery corner overlays. Prev/next arrows + keyboard (←/→/Esc). Body scroll lock on open.
+
+### FAQ Accordion (`FaqAccordion.tsx`)
+`grid-rows-[0fr→1fr]` CSS transition. Oxblood diamond marker on active item, `+` → rotated `×` icon.
+
+### Ember field (`EmberField.tsx`)
+canvas2D, DPR-aware, rAF loop. `~20–26` oxblood radial-gradient particles, sine-envelope alpha, upward drift. Used on Care page header + aftercare section, Instagram section.
 
 ### Form fields (`.field-gothic`)
-- Bottom rule only, flanked by small gothic corner clips. Focus: oxblood border
-  + `var(--oxblood-glow)` and a faint gargoyle watermark fades in.
-- Checkbox replaced by an **illuminated-manuscript square initial**
-  (`.illuminated-check`) that lights oxblood when checked.
+Bottom border only, flanked by 9px gothic corner clips. Focus: oxblood border + `--oxblood-glow`. Gargoyle watermark fades in at 10% on focus.
 
-### Navigation
-- Crenellation (battlement) top border (`.crenellation`), portcullis mobile
-  icon, pointed-arch hover underline.
+### Checkbox (`.illuminated-check`)
+38×38px illuminated-manuscript square. Lights oxblood when checked, shows `S` character (SingleGhost). Inner border inset. Glow on checked state.
 
-### Dividers
-- `Divider` variants — `quatrefoil` · `rose` (rose-window medallion) · `fleur`
-  (mirrored fleur-de-lis) · `diamond` (pointed-diamond chain). `RibbedColumn`
-  for vertical / split dividers.
+### Dividers (`Divider.tsx`)
+`quatrefoil` · `rose` · `fleur` · `diamond`. Bone/ash rules flanking an SVG ornament. `RibbedColumn` for vertical separation.
 
-### Footer
-- Cathedral-facade silhouette crown, ribbed-column dividers, cross-tile base.
+### Nav (`Nav.tsx`)
+Sticky, `bg-ink/80 backdrop-blur-md` on scroll. **"Sharon Shakti"** wordmark in Cinzel (`font-heading`) with `tracking-heading`. Links in Cinzel label style. Active underline: oxblood hairline with diamond tip. Mobile: `Portcullis` hamburger → full-height drawer.
 
-### Scrollbar
-- Stacked stone-block thumb with oxblood border over a cracked-stone track.
+### Ornaments (`components/ornaments/`)
+`TraceryCorner` (4 rotations), `Quatrefoil`, `RoseWindow`, `Arcade`, `Arch`, `DiamondChain`, `FleurDeLis`, `Gargoyle`, `Portcullis`, `RibbedColumn`. All SVG, `stroke="currentColor"`, transparent background.
 
-### Named Rules
-**The Gilt-Is-Oxblood Rule.** This kit ships gold in its source palette; here
-gold never appears. Metallic accents are bone/ash; the single voice stays
-oxblood. Any gold, blue, or jewel tone is forbidden (see The No-Hue Rule).
+---
 
+## 7. Globals (CSS primitives)
 
-## 6. Do's and Don'ts
+```css
+/* Pointed-arch clip */
+--arch: polygon(0% 100%, 0% 22%, 8% 13%, 22% 6%, 37% 1.5%, 50% 0%, …);
 
-### Do:
-- **Do** keep oxblood rare — ≤10% of any screen, reserved for the booking CTA and critical/active states. Blood is spent, not spilled.
-- **Do** let the imagery be the only texture; hang each tattoo like a framed work with negative space around it.
-- **Do** use choreographed, scroll-driven motion (canvas / GSAP) as a core material — the site must feel alive and crafted.
-- **Do** pair the high-contrast serif display with a cold grotesque sans, and keep them in their lanes.
-- **Do** verify bone-white-on-ink body text hits ≥4.5:1 (trivial here) and ship full keyboard navigation with focus states that fit the dark aesthetic.
+/* Decorative primitives */
+.grain          Film grain overlay (grain.svg, 0.07 opacity, animated)
+.crenellation   Battlement strip via CSS mask
+.field-gothic   Bottom-rule input + corner clips + gargoyle
+.illuminated-check  Oxblood manuscript checkbox
+.btn-reliquary  Full button system (wash, pins, arrow, variants)
+.leaded-glass   Diamond-lead tint overlay (::after)
+.cross-tiles    Repeating SVG cross tile background (footer base)
+.dropcap        SingleGhost illuminated drop capital
+.label          Cinzel 0.7rem uppercase tracking-[0.28em]
+.footer-crypt-link  Hover: translate + oxblood underline + diamond marker
+```
 
-### Don't:
-- **Don't** use a generic Squarespace tattoo-shop template, price lists, or stock "BOOK NOW" chrome.
-- **Don't** do neon / cyberpunk "dark mode" — this is monochrome, never RGB-edgy.
-- **Don't** use skulls-and-barbed-wire / tribal-clipart horror cliché, or adolescent edgelord shock.
-- **Don't** ship link-in-bio minimalism — this is an immersive site, not a landing card.
-- **Don't** introduce any second accent color. No blue, gold, green. Ink, bone, ash, oxblood — nothing else.
-- **Don't** lay the work out as a uniform product grid; it's a gallery, not a shop.
-- **Don't** float surfaces on soft grey card-shadows; separate with tonal steps or hairlines (The Dark-Swallow Rule).
+---
+
+## 8. Do / Don't
+
+### Do
+- Keep oxblood ≤10% of any screen. Scarcity is the point.
+- Let the tattoo imagery command. UI recedes.
+- Use choreographed, scroll-driven motion as a core material.
+- Verify bone-on-ink body text (trivially ≥4.5:1).
+- Pair SingleGhost/Cinzel with EB Garamond only.
+
+### Don't
+- Introduce any second accent color.
+- Use eyebrow labels on every section — one deliberate system or none.
+- Float surfaces on soft grey shadows.
+- Use a uniform product grid for the gallery.
+- Apply neon, RGB glow, or cyberpunk "dark mode" treatments.
+- Use skulls-and-barbed-wire / tribal / shock-value horror clichés.
