@@ -188,7 +188,7 @@ export default function BookingFlow() {
 
         <div
           ref={stripRef}
-          className="mt-6 grid grid-cols-[repeat(auto-fit,minmax(4.2rem,1fr))] gap-2"
+          className="mt-6 grid grid-cols-[repeat(auto-fit,minmax(4.2rem,1fr))] gap-2 overflow-x-hidden"
           style={{ scrollbarWidth: "thin" }}
         >
           {days.map((d) => {
@@ -233,7 +233,7 @@ export default function BookingFlow() {
           <span className="label text-oxblood-bright">02 — Pick a time</span>
           <div className="mt-6 min-h-[8rem]">
             {slotsStatus === "loading" && (
-              <div className="grid grid-cols-[repeat(auto-fit,minmax(4.5rem,1fr))] gap-2">
+              <div className="grid grid-cols-[repeat(auto-fit,minmax(4rem,1fr))] gap-2">
                 {Array.from({ length: 8 }).map((_, i) => (
                   <div key={i} className="h-12 animate-pulse bg-ink-raised" />
                 ))}
@@ -263,7 +263,7 @@ export default function BookingFlow() {
             )}
 
             {slotsStatus === "idle" && day?.isWorkingDay && day.slots.some((s) => s.available) && (
-              <div className="grid grid-cols-[repeat(auto-fit,minmax(4.5rem,1fr))] gap-2">
+              <div className="grid grid-cols-[repeat(auto-fit,minmax(4rem,1fr))] gap-2">
                 {day.slots.map((s) => {
                   const active = selectedSlot?.start === s.start;
                   return (

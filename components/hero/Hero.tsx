@@ -57,7 +57,7 @@ export default function Hero() {
         </p>
 
         <div>
-          <h1 className="font-display text-[clamp(2.75rem,9vw,6rem)] font-light leading-[0.92] tracking-display text-bone">
+          <h1 className="font-display text-[clamp(1.75rem,8vw,6rem)] font-light leading-[0.92] tracking-display text-bone">
             <span data-hero-line className="block overflow-hidden">
               <span className="block">Reverence for</span>
             </span>

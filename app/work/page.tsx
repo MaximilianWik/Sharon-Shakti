@@ -21,7 +21,7 @@ export default function WorkPage() {
         <Reveal
           as="h1"
           y={56}
-          className="mt-6 font-display text-[clamp(2.75rem,9vw,6rem)] font-light leading-[0.9] tracking-display text-bone"
+          className="mt-6 font-display text-[clamp(1.75rem,8vw,6rem)] font-light leading-[0.9] tracking-display text-bone"
         >
           Hung in black
         </Reveal>
@@ -39,7 +39,7 @@ export default function WorkPage() {
 
       {/* Gallery grid */}
       <section className="mx-auto max-w-[1600px] px-6 md:px-12">
-        <div className="relative p-10 md:p-14">
+        <div className="relative p-3 sm:p-6 md:p-14">
           <TraceryCorner corner="tl" className="pointer-events-none absolute left-0 top-0 h-16 w-16 text-ash/30 md:h-24 md:w-24" strokeWidth={1.4} />
           <TraceryCorner corner="tr" className="pointer-events-none absolute right-0 top-0 h-16 w-16 text-ash/30 md:h-24 md:w-24" strokeWidth={1.4} />
           <TraceryCorner corner="bl" className="pointer-events-none absolute bottom-0 left-0 h-16 w-16 text-ash/30 md:h-24 md:w-24" strokeWidth={1.4} />

@@ -4,7 +4,7 @@ export default function NotFound() {
   return (
     <section className="flex min-h-[100svh] flex-col items-center justify-center px-6 text-center">
       <p className="label text-oxblood-bright">404</p>
-      <h1 className="mt-6 font-display text-[clamp(3rem,10vw,6.5rem)] font-light leading-none tracking-display text-bone">
+      <h1 className="mt-6 font-display text-[clamp(1.75rem,9vw,6.5rem)] font-light leading-none tracking-display text-bone">
         Lost in the dark
       </h1>
       <p className="mt-6 max-w-sm text-bone/70">

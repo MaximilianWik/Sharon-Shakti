@@ -132,7 +132,7 @@ export default function Lightbox({
               <TraceryCorner corner="br" className="pointer-events-none absolute -bottom-3 -right-3 h-9 w-9 text-ash/60" strokeWidth={1.4} />
             </div>
 
-            <figcaption className="mt-5 flex items-baseline gap-4 text-center">
+            <figcaption className="mt-5 flex flex-wrap items-baseline justify-center gap-x-4 gap-y-1 px-4 text-center">
               <span className="font-heading text-base uppercase tracking-heading text-bone md:text-lg">
                 {work.title}
               </span>

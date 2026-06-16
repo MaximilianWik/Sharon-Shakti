@@ -83,7 +83,7 @@ export default function CarePage() {
           <Reveal
             as="h1"
             y={56}
-            className="mt-6 font-display text-[clamp(2.75rem,9vw,6rem)] font-light leading-[0.9] tracking-display text-bone"
+            className="mt-6 font-display text-[clamp(1.75rem,8vw,6rem)] font-light leading-[0.9] tracking-display text-bone"
           >
             FAQ &amp; Aftercare
           </Reveal>
