@@ -4,6 +4,7 @@ import Divider from "@/components/Divider";
 import InstagramSection from "@/components/InstagramSection";
 import Arch from "@/components/ornaments/Arch";
 import Image from "next/image";
+import { getAboutPortrait } from "@/lib/works.server";
 import TraceryCorner from "@/components/ornaments/TraceryCorner";
 
 export const metadata: Metadata = {
@@ -19,6 +20,7 @@ const facets = [
 ];
 
 export default function AboutPage() {
+  const portrait = getAboutPortrait();
   return (
     <div className="pt-32 md:pt-40">
       {/* Intro: portrait + name */}
@@ -27,7 +29,7 @@ export default function AboutPage() {
           <Arch className="text-oxblood-bright/50">
             <div className="relative aspect-[3/4] bg-ink-raised">
               <Image
-                src="/about/portrait.png"
+                src={portrait ?? "/about/sharon.png"}
                 alt="Portrait of Sharon"
                 fill
                 className="object-cover"

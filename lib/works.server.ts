@@ -121,3 +121,14 @@ export function getSelectedWorks(): Work[] {
 export function getGalleryWorks(): Work[] {
   return scan("gallery");
 }
+
+/** About portrait — first image found in public/about/ (any filename). */
+export function getAboutPortrait(): string | null {
+  const dir = path.join(process.cwd(), "public", "about");
+  try {
+    const file = fs.readdirSync(dir).find((f) => IMAGE_RE.test(f));
+    return file ? `/about/${file}` : null;
+  } catch {
+    return null;
+  }
+}

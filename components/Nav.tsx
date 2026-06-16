@@ -40,10 +40,10 @@ export default function Nav() {
       <nav className="mx-auto flex max-w-[1600px] items-center justify-between px-6 py-5 md:px-12">
         <Link
           href="/"
-          aria-label="Sharon, home"
+          aria-label="Sharon Shakti, home"
           className="font-display text-2xl text-bone transition-opacity hover:opacity-70"
         >
-          SHARON
+          Sharon Shakti
         </Link>
 
         <ul className="hidden items-center gap-10 md:flex">
