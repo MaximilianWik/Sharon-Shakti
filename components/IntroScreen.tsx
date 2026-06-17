@@ -51,7 +51,7 @@ export default function IntroScreen() {
             />
             {/* Desktop: wide banner */}
             <Image
-              src="/banner/Banner desktop ratio.png"
+              src="/banner/banner-desktop-ratio.png"
               alt="Sharon Shakti — Tattoo Nightmare"
               fill
               className="hidden object-contain md:block"
