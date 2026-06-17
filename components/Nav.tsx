@@ -11,6 +11,7 @@ const links = [
   { href: "/book", label: "Book" },
   { href: "/about", label: "About" },
   { href: "/care", label: "Care" },
+  { href: "/giftcard", label: "Gift Cards" },
 ];
 
 export default function Nav() {

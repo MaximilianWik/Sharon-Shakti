@@ -10,6 +10,10 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 
 ### Added
+- **Gift Cards page** (`/giftcard`) — denomination selector (presets + custom SEK amount), 3D flip card showcasing front/back images, how-it-works grid, Stripe-ready purchase panel (`GiftCardPurchase` emits `onPurchase(amount)`)
+- **`GiftCardFlip`** client component — CSS 3D perspective flip on hover/tap, front + back images, aspect-ratio locked to credit-card proportions
+- **`GiftCardPurchase`** client component — preset amounts (1 000 / 2 000 / 3 500 / 5 000 kr) + custom input, validation, reliquary CTA; `onPurchase` prop wires to Stripe when ready
+- **Nav** — added "Gift Cards" link (`/giftcard`)
 - **Scroll progress bar** (`ScrollProgress`) — 2px oxblood line at viewport top, scales with page scroll
 - **Back-to-top button** (`BackToTop`) — fixed diamond-accent button, appears after 400px scroll
 - **Lightbox swipe** — drag left/right on mobile to navigate works (Framer Motion `drag="x"`)
