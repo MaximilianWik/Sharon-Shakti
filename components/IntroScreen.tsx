@@ -41,11 +41,20 @@ export default function IntroScreen() {
             exit={{ scale: 1.06 }}
             transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
           >
+            {/* Mobile: portrait banner */}
             <Image
               src="/banner/banner.png"
               alt="Sharon Shakti — Tattoo Nightmare"
               fill
-              className="object-cover"
+              className="object-contain md:hidden"
+              priority
+            />
+            {/* Desktop: wide banner */}
+            <Image
+              src="/banner/Banner desktop ratio.png"
+              alt="Sharon Shakti — Tattoo Nightmare"
+              fill
+              className="hidden object-contain md:block"
               priority
             />
           </motion.div>
@@ -60,7 +69,7 @@ export default function IntroScreen() {
           >
             <motion.button
               onClick={(e) => { e.stopPropagation(); handleEnter(); }}
-              className="intro-enter font-display leading-none text-oxblood-bright"
+              className="intro-enter font-display leading-none text-bone"
               style={{ fontSize: "clamp(3.5rem, 9vw, 8.5rem)" }}
               initial={{ opacity: 0, x: -32 }}
               animate={{ opacity: 1, x: 0 }}

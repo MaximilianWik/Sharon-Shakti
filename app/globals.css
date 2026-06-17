@@ -525,7 +525,8 @@ a {
 }
 
 .intro-enter:hover {
-  /* Oxblood flare: near + far halation rings */
+  /* Bone → oxblood on hover, plus multi-ring halation */
+  color: #9a1620;
   text-shadow:
     0 0 16px rgba(154, 22, 32, 1),
     0 0 42px rgba(154, 22, 32, 0.75),
