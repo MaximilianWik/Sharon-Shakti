@@ -1,6 +1,8 @@
 import { ImageResponse } from "next/og";
+import { readFileSync } from "fs";
+import { join } from "path";
 
-export const runtime = "edge";
+export const runtime = "nodejs";
 export const alt = "Sharon Shakti — Horror Realism · Blackwork · Dark Art";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
@@ -8,6 +10,10 @@ export const contentType = "image/png";
 export default async function OgImage() {
   const base =
     process.env.NEXT_PUBLIC_SITE_URL ?? "https://sharon-shakti.vercel.app";
+
+  const fontData = readFileSync(
+    join(process.cwd(), "app/fonts/SingleGhost.ttf")
+  );
 
   return new ImageResponse(
     (
@@ -19,7 +25,6 @@ export default async function OgImage() {
           position: "relative",
           overflow: "hidden",
           background: "#080808",
-          fontFamily: "Georgia, serif",
         }}
       >
         {/* Full-bleed banner image */}
@@ -37,7 +42,6 @@ export default async function OgImage() {
           }}
         />
 
-        {/* Multi-layer dark overlay — keeps text punchy regardless of image content */}
         {/* Base darkening */}
         <div
           style={{
@@ -46,7 +50,7 @@ export default async function OgImage() {
             background: "rgba(8,8,8,0.52)",
           }}
         />
-        {/* Left vignette — text lives on the left */}
+        {/* Left vignette */}
         <div
           style={{
             position: "absolute",
@@ -77,7 +81,7 @@ export default async function OgImage() {
           }}
         />
 
-        {/* Content — pinned to bottom-left */}
+        {/* Content */}
         <div
           style={{
             position: "absolute",
@@ -96,20 +100,22 @@ export default async function OgImage() {
               textTransform: "uppercase",
               color: "#9a1620",
               marginBottom: 22,
+              fontFamily: "Georgia, serif",
             }}
           >
             Stockholm · Sweden
           </div>
 
-          {/* Name — two lines, large */}
+          {/* Name — SingleGhost display font */}
           <div
             style={{
-              fontSize: 100,
-              fontWeight: 700,
+              fontSize: 108,
+              fontWeight: 400,
               color: "#f3f2ef",
               lineHeight: 0.88,
               letterSpacing: "0.01em",
               marginBottom: 36,
+              fontFamily: "SingleGhost",
             }}
           >
             Sharon
@@ -145,6 +151,7 @@ export default async function OgImage() {
               color: "#9a9a9a",
               letterSpacing: "0.16em",
               textTransform: "uppercase",
+              fontFamily: "Georgia, serif",
             }}
           >
             Horror Realism · Blackwork · Dark Art
@@ -165,6 +172,16 @@ export default async function OgImage() {
         />
       </div>
     ),
-    { ...size }
+    {
+      ...size,
+      fonts: [
+        {
+          name: "SingleGhost",
+          data: fontData,
+          style: "normal",
+          weight: 400,
+        },
+      ],
+    }
   );
 }
