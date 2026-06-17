@@ -20,7 +20,7 @@ export default function GiftCardSuccessPage() {
         </h1>
 
         <p className="mt-8 leading-relaxed text-bone/70">
-          Check your inbox — your unique gift card code is on its way.
+          Check your inbox. Your unique gift card code is on its way.
           Bring the code to the studio and Sharon will hand over the physical card.
           Didn&rsquo;t receive it? Check your spam folder or contact Sharon directly.
         </p>

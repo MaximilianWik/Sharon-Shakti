@@ -54,6 +54,7 @@ export default function GiftCardPurchase() {
       }
 
       const { url } = (await res.json()) as { url: string };
+      sessionStorage.setItem("sharon-intro-seen", "1");
       window.location.href = url;
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
