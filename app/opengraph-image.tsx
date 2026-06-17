@@ -109,6 +109,8 @@ export default async function OgImage() {
           {/* Name — SingleGhost display font */}
           <div
             style={{
+              display: "flex",
+              flexDirection: "column",
               fontSize: 108,
               fontWeight: 400,
               color: "#f3f2ef",
@@ -118,9 +120,8 @@ export default async function OgImage() {
               fontFamily: "SingleGhost",
             }}
           >
-            Sharon
-            <br />
-            Shakti
+            <div>Sharon</div>
+            <div>Shakti</div>
           </div>
 
           {/* Divider */}
