@@ -41,6 +41,15 @@ export default function IntroScreen() {
             exit={{ scale: 1.06 }}
             transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
           >
+            {/* Desktop fill layer: blurred + dimmed, covers black bars on wide viewports */}
+            <Image
+              src="/banner/banner-desktop-ratio.png"
+              alt=""
+              fill
+              className="hidden object-cover opacity-40 blur-2xl md:block"
+              priority
+              aria-hidden
+            />
             {/* Mobile: portrait banner */}
             <Image
               src="/banner/banner.png"
@@ -49,7 +58,7 @@ export default function IntroScreen() {
               className="object-contain md:hidden"
               priority
             />
-            {/* Desktop: wide banner */}
+            {/* Desktop: sharp image on top of the fill */}
             <Image
               src="/banner/banner-desktop-ratio.png"
               alt="Sharon Shakti — Tattoo Nightmare"
