@@ -18,12 +18,11 @@ export default function Home() {
         <div className="relative p-14 md:p-20">
           <TraceryCorner corner="tl" className="pointer-events-none absolute left-0 top-0 h-14 w-14 text-ash/45 md:h-20 md:w-20" strokeWidth={1.5} />
           <TraceryCorner corner="br" className="pointer-events-none absolute bottom-0 right-0 h-14 w-14 text-ash/45 md:h-20 md:w-20" strokeWidth={1.5} />
-          <Reveal
-            as="p"
-            className="dropcap max-w-measure font-heading text-2xl leading-[1.5] tracking-heading text-bone md:text-3xl"
-          >
-            The skin remembers what the eye fears. Each piece I draw slowly,
-            in black and blood, to outlast the body it marks.
+          <Reveal>
+            <p className="dropcap max-w-measure font-heading text-2xl leading-[1.5] tracking-heading text-bone md:text-3xl">
+              The skin remembers what the eye fears. Each piece I draw slowly,
+              in black and blood, to outlast the body it marks.
+            </p>
           </Reveal>
 
           <Reveal
