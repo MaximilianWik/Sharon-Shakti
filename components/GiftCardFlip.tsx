@@ -66,7 +66,7 @@ export default function GiftCardFlip() {
 
       {/* Flip hint */}
       <p className="mt-3 text-center font-heading text-[0.62rem] uppercase tracking-[0.22em] text-ash/60">
-        {flipped ? "— back —" : "hover to turn over"}
+        {flipped ? "· back ·" : "hover to turn over"}
       </p>
     </div>
   );

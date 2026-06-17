@@ -67,6 +67,14 @@ export default function GiftCardPurchase({
         </div>
       </div>
 
+      {/* Studio minimum notice */}
+      <div className="border border-oxblood-bright/35 bg-oxblood/10 p-4">
+        <p className="label text-oxblood-bright">Studio minimum: 1,500 kr</p>
+        <p className="mt-1 text-sm leading-relaxed text-bone/70">
+          Sessions start at 1,500 kr. A gift card of this value typically covers a small piece in full.
+        </p>
+      </div>
+
       {/* Custom amount */}
       <div>
         <p className="label mb-4 text-oxblood-bright">Or enter a custom amount</p>
@@ -115,7 +123,7 @@ export default function GiftCardPurchase({
 
       {!onPurchase && (
         <p className="font-heading text-[0.65rem] uppercase tracking-heading text-ash/45">
-          Online purchase launching shortly — or contact directly to arrange.
+          Online purchase launching shortly. Contact directly to arrange.
         </p>
       )}
     </div>

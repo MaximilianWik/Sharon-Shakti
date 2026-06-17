@@ -55,7 +55,7 @@ export default function GiftCardsPage() {
           </Reveal>
           <Reveal as="p" delay={0.1} className="mt-8 max-w-measure leading-relaxed text-bone/70">
             Give someone a piece of permanent art. Gift cards are redeemable
-            against any session — consultation, sitting, or both. No expiry.
+            against any session: consultation, sitting, or both. No expiry.
             No conditions beyond showing up.
           </Reveal>
         </div>

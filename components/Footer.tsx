@@ -33,6 +33,7 @@ export default function Footer() {
             <ul className="flex flex-col gap-4">
               <li><Link href="/work" className="footer-crypt-link">Work</Link></li>
               <li><Link href="/book" className="footer-crypt-link">Book</Link></li>
+              <li><Link href="/giftcard" className="footer-crypt-link">Gift Cards</Link></li>
               <li><Link href="/about" className="footer-crypt-link">About</Link></li>
               <li><Link href="/care" className="footer-crypt-link">Care</Link></li>
             </ul>
