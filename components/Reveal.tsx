@@ -43,6 +43,7 @@ export default function Reveal({
         delay,
         ease: "power3.out",
         stagger,
+        clearProps: "transform",
         scrollTrigger: {
           trigger: el,
           start: "top 85%",
