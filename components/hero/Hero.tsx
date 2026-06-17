@@ -37,10 +37,12 @@ export default function Hero() {
   return (
     <section
       ref={root}
-      className="relative h-[100svh] w-full overflow-hidden"
+      className="relative h-[100svh] w-full"
       aria-label="Introduction"
     >
-      <Hero3D />
+      <div className="absolute inset-0 overflow-hidden">
+        <Hero3D />
+      </div>
 
       {/* Vignette to seat the type against the canvas */}
       <div
@@ -58,10 +60,10 @@ export default function Hero() {
 
         <div>
           <h1 className="font-display text-[clamp(1.75rem,8vw,6rem)] font-light leading-[0.92] tracking-display text-bone">
-            <span data-hero-line className="block overflow-hidden">
+            <span data-hero-line className="block" style={{ clipPath: "inset(0 -2em 0 -2em)" }}>
               <span className="block">Reverence for</span>
             </span>
-            <span data-hero-line className="block overflow-hidden">
+            <span data-hero-line className="block" style={{ clipPath: "inset(0 -2em 0 -2em)" }}>
               <span className="block italic text-oxblood-bright">
                 the grotesque.
               </span>
