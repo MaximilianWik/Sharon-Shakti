@@ -10,6 +10,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 
 ### Added
+- **Intro screen** (`IntroScreen`) — full-screen gate on first visit (once per session via `sessionStorage`). Displays `banner.png` edge-to-edge with a subtle exit zoom; large SingleGhost "Enter" button in oxblood on the left with multi-ring glow on hover; clicking anywhere or the button fades and unmounts the overlay
 - **Gift Cards page** (`/giftcard`) — denomination selector (presets + custom SEK amount), 3D flip card showcasing front/back images, how-it-works grid, Stripe-ready purchase panel (`GiftCardPurchase` emits `onPurchase(amount)`)
 - **`GiftCardFlip`** client component — CSS 3D perspective flip on hover/tap, front + back images, aspect-ratio locked to credit-card proportions
 - **`GiftCardPurchase`** client component — preset amounts (1 000 / 2 000 / 3 500 / 5 000 kr) + custom input, validation, reliquary CTA; `onPurchase` prop wires to Stripe when ready

@@ -511,6 +511,30 @@ a {
 .footer-crypt-link:hover::after { transform: scaleX(1); }
 
 /* ============================================================
+   INTRO SCREEN — full-screen gate on first visit
+   ============================================================ */
+
+.intro-enter {
+  /* Base: no shadow, smooth transitions */
+  text-shadow: none;
+  filter: none;
+  transition:
+    text-shadow 0.35s ease,
+    filter 0.35s ease,
+    color 0.35s ease;
+}
+
+.intro-enter:hover {
+  /* Oxblood flare: near + far halation rings */
+  text-shadow:
+    0 0 16px rgba(154, 22, 32, 1),
+    0 0 42px rgba(154, 22, 32, 0.75),
+    0 0 90px rgba(154, 22, 32, 0.45),
+    0 0 160px rgba(154, 22, 32, 0.2);
+  filter: brightness(1.35);
+}
+
+/* ============================================================
    PRINT STYLES — /care page aftercare output
    ============================================================ */
 
