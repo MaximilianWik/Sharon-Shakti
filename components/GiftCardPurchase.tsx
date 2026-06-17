@@ -6,34 +6,65 @@ import TraceryCorner from "@/components/ornaments/TraceryCorner";
 
 const PRESETS = [1000, 2000, 3500, 5000] as const;
 
-/**
- * Denomination selector + purchase CTA.
- * Stripe integration is wired up separately — this component emits the
- * selected amount via onPurchase when that's ready.
- */
-export default function GiftCardPurchase({
-  onPurchase,
-}: {
-  onPurchase?: (amountSEK: number) => void;
-}) {
+export default function GiftCardPurchase() {
+  // Amount
   const [selected, setSelected] = useState<number>(PRESETS[1]);
   const [custom, setCustom] = useState("");
   const [useCustom, setUseCustom] = useState(false);
+
+  // Buyer / recipient fields
+  const [buyerEmail, setBuyerEmail] = useState("");
+  const [recipientName, setRecipientName] = useState("");
+  const [message, setMessage] = useState("");
+
+  // Form state
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const effectiveAmount = useCustom
     ? Math.max(0, parseInt(custom || "0", 10))
     : selected;
 
-  const valid = effectiveAmount >= 500;
+  const amountValid = effectiveAmount >= 500;
+  const formValid =
+    amountValid &&
+    buyerEmail.includes("@") &&
+    recipientName.trim().length > 0;
 
-  function handleClick() {
-    if (!valid || !onPurchase) return;
-    onPurchase(effectiveAmount);
+  async function handleSubmit() {
+    if (!formValid || loading) return;
+    setLoading(true);
+    setError(null);
+
+    try {
+      const res = await fetch("/api/giftcard/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          amountSEK: effectiveAmount,
+          buyerEmail: buyerEmail.trim(),
+          recipientName: recipientName.trim(),
+          message: message.trim(),
+        }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error((data as { error?: string }).error ?? "Checkout failed");
+      }
+
+      const { url } = (await res.json()) as { url: string };
+      window.location.href = url;
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+      setLoading(false);
+    }
   }
 
   return (
-    <div className="space-y-8">
-      {/* Preset amounts */}
+    <div className="space-y-10">
+
+      {/* ── Amount picker ───────────────────────────── */}
       <div>
         <p className="label mb-4 text-oxblood-bright">Choose an amount</p>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
@@ -103,29 +134,89 @@ export default function GiftCardPurchase({
         )}
       </div>
 
-      {/* Summary + CTA */}
+      {/* ── Recipient details ───────────────────────── */}
+      <div className="space-y-6 border-t border-ash-dim/30 pt-8">
+        <p className="label text-oxblood-bright">Recipient &amp; delivery</p>
+
+        {/* Buyer email */}
+        <div>
+          <label className="label mb-2 block text-ash/70">Your email</label>
+          <div className="field-gothic">
+            <input
+              type="email"
+              placeholder="you@example.com"
+              value={buyerEmail}
+              onChange={(e) => setBuyerEmail(e.target.value)}
+              autoComplete="email"
+            />
+          </div>
+          <p className="mt-1 font-heading text-[0.6rem] uppercase tracking-heading text-ash/45">
+            The certificate is sent here
+          </p>
+        </div>
+
+        {/* Recipient name */}
+        <div>
+          <label className="label mb-2 block text-ash/70">Recipient name</label>
+          <div className="field-gothic">
+            <input
+              type="text"
+              placeholder="e.g. Alex"
+              value={recipientName}
+              onChange={(e) => setRecipientName(e.target.value)}
+            />
+          </div>
+          <p className="mt-1 font-heading text-[0.6rem] uppercase tracking-heading text-ash/45">
+            Printed on the certificate
+          </p>
+        </div>
+
+        {/* Personal message */}
+        <div>
+          <label className="label mb-2 block text-ash/70">Personal message <span className="text-ash/40">(optional)</span></label>
+          <div className="field-gothic">
+            <textarea
+              rows={3}
+              maxLength={300}
+              placeholder="A short note to accompany the gift…"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              className="resize-none"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* ── Error ───────────────────────────────────── */}
+      {error && (
+        <div className="border border-oxblood-bright/60 bg-oxblood/10 p-4">
+          <p className="font-heading text-[0.65rem] uppercase tracking-heading text-oxblood-bright">
+            {error}
+          </p>
+        </div>
+      )}
+
+      {/* ── Summary + CTA ───────────────────────────── */}
       <div className="flex flex-col gap-6 border-t border-ash-dim/30 pt-8 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <p className="label text-ash/70">Total</p>
           <p className="mt-1 font-heading text-2xl uppercase tracking-heading text-bone">
-            {valid ? `${effectiveAmount.toLocaleString("sv-SE")} kr` : "—"}
+            {amountValid ? `${effectiveAmount.toLocaleString("sv-SE")} kr` : "—"}
           </p>
         </div>
 
         <Button
-          onClick={handleClick}
-          disabled={!valid || !onPurchase}
+          onClick={handleSubmit}
+          disabled={!formValid || loading}
           type="button"
         >
-          {onPurchase ? "Purchase gift card" : "Coming soon"}
+          {loading ? "Redirecting…" : "Purchase gift card"}
         </Button>
       </div>
 
-      {!onPurchase && (
-        <p className="font-heading text-[0.65rem] uppercase tracking-heading text-ash/45">
-          Online purchase launching shortly. Contact directly to arrange.
-        </p>
-      )}
+      <p className="font-heading text-[0.6rem] uppercase tracking-heading text-ash/45">
+        Secure checkout via Stripe. You will be redirected to complete payment.
+      </p>
     </div>
   );
 }

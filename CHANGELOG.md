@@ -10,6 +10,19 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 
 ### Added
+- **Gift card Stripe checkout** — full purchase flow: `GiftCardPurchase` posts to `/api/giftcard/checkout` (Stripe Checkout Session), Stripe webhook at `/api/giftcard/webhook` generates a 12-char code, stores it in Vercel KV, and sends a branded HTML certificate email to the buyer
+- **`lib/giftcard-store.ts`** — Vercel KV wrapper: `storeGiftCard`, `getGiftCard`, `redeemGiftCard`, `generateGiftCardCode`
+- **`lib/giftcard-email.ts`** — dark HTML certificate email (mirrors booking email template): code displayed as `XXXX-XXXX-XXXX`, shows amount, recipient name, optional personal message, and redemption instructions
+- **`/api/giftcard/checkout`** (POST) — validates fields, creates Stripe Checkout Session with SEK price_data and metadata
+- **`/api/giftcard/webhook`** (POST) — verifies Stripe signature, handles `checkout.session.completed`, generates code, writes to KV, fires certificate email
+- **`/api/giftcard/verify`** (GET `?code=`) — returns full gift card record for studio lookup; 404 if not found
+- **`/api/giftcard/redeem`** (POST `{ code }`) — marks gift card redeemed; requires `X-Admin-Key` header matching `GIFTCARD_ADMIN_KEY` env var
+- **`/giftcard/success`** — confirmation page shown after successful Stripe payment; ember field background, links home and back to gift cards
+- **`/giftcard/cancel`** — cancellation page; "No charge made" copy, link back to `/giftcard`
+- **`GiftCardPurchase`** rewritten — adds buyer email, recipient name, and optional personal message fields; self-contained checkout (no `onPurchase` prop); inline loading + error states; redirects to Stripe hosted page on submit
+- **`.env.example`** — documents `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`, `KV_REST_API_URL`, `KV_REST_API_TOKEN`, `GIFTCARD_ADMIN_KEY`
+
+### Added
 - **Intro screen** (`IntroScreen`) — full-screen gate on first visit (once per session via `sessionStorage`). Displays `banner.png` edge-to-edge with a subtle exit zoom; large SingleGhost "Enter" button in oxblood on the left with multi-ring glow on hover; clicking anywhere or the button fades and unmounts the overlay
 - **Gift Cards page** (`/giftcard`) — denomination selector (presets + custom SEK amount), 3D flip card showcasing front/back images, how-it-works grid, Stripe-ready purchase panel (`GiftCardPurchase` emits `onPurchase(amount)`)
 - **`GiftCardFlip`** client component — CSS 3D perspective flip on hover/tap, front + back images, aspect-ratio locked to credit-card proportions

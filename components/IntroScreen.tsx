@@ -87,8 +87,7 @@ export default function IntroScreen() {
               initial={{ opacity: 0, x: -32 }}
               animate={idle ? {
                 // Phase 2 — idle breathing loop
-                opacity: [1, 0.6, 1],
-                scale: [1, 1.03, 1],
+                opacity: [1, 0.5, 1],
                 filter: [
                   "drop-shadow(0 0 0px transparent)",
                   "drop-shadow(0 0 20px rgba(154,22,32,0.6))",
