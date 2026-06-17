@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function WorkPage() {
   return (
-    <div className="pt-32 md:pt-40">
+    <div className="pt-32 pb-16 md:pt-40 md:pb-24">
       {/* Header */}
       <header className="mx-auto max-w-[1600px] px-6 pb-16 pt-16 md:px-12 md:pb-24 md:pt-20">
         <Reveal

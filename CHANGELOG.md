@@ -14,6 +14,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### Changed
 - **Footer** — reordered pages nav to match navbar (Work → Book → About → Care → Gift Cards); reduced vertical padding (`pt-10/md:pt-14`, `pb-6/md:pb-8`), tightened internal spacing (heading down to `text-2xl/4xl`, `mt-5/4/7`, `gap-3`, `mb-4`), and shrunk bottom-bar margins (`mt-10/md:mt-12`, `pt-5`)
+- **Work page** — add `pb-16 md:pb-24` to outer wrapper; closes gap between last gallery row and footer
 - **Gift card flow simplified — no database** — removed Vercel KV dependency entirely; purchase flow now generates a code, emails a certificate to the buyer, and emails a purchase notification to Sharon; Sharon keeps her own physical ledger and hands over the card in-studio when the buyer presents their code
 - **`lib/giftcard-store.ts` deleted** — KV wrapper no longer needed
 - **`/api/giftcard/verify` deleted** — endpoint removed
