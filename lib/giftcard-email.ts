@@ -123,7 +123,7 @@ ${rule()}
   letter-spacing:0.32em;text-transform:uppercase;color:#484848;">How to redeem</p>
 <p style="margin:0 0 8px 0;font-family:'EB Garamond',Georgia,serif;font-size:15px;
   line-height:1.8;color:#7a7a7a;">Quote your gift card code when booking your session at
-  <a href="https://sharon.ink" style="color:#9a1620;text-decoration:none;">sharon.ink</a>.
+  <a href="https://sharon-shakti.vercel.app" style="color:#9a1620;text-decoration:none;">sharon-shakti.vercel.app</a>.
   Sharon will apply the balance to your appointment. The code does not expire.</p>
 `;
 }
@@ -202,7 +202,7 @@ function shell(opts: {
               <tr>
                 <td style="padding-right:10px;font-size:5px;color:#9a1620;line-height:1;">&#9670;</td>
                 <td style="font-family:'Cinzel',Georgia,serif;font-size:8.5px;
-                  letter-spacing:0.3em;text-transform:uppercase;color:#7d7d7d;">sharon.ink</td>
+                  letter-spacing:0.3em;text-transform:uppercase;color:#7d7d7d;">Sharon Shakti Tattoo</td>
                 <td style="padding-left:10px;font-size:5px;color:#9a1620;line-height:1;">&#9670;</td>
               </tr>
             </table>
@@ -244,10 +244,10 @@ function plainText(opts: {
   }
   lines.push(
     "",
-    "How to redeem: quote your code when booking at sharon.ink.",
+    "How to redeem: quote your code when booking at sharon-shakti.vercel.app.",
     "The code does not expire.",
     "",
-    "— Sharon Shakti Tattoo · sharon.ink"
+    "— Sharon Shakti Tattoo"
   );
   return lines.join("\n");
 }

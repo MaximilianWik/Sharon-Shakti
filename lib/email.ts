@@ -166,7 +166,7 @@ function shell(opts: {
               <tr>
                 <td style="padding-right:10px;font-size:5px;color:#9a1620;line-height:1;">&#9670;</td>
                 <td style="font-family:'Cinzel',Georgia,serif;font-size:8.5px;
-                  letter-spacing:0.3em;text-transform:uppercase;color:#7d7d7d;">sharon.ink</td>
+                  letter-spacing:0.3em;text-transform:uppercase;color:#7d7d7d;">Sharon Shakti Tattoo</td>
                 <td style="padding-left:10px;font-size:5px;color:#9a1620;line-height:1;">&#9670;</td>
               </tr>
             </table>
@@ -231,7 +231,7 @@ function clientText(name: string, date: string, time: string): string {
     "Your booking request has been received. Sharon will review the details and be in touch shortly.",
     "", `Date: ${date}`, `Time: ${time}`, "",
     "Questions? Reply to this email.", "",
-    "— Sharon Shakti Tattoo · sharon.ink",
+    "— Sharon Shakti Tattoo",
   ].join("\n");
 }
 

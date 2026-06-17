@@ -19,7 +19,7 @@ A single-artist portfolio + booking site for **Sharon Shakti** (@sharonnshakti) 
 
 Success = the work lands with weight, the artist feels singular and credible, and a qualified visitor books a real available slot in under a minute. Booking persists to Google Calendar as the source of truth — no database.
 
-**Live:** https://sharon-shakti.vercel.app/ (custom domain `sharon.ink` pending)
+**Live:** https://sharon-shakti.vercel.app/
 
 ## Current Pages
 

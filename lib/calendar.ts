@@ -241,7 +241,7 @@ export async function createBooking(input: BookingInput) {
     requestBody: {
       summary: `Consultation: ${input.name}`,
       description: [
-        `Booked via sharon.ink`,
+        `Booked via sharon-shakti.vercel.app`,
         `Name: ${input.name}`,
         `Email: ${input.email}`,
         input.notes ? `Notes: ${input.notes}` : "",
