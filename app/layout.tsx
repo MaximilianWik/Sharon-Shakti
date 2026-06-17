@@ -7,7 +7,6 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
 import BackToTop from "@/components/BackToTop";
-import IntroScreen from "@/components/IntroScreen";
 
 // H1 / hero — the decorative horror display face.
 const display = localFont({
@@ -60,7 +59,6 @@ export default function RootLayout({
       className={`${display.variable} ${heading.variable} ${body.variable}`}
     >
       <body className="grain">
-        <IntroScreen />
         <SmoothScroll>
           <ScrollProgress />
           <Nav />

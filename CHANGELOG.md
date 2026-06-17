@@ -9,6 +9,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Removed
+- **Intro screen** — removed `IntroScreen` component and its usage in `layout.tsx`; site loads directly without the "Enter" gate
+
 ### Changed
 - **Gift card flow simplified — no database** — removed Vercel KV dependency entirely; purchase flow now generates a code, emails a certificate to the buyer, and emails a purchase notification to Sharon; Sharon keeps her own physical ledger and hands over the card in-studio when the buyer presents their code
 - **`lib/giftcard-store.ts` deleted** — KV wrapper no longer needed
