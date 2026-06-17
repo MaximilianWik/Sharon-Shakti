@@ -189,14 +189,14 @@ export default function BookingFlow() {
   }
 
   return (
-    <div className="grid min-w-0 grid-cols-1 gap-12 xl:grid-cols-[minmax(0,1fr)_minmax(21rem,0.85fr)]">
+    <div className="grid min-w-0 grid-cols-1 gap-8 xl:grid-cols-[minmax(0,1fr)_minmax(18rem,0.85fr)]">
       {/* Left: date + slots */}
       <div className="min-w-0">
         <span className="label text-oxblood-bright">01 · Choose a day</span>
 
         <div
           ref={stripRef}
-          className="mt-6 grid grid-cols-[repeat(auto-fit,minmax(4.2rem,1fr))] gap-2 overflow-x-hidden"
+          className="mt-6 grid grid-cols-[repeat(auto-fit,minmax(3.2rem,1fr))] gap-1.5 overflow-x-hidden"
           style={{ scrollbarWidth: "thin" }}
         >
           {days.map((d) => {
@@ -209,7 +209,7 @@ export default function BookingFlow() {
                 type="button"
                 disabled={disabled}
                 onClick={() => !disabled && setSelectedDate(d.iso)}
-                className={`group relative flex min-w-0 flex-col items-center gap-1 overflow-hidden border px-2 py-4 transition-all duration-300 ${
+                className={`group relative flex min-w-0 flex-col items-center gap-0.5 overflow-hidden border px-1 py-3 transition-all duration-300 ${
                   active
                     ? "border-oxblood-bright bg-oxblood/20 text-bone shadow-[inset_0_0_0_1px_rgba(243,242,239,0.16),0_0_18px_rgba(154,22,32,0.22)]"
                     : disabled
@@ -223,7 +223,7 @@ export default function BookingFlow() {
                 <span className="label text-[0.6rem]">
                   {d.date.toLocaleDateString(undefined, { weekday: "short" })}
                 </span>
-                <span className="font-serif text-2xl leading-none tracking-display">
+                <span className="font-serif text-xl leading-none tracking-display">
                   {d.date.getDate()}
                 </span>
                 <span className="label text-[0.55rem] text-ash">
@@ -237,13 +237,13 @@ export default function BookingFlow() {
           })}
         </div>
 
-        <div className="mt-10">
+        <div className="mt-8">
           <span className="label text-oxblood-bright">02 · Pick a time</span>
           <div className="mt-6 min-h-[8rem]">
             {slotsStatus === "loading" && (
-              <div className="grid grid-cols-[repeat(auto-fit,minmax(4rem,1fr))] gap-2">
+              <div className="grid grid-cols-[repeat(auto-fit,minmax(3.2rem,1fr))] gap-2">
                 {Array.from({ length: 8 }).map((_, i) => (
-                  <div key={i} className="h-12 animate-pulse bg-ink-raised" />
+                  <div key={i} className="h-10 animate-pulse bg-ink-raised" />
                 ))}
               </div>
             )}
@@ -271,7 +271,7 @@ export default function BookingFlow() {
             )}
 
             {slotsStatus === "idle" && day?.isWorkingDay && day.slots.some((s) => s.available) && (
-              <div className="grid grid-cols-[repeat(auto-fit,minmax(4rem,1fr))] gap-2">
+              <div className="grid grid-cols-[repeat(auto-fit,minmax(3.2rem,1fr))] gap-2">
                 {day.slots.map((s) => {
                   const active = selectedSlot?.start === s.start;
                   return (
@@ -280,7 +280,7 @@ export default function BookingFlow() {
                       type="button"
                       disabled={!s.available}
                       onClick={() => setSelectedSlot(s)}
-                      className={`group relative h-12 overflow-hidden border text-sm transition-all duration-300 ${
+                      className={`group relative h-10 overflow-hidden border text-sm transition-all duration-300 ${
                         active
                           ? "border-oxblood-bright bg-oxblood/85 text-bone shadow-[inset_0_0_0_1px_rgba(243,242,239,0.18),0_0_16px_rgba(154,22,32,0.24)]"
                           : s.available
@@ -314,7 +314,7 @@ export default function BookingFlow() {
       {/* Right: details form */}
       <form
         onSubmit={handleSubmit}
-        className="flex min-w-0 flex-col gap-6 border-t border-ash-dim/40 pt-10 xl:border-l xl:border-t-0 xl:pl-12 xl:pt-0"
+        className="flex min-w-0 flex-col gap-4 border-t border-ash-dim/40 pt-8 xl:border-l xl:border-t-0 xl:pl-8 xl:pt-0"
       >
         <span className="label text-oxblood-bright">03 · Your details</span>
 
@@ -331,7 +331,7 @@ export default function BookingFlow() {
             </p>
           )}
 
-          <div className="flex flex-col gap-7">
+          <div className="flex flex-col gap-5">
             <Field label="Name" error={fieldErrors.name}>
               <input
                 type="text"
@@ -359,7 +359,7 @@ export default function BookingFlow() {
           </div>
 
           {/* Illuminated-manuscript consent checkbox */}
-          <div className="mt-7 flex items-start gap-4">
+          <div className="mt-5 flex items-start gap-4">
             <button
               type="button"
               role="checkbox"
@@ -381,7 +381,7 @@ export default function BookingFlow() {
           <Button
             type="submit"
             disabled={!selectedSlot || !consent || submit === "submitting"}
-            className="mt-8 w-full"
+            className="mt-6 w-full"
           >
             {submit === "submitting" ? "Requesting…" : "Request this session"}
           </Button>

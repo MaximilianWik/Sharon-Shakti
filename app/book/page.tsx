@@ -30,7 +30,7 @@ export default function BookPage() {
       </header>
 
       <section className="mx-auto max-w-[1600px] px-4 pb-32 sm:px-6 md:px-12 md:pb-44">
-        <div className="relative border border-ash-dim/35 bg-ink/35 p-4 sm:p-8 md:p-[5.5rem]">
+        <div className="relative border border-ash-dim/35 bg-ink/35 p-4 sm:p-6 md:p-[3.5rem]">
           <TraceryCorner corner="tl" className="pointer-events-none absolute left-2 top-2 h-12 w-12 text-ash/45 md:h-20 md:w-20" strokeWidth={1.5} />
           <TraceryCorner corner="tr" className="pointer-events-none absolute right-2 top-2 h-12 w-12 text-ash/45 md:h-20 md:w-20" strokeWidth={1.5} />
           <TraceryCorner corner="bl" className="pointer-events-none absolute bottom-2 left-2 h-12 w-12 text-ash/45 md:h-20 md:w-20" strokeWidth={1.5} />
