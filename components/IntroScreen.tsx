@@ -78,7 +78,7 @@ export default function IntroScreen() {
           >
             <motion.button
               onClick={(e) => { e.stopPropagation(); handleEnter(); }}
-              className="intro-enter font-display leading-none text-bone"
+              className="intro-enter font-display leading-none text-[#898989]"
               style={{ fontSize: "clamp(3.5rem, 9vw, 8.5rem)" }}
               initial={{ opacity: 0, x: -32 }}
               animate={{ opacity: 1, x: 0 }}
