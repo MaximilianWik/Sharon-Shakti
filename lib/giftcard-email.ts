@@ -253,7 +253,7 @@ function plainText(opts: {
 }
 
 // ---------------------------------------------------------------------------
-// Public send function
+// Public send functions
 // ---------------------------------------------------------------------------
 
 export async function sendGiftCertificate(opts: {
@@ -281,5 +281,117 @@ export async function sendGiftCertificate(opts: {
     });
   } catch (err) {
     console.error("[giftcard-email] sendGiftCertificate failed:", err);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Sharon notification body
+// ---------------------------------------------------------------------------
+
+function sharonNotificationBody(opts: {
+  buyerEmail: string;
+  recipientName: string;
+  message: string;
+  amountSEK: number;
+  code: string;
+}): string {
+  const { buyerEmail, recipientName, message, amountSEK, code } = opts;
+  const formatted = `${code.slice(0, 4)}-${code.slice(4, 8)}-${code.slice(8, 12)}`;
+
+  const messageRow = message.trim()
+    ? `<tr>
+        <td colspan="2" style="padding-bottom:28px;vertical-align:top;">
+          <p style="margin:0 0 6px 0;font-family:'Cinzel',Georgia,serif;font-size:7.5px;
+            letter-spacing:0.38em;text-transform:uppercase;color:#484848;">Personal Message</p>
+          <p style="margin:0;font-family:'EB Garamond',Georgia,serif;font-size:17px;
+            font-style:italic;line-height:1.75;color:#b0aea9;">${escHtml(message)}</p>
+        </td>
+      </tr>`
+    : "";
+
+  return `
+<p style="margin:0 0 36px 0;font-family:'EB Garamond',Georgia,serif;font-size:16px;
+  color:#7a7a7a;line-height:1.85;">A new gift card has been purchased. Log the code below in your records — the buyer will collect the physical card in studio.</p>
+
+${rule()}
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:28px;">
+  <tr>
+    <td style="padding-bottom:28px;vertical-align:top;width:50%;">
+      <p style="margin:0 0 6px 0;font-family:'Cinzel',Georgia,serif;font-size:7.5px;
+        letter-spacing:0.38em;text-transform:uppercase;color:#484848;">Amount</p>
+      <p style="margin:0;font-family:'EB Garamond',Georgia,serif;font-size:28px;
+        line-height:1.2;color:#f3f2ef;">${amountSEK.toLocaleString("sv-SE")}&nbsp;kr</p>
+    </td>
+    <td style="padding-bottom:28px;vertical-align:top;width:50%;">
+      <p style="margin:0 0 6px 0;font-family:'Cinzel',Georgia,serif;font-size:7.5px;
+        letter-spacing:0.38em;text-transform:uppercase;color:#484848;">Code</p>
+      <p style="margin:0;font-family:'Courier New',Courier,monospace;font-size:20px;
+        letter-spacing:0.18em;color:#9a1620;font-weight:700;">${escHtml(formatted)}</p>
+    </td>
+  </tr>
+  <tr>
+    <td style="padding-bottom:28px;vertical-align:top;width:50%;">
+      <p style="margin:0 0 6px 0;font-family:'Cinzel',Georgia,serif;font-size:7.5px;
+        letter-spacing:0.38em;text-transform:uppercase;color:#484848;">Buyer Email</p>
+      <p style="margin:0;font-family:'EB Garamond',Georgia,serif;font-size:15px;
+        line-height:1.5;color:#b0aea9;">${escHtml(buyerEmail)}</p>
+    </td>
+    <td style="padding-bottom:28px;vertical-align:top;width:50%;">
+      <p style="margin:0 0 6px 0;font-family:'Cinzel',Georgia,serif;font-size:7.5px;
+        letter-spacing:0.38em;text-transform:uppercase;color:#484848;">Recipient Name</p>
+      <p style="margin:0;font-family:'EB Garamond',Georgia,serif;font-size:15px;
+        line-height:1.5;color:#b0aea9;">${escHtml(recipientName)}</p>
+    </td>
+  </tr>
+  ${messageRow}
+</table>
+
+${rule()}
+
+<p style="margin:0;font-family:'EB Garamond',Georgia,serif;font-size:14px;
+  color:#484848;line-height:1.8;">The buyer has been sent a certificate by email. When they arrive at the studio, verify the code matches and hand over the physical card.</p>
+`;
+}
+
+export async function sendSharonGiftCardNotification(opts: {
+  buyerEmail: string;
+  recipientName: string;
+  message: string;
+  amountSEK: number;
+  code: string;
+}): Promise<void> {
+  const transport = createTransport();
+  if (!transport) return;
+  const { buyerEmail, recipientName, message, amountSEK, code } = opts;
+  const formatted = `${code.slice(0, 4)}-${code.slice(4, 8)}-${code.slice(8, 12)}`;
+  const to = process.env.GMAIL_USER ?? "";
+  if (!to) return;
+  try {
+    await transport.sendMail({
+      from: `"Sharon Shakti Tattoo" <${process.env.GMAIL_USER}>`,
+      to,
+      subject: `New gift card ${formatted} — ${amountSEK.toLocaleString("sv-SE")} kr`,
+      text: [
+        "New gift card sale.",
+        "",
+        `Amount:     ${amountSEK.toLocaleString("sv-SE")} kr`,
+        `Code:       ${formatted}`,
+        `Buyer:      ${buyerEmail}`,
+        `Recipient:  ${recipientName}`,
+        message.trim() ? `Message:    ${message}` : "",
+        "",
+        "The buyer has been sent a certificate by email. Verify the code when they arrive and hand over the physical card.",
+      ]
+        .filter((l) => l !== undefined)
+        .join("\n"),
+      html: shell({
+        eyebrow: "New Gift Card Sale",
+        eyebrowColor: "#484848",
+        body: sharonNotificationBody({ buyerEmail, recipientName, message, amountSEK, code }),
+      }),
+    });
+  } catch (err) {
+    console.error("[giftcard-email] sendSharonGiftCardNotification failed:", err);
   }
 }

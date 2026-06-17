@@ -9,8 +9,19 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
-### Added
-- **Gift card Stripe checkout** — full purchase flow: `GiftCardPurchase` posts to `/api/giftcard/checkout` (Stripe Checkout Session), Stripe webhook at `/api/giftcard/webhook` generates a 12-char code, stores it in Vercel KV, and sends a branded HTML certificate email to the buyer
+### Changed
+- **Gift card flow simplified — no database** — removed Vercel KV dependency entirely; purchase flow now generates a code, emails a certificate to the buyer, and emails a purchase notification to Sharon; Sharon keeps her own physical ledger and hands over the card in-studio when the buyer presents their code
+- **`lib/giftcard-store.ts` deleted** — KV wrapper no longer needed
+- **`/api/giftcard/verify` deleted** — endpoint removed
+- **`/api/giftcard/redeem` deleted** — endpoint removed
+- **`/api/giftcard/webhook`** simplified — generates code, fires buyer certificate and Sharon notification in parallel via `Promise.all`; no KV write
+- **`lib/giftcard-email.ts`** — added `sendSharonGiftCardNotification`: dark HTML email to `GMAIL_USER` on every purchase; includes amount, code, buyer email, recipient name, and personal message
+- **`GiftCardPurchase`** — updated section label and email helper text to reflect physical card pickup at studio
+- **`/giftcard/success`** — updated heading and body copy for physical pickup ("bring the code to the studio")
+- **`package.json`** — removed `@vercel/kv` dependency
+- **`.env.example`** — removed `KV_REST_API_URL`, `KV_REST_API_TOKEN`, `GIFTCARD_ADMIN_KEY`; env vars reduced to 3 Stripe keys + Gmail
+
+ `GiftCardPurchase` posts to `/api/giftcard/checkout` (Stripe Checkout Session), Stripe webhook at `/api/giftcard/webhook` generates a 12-char code, stores it in Vercel KV, and sends a branded HTML certificate email to the buyer
 - **`lib/giftcard-store.ts`** — Vercel KV wrapper: `storeGiftCard`, `getGiftCard`, `redeemGiftCard`, `generateGiftCardCode`
 - **`lib/giftcard-email.ts`** — dark HTML certificate email (mirrors booking email template): code displayed as `XXXX-XXXX-XXXX`, shows amount, recipient name, optional personal message, and redemption instructions
 - **`/api/giftcard/checkout`** (POST) — validates fields, creates Stripe Checkout Session with SEK price_data and metadata

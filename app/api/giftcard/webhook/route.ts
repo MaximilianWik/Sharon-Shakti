@@ -1,9 +1,17 @@
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
-import { generateGiftCardCode, storeGiftCard } from "@/lib/giftcard-store";
-import { sendGiftCertificate } from "@/lib/giftcard-email";
+import { sendGiftCertificate, sendSharonGiftCardNotification } from "@/lib/giftcard-email";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
+
+// Avoids visually ambiguous characters (0 O I 1)
+function generateGiftCardCode(): string {
+  const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+  return Array.from(
+    { length: 12 },
+    () => chars[Math.floor(Math.random() * chars.length)]
+  ).join("");
+}
 
 export async function POST(request: Request) {
   const body = await request.text();
@@ -41,17 +49,10 @@ export async function POST(request: Request) {
 
     const code = generateGiftCardCode();
 
-    await storeGiftCard({
-      code,
-      amountSEK,
-      buyerEmail,
-      recipientName,
-      message,
-      createdAt: new Date().toISOString(),
-      redeemed: false,
-    });
-
-    await sendGiftCertificate({ to: buyerEmail, recipientName, message, amountSEK, code });
+    await Promise.all([
+      sendGiftCertificate({ to: buyerEmail, recipientName, message, amountSEK, code }),
+      sendSharonGiftCardNotification({ buyerEmail, recipientName, message, amountSEK, code }),
+    ]);
   }
 
   return NextResponse.json({ received: true });

@@ -136,7 +136,7 @@ export default function GiftCardPurchase() {
 
       {/* ── Recipient details ───────────────────────── */}
       <div className="space-y-6 border-t border-ash-dim/30 pt-8">
-        <p className="label text-oxblood-bright">Recipient &amp; delivery</p>
+        <p className="label text-oxblood-bright">Recipient details</p>
 
         {/* Buyer email */}
         <div>
@@ -151,7 +151,7 @@ export default function GiftCardPurchase() {
             />
           </div>
           <p className="mt-1 font-heading text-[0.6rem] uppercase tracking-heading text-ash/45">
-            The certificate is sent here
+            Your unique code is emailed here — bring it to the studio to collect the physical card
           </p>
         </div>
 

@@ -16,13 +16,13 @@ export default function GiftCardSuccessPage() {
         <p className="label text-oxblood-bright">Order confirmed</p>
 
         <h1 className="mt-6 font-display text-[clamp(1.75rem,9vw,5rem)] font-light leading-none tracking-display text-bone">
-          Gift card sent.
+          Purchase confirmed.
         </h1>
 
         <p className="mt-8 leading-relaxed text-bone/70">
-          Check your inbox — the certificate with your unique gift card code
-          is on its way. Didn&rsquo;t receive it? Check your spam folder or
-          contact Sharon directly.
+          Check your inbox — your unique gift card code is on its way.
+          Bring the code to the studio and Sharon will hand over the physical card.
+          Didn&rsquo;t receive it? Check your spam folder or contact Sharon directly.
         </p>
 
         <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-8">

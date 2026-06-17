@@ -51,7 +51,7 @@ export default function Hero() {
         }}
       />
 
-      <div className="pointer-events-none absolute inset-0 mx-auto flex max-w-[1600px] flex-col justify-between py-28 pl-10 pr-6 md:py-32 md:pl-16 md:pr-12">
+      <div className="pointer-events-none absolute inset-0 mx-auto flex max-w-[1600px] flex-col justify-between py-32 pl-14 pr-10 md:py-40 md:pl-20 md:pr-16">
         <p data-hero-fade className="label text-ash">
           Horror Realism · Blackwork · Dark Art
         </p>
