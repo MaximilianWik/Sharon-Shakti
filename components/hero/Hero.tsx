@@ -53,17 +53,17 @@ export default function Hero() {
         }}
       />
 
-      <div className="pointer-events-none absolute inset-0 mx-auto flex max-w-[1600px] flex-col justify-between py-32 pl-14 pr-10 md:py-40 md:pl-20 md:pr-16">
+      <div className="pointer-events-none absolute inset-0 mx-auto flex max-w-[1600px] flex-col justify-between px-6 py-28 md:px-12 md:py-32">
         <p data-hero-fade className="label text-ash">
           Horror Realism · Blackwork · Dark Art
         </p>
 
         <div>
           <h1 className="font-display text-[clamp(1.75rem,8vw,6rem)] font-light leading-[0.92] tracking-display text-bone">
-            <span data-hero-line className="block" style={{ clipPath: "inset(0 -2em 0 -2em)" }}>
+            <span data-hero-line className="block" style={{ clipPath: "inset(0 -2em -1em -2em)" }}>
               <span className="block">Reverence for</span>
             </span>
-            <span data-hero-line className="block" style={{ clipPath: "inset(0 -2em 0 -2em)" }}>
+            <span data-hero-line className="block" style={{ clipPath: "inset(0 -2em -1em -2em)" }}>
               <span className="block italic text-oxblood-bright">
                 the grotesque.
               </span>

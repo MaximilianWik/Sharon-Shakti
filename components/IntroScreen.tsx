@@ -38,29 +38,11 @@ export default function IntroScreen() {
             className="absolute inset-0"
             exit={{ scale: 1.55, transition: { duration: 0.85, ease: [0.4, 0, 1, 1] } }}
           >
-            {/* Desktop fill layer: blurred + dimmed, eliminates black bars */}
-            <Image
-              src="/banner/banner-desktop-ratio.png"
-              alt=""
-              fill
-              className="hidden object-cover opacity-40 blur-2xl md:block"
-              priority
-              aria-hidden
-            />
-            {/* Mobile: portrait banner */}
-            <Image
-              src="/banner/banner.png"
-              alt="Sharon Shakti — Tattoo Nightmare"
-              fill
-              className="object-contain md:hidden"
-              priority
-            />
-            {/* Desktop: sharp image on top of the fill */}
             <Image
               src="/banner/banner-desktop-ratio.png"
               alt="Sharon Shakti — Tattoo Nightmare"
               fill
-              className="hidden object-contain md:block"
+              className="object-contain"
               priority
             />
           </motion.div>
