@@ -76,8 +76,7 @@ export default function CarePage() {
     <div className="pt-32 md:pt-40">
       {/* Header with embers */}
       <header className="relative overflow-hidden">
-        <DecorBackdrop opacity={0.22} objectPosition="center 30%" />
-        <EmberField density={24} />
+        <DecorBackdrop opacity={0.44} objectPosition="center 30%" />
         <div className="relative mx-auto max-w-[1600px] px-6 pb-16 md:px-12 md:pb-24">
           <Reveal
             as="h1"
