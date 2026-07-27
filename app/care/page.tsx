@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
 import Divider from "@/components/Divider";
 import EmberField from "@/components/EmberField";
+import DecorBackdrop from "@/components/DecorBackdrop";
 import PrintButton from "@/components/PrintButton";
 import FaqAccordion, { type Faq } from "@/components/FaqAccordion";
 import TraceryCorner from "@/components/ornaments/TraceryCorner";
@@ -76,6 +77,7 @@ export default function CarePage() {
     <div className="pt-32 md:pt-40">
       {/* Header with embers */}
       <header className="relative overflow-hidden">
+        <DecorBackdrop opacity={0.22} objectPosition="center 30%" />
         <EmberField density={24} />
         <div className="relative mx-auto max-w-[1600px] px-6 pb-16 md:px-12 md:pb-24">
           <Reveal
@@ -106,6 +108,7 @@ export default function CarePage() {
 
       {/* Aftercare */}
       <section className="relative overflow-hidden">
+        <DecorBackdrop opacity={0.2} objectPosition="center 70%" />
         <EmberField density={16} />
         <div className="relative mx-auto max-w-[1600px] px-6 py-24 md:px-12 md:py-32">
           <Reveal as="h2" className="mb-12 font-heading text-2xl uppercase tracking-heading text-bone md:text-3xl">

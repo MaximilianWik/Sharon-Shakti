@@ -9,6 +9,11 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Added
+- **`DecorBackdrop`** — reusable decorative full-bleed backdrop (`next/image` fill + radial vignette dissolving edges into `ink`). Renders `public/decoration.png` (Sharon's 3273×2455 gore piece) faint and dark so it emerges from the black gallery wall rather than tiling as wallpaper. `aria-hidden`, `pointer-events-none`, sits at `z-0` behind `z-10` content
+- **Home statement backdrop** — `DecorBackdrop` at `opacity 0.3` behind "The skin remembers what the eye fears…"; statement text + facets wrapped in `relative z-10`
+- **`/care` atmosphere** — `DecorBackdrop` layered behind the `EmberField` on both the header (`opacity 0.22`, `objectPosition center 30%`) and aftercare sections (`opacity 0.2`, `objectPosition center 70%`); embers render on top, content stays above
+
 ### Removed
 - **Intro screen** — removed `IntroScreen` component and its usage in `layout.tsx`; site loads directly without the "Enter" gate
 
