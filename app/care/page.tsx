@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
 import Divider from "@/components/Divider";
-import EmberField from "@/components/EmberField";
 import DecorBackdrop from "@/components/DecorBackdrop";
 import PrintButton from "@/components/PrintButton";
 import FaqAccordion, { type Faq } from "@/components/FaqAccordion";
@@ -108,8 +107,7 @@ export default function CarePage() {
 
       {/* Aftercare */}
       <section className="relative overflow-hidden">
-        <DecorBackdrop opacity={0.2} objectPosition="center 70%" />
-        <EmberField density={16} />
+        <DecorBackdrop opacity={0.4} objectPosition="center 70%" />
         <div className="relative mx-auto max-w-[1600px] px-6 py-24 md:px-12 md:py-32">
           <Reveal as="h2" className="mb-12 font-heading text-2xl uppercase tracking-heading text-bone md:text-3xl">
             Aftercare

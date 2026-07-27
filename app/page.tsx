@@ -17,7 +17,7 @@ export default function Home() {
       {/* Statement */}
       <section className="mx-auto max-w-[1600px] px-6 py-32 md:px-12 md:py-48">
         <div className="relative p-14 md:p-20">
-          <DecorBackdrop opacity={0.3} />
+          <DecorBackdrop opacity={0.6} />
           <TraceryCorner corner="tl" className="pointer-events-none absolute left-0 top-0 h-14 w-14 text-ash/45 md:h-20 md:w-20" strokeWidth={1.5} />
           <TraceryCorner corner="br" className="pointer-events-none absolute bottom-0 right-0 h-14 w-14 text-ash/45 md:h-20 md:w-20" strokeWidth={1.5} />
           <div className="relative z-10">
